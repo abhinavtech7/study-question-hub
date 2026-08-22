@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Class 9 Maths PYQ</title>
+
+  <style>
+    body {
+      background-color: lightblue;
+      font-family: Arial;
+      padding: 30px;
+    }
+
+    h1 {
+      color: blue;
+      text-align: center;
+    }
+
+    .question {
+      background-color: white;
+      padding: 15px;
+      margin: 15px;
+      border-radius: 8px;
+    }
+
+    a {
+      color: blue;
+      font-size: 18px;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Class 9 Maths PYQ – 50 Questions</h1>
+
+  <div id="questions"></div>
+
+  <br>
+  <a href="index.html">← Back to Home</a>
+
+  <script>
+    let questions = [
+      "Find the value of 3² + 4².",
+      "Factorise: x² + 5x + 6.",
+      "Find the area of a triangle with base 10 cm and height 6 cm.",
+      "Solve: 2x + 5 = 15.",
+      "Find the perimeter of a square whose side is 8 cm.",
+      "Simplify: 7x + 3x - 5.",
+      "Find the value of √81.",
+      "Find the circumference of a circle with radius 7 cm. Use π = 22/7.",
+      "A rectangle has length 12 cm and breadth 5 cm. Find its area.",
+      "Find the value of 15% of 200.",
+      "Find the value of 5² + 12².",
+      "Solve: 3x - 7 = 11.",
+      "Find the area of a square with side 9 cm.",
+      "Find the perimeter of a rectangle with length 12 cm and breadth 7 cm.",
+      "Simplify: 8x + 5x - 4.",
+      "Find √144.",
+      "Find the value of 25% of 400.",
+      "Convert 0.75 into a fraction.",
+      "Find the area of a triangle with base 14 cm and height 8 cm.",
+      "Find the circumference of a circle with radius 14 cm. Use π = 22/7.",
+      "Solve: 4x + 9 = 25.",
+      "Factorise: x² + 7x + 12.",
+      "Find the value of 2³ × 2².",
+      "Find the area of a rectangle with length 15 cm and breadth 6 cm.",
+      "Find the value of 3/4 + 1/4.",
+      "Find the value of 7/8 - 3/8.",
+      "Find the simple interest on ₹1000 at 5% per year for 2 years.",
+      "Find the mean of 5, 10, 15, 20, 25.",
+      "Find the probability of getting a head when a coin is tossed.",
+      "Find the diagonal of a square with side 5 cm.",
+      "Solve: 5x = 45.",
+      "Find the value of 6² - 4².",
+      "Find the area of a parallelogram with base 12 cm and height 5 cm.",
+      "Find the volume of a cube with side 4 cm.",
+      "Convert 2.5 km into metres.",
+      "Find the supplement of 65°.",
+      "Find the complement of 35°.",
+      "Find the sum of angles of a triangle.",
+      "Find the area of a circle with radius 7 cm. Use π = 22/7.",
+      "Find the perimeter of an equilateral triangle with side 11 cm.",
+      "Solve: x/3 = 7.",
+      "Find the value of 9³.",
+      "Find the LCM of 12 and 18.",
+      "Find the HCF of 24 and 36.",
+      "Find 15% of ₹800.",
+      "Find the area of a rhombus with diagonals 10 cm and 8 cm.",
+      "Find the volume of a cuboid with length 8 cm, breadth 5 cm and height 4 cm.",
+      "Find the value of 1/2 × 3/4.",
+      "A number is increased by 20% to become 120. Find the original number.",
+      "Find the area of a semicircle with radius 7 cm. Use π = 22/7."
+    ];
+
+    let output = "";
+
+    for (let i = 0; i < questions.length; i++) {
+      output += "<div class='question'><b>Question " + (i + 1) + ":</b> " + questions[i] + "</div>";
+    }
+
+    document.getElementById("questions").innerHTML = output;
+  </script>
+</body>
+</html>

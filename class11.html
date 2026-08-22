@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Class 11 Science Questions</title>
+
+  <style>
+    body { background-color: lightblue; font-family: Arial; padding: 30px; }
+    h1 { color: blue; text-align: center; }
+    h2 { color: #003399; margin-top: 35px; }
+    .summary { background: rgba(255,255,255,0.7); padding: 10px 15px; border-radius: 8px; margin-bottom: 20px; font-weight: bold; }
+    .question { background: white; padding: 15px; margin: 12px 0; border-radius: 8px; }
+    a { color: blue; font-size: 18px; }
+  </style>
+</head>
+
+<body>
+  <h1>Class 11 Science – Questions</h1>
+  <div id="questions"></div>
+
+  <br>
+  <a href="index.html">← Back to Home</a>
+
+  <script>
+    const chapters = [
+      {
+        name: "Physics",
+        questions: [
+          "Define scalar and vector quantities with examples.",
+          "State the SI unit of force.",
+          "A car moves from rest with acceleration 2 m/s² for 10 s. Find its final velocity.",
+          "State Newton's first law of motion.",
+          "State Newton's second law of motion.",
+          "State Newton's third law of motion with an example.",
+          "Find the force required to accelerate a 5 kg object at 3 m/s².",
+          "Define momentum and write its SI unit.",
+          "What is the difference between distance and displacement?",
+          "State the law of conservation of momentum.",
+          "Define work done by a force.",
+          "Find the work done when a force of 10 N moves an object by 5 m.",
+          "Define kinetic energy.",
+          "Find the kinetic energy of a 2 kg body moving at 4 m/s.",
+          "Define potential energy.",
+          "State the law of conservation of energy.",
+          "Define power and write its SI unit."
+        ]
+      },
+      {
+        name: "Chemistry",
+        questions: [
+          "State the law of conservation of mass.",
+          "State the law of definite proportions.",
+          "Calculate the number of moles in 18 g of water.",
+          "Find the molar mass of carbon dioxide.",
+          "Write the electronic configuration of sodium.",
+          "Write the electronic configuration of chlorine.",
+          "What is an isotope? Give one example.",
+          "What is an isobar? Give one example.",
+          "Define atomic number and mass number.",
+          "State the modern periodic law.",
+          "What is the difference between ionic and covalent bonds?",
+          "Write the chemical formula of calcium chloride.",
+          "Balance the equation: H₂ + O₂ → H₂O.",
+          "Balance the equation: Fe + O₂ → Fe₂O₃.",
+          "What is oxidation?",
+          "What is reduction?",
+          "Define acids, bases and salts with one example each."
+        ]
+      },
+      {
+        name: "Biology",
+        questions: [
+          "What is the cell theory?",
+          "Name the organelle called the powerhouse of the cell.",
+          "State the function of mitochondria.",
+          "State the function of ribosomes.",
+          "What is the difference between prokaryotic and eukaryotic cells?",
+          "Define osmosis.",
+          "Define diffusion.",
+          "What is photosynthesis? Write its word equation.",
+          "Name the pigment required for photosynthesis.",
+          "What is respiration?",
+          "Write the word equation for aerobic respiration.",
+          "What is the function of red blood cells?",
+          "What is the function of white blood cells?",
+          "What is the function of the human heart?",
+          "What is a neuron?",
+          "What is the difference between xylem and phloem?"
+        ]
+      }
+    ];
+
+    const totalQuestions = chapters.reduce((total, chapter) => total + chapter.questions.length, 0);
+    let number = 1;
+
+    const questionsContainer = document.getElementById("questions");
+    const output = chapters.map((chapter) => {
+      const questionsHtml = chapter.questions.map((question) => {
+        const currentQuestion = number++;
+        return "<div class='question'><b>Question " + currentQuestion + ":</b> " + question + "</div>";
+      }).join("");
+
+      return "<h2>" + chapter.name + "</h2>" + questionsHtml;
+    }).join("");
+
+    questionsContainer.innerHTML = "<div class='summary'>Total Questions: " + totalQuestions + "</div>" + output;
+  </script>
+</body>
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Class 10 Maths Questions</title>
+
+  <style>
+    body { background-color: lightblue; font-family: Arial; padding: 30px; }
+    h1 { color: blue; text-align: center; }
+    h2 { color: #003399; margin-top: 35px; }
+    .question { background: white; padding: 15px; margin: 12px 0; border-radius: 8px; }
+    a { color: blue; font-size: 18px; }
+  </style>
+</head>
+
+<body>
+  <h1>Class 10 Maths – Hard Questions</h1>
+  <div id="questions"></div>
+
+  <br>
+  <a href="index.html">← Back to Home</a>
+
+  <script>
+    let chapters = [
+      {
+        name: "Algebra",
+        questions: [
+          "Use Euclid's division algorithm to find the HCF of 867 and 255.",
+          "Prove that √5 is irrational.",
+          "Find the zeroes of 2x² - 7x + 3 and verify the relationship between zeroes and coefficients.",
+          "If α and β are zeroes of x² - 6x + k, and αβ = 8, find k.",
+          "Solve: 2x + 3y = 13 and 3x - 2y = 4.",
+          "Solve graphically: x + y = 5 and 2x - y = 4.",
+          "Solve: 2x² - 5x - 3 = 0.",
+          "Find the value of k if x² + kx + 16 has equal roots.",
+          "The sum of two numbers is 27 and their product is 182. Find the numbers.",
+          "Find the 20th term of the AP: 5, 9, 13, 17, ...",
+          "Find the sum of first 30 terms of the AP: 7, 11, 15, ...",
+          "Which term of the AP 3, 8, 13, ... is 78?",
+          "Find the sum of all two-digit numbers divisible by 7."
+        ]
+      },
+      {
+        name: "Geometry and Coordinate Geometry",
+        questions: [
+          "Find the distance between A(2, 3) and B(8, 11).",
+          "Find the midpoint of the line segment joining (-4, 6) and (8, -2).",
+          "Find the point which divides the line joining (2, 3) and (8, 15) in the ratio 1:2.",
+          "Find the area of the triangle with vertices (0, 0), (4, 0), and (0, 6).",
+          "Prove that triangles with equal corresponding angles are similar.",
+          "In ΔABC, DE ∥ BC. If AD = 3 cm, DB = 2 cm and AE = 4.5 cm, find EC.",
+          "The areas of two similar triangles are 64 cm² and 100 cm². Find the ratio of their corresponding sides.",
+          "A tangent touches a circle of radius 5 cm. What is the angle between the radius and tangent at the point of contact?",
+          "From an external point P, two tangents PA and PB are drawn to a circle. Prove that PA = PB.",
+          "Find the angle subtended by a diameter at a point on the remaining part of the circle.",
+          "Find the length of a tangent from a point 13 cm away from the centre of a circle of radius 5 cm.",
+          "A chord of a circle is 16 cm long and its distance from the centre is 6 cm. Find the radius."
+        ]
+      },
+      {
+        name: "Trigonometry and Mensuration",
+        questions: [
+          "If tan θ = 3/4, find sin θ and cos θ.",
+          "Prove: sin² A + cos² A = 1.",
+          "If sec θ = 13/12, find tan θ.",
+          "A pole 10 m high casts a shadow 10√3 m long. Find the angle of elevation of the sun.",
+          "From a point 20 m away from a tower, the angle of elevation is 45°. Find the height of the tower.",
+          "The angle of elevation of the top of a building is 30° from a point 30 m away. Find its height.",
+          "Find the area of a sector of angle 90° in a circle of radius 14 cm.",
+          "Find the length of an arc subtending an angle of 120° at the centre of a circle of radius 21 cm.",
+          "Find the area of the region between two concentric circles of radii 14 cm and 7 cm.",
+          "A solid sphere of radius 6 cm is melted to form small spheres of radius 2 cm. Find their number.",
+          "Find the volume of a cone with radius 7 cm and height 24 cm.",
+          "Find the curved surface area of a cylinder with radius 7 cm and height 10 cm.",
+          "A toy is in the form of a cone mounted on a hemisphere, both having radius 3.5 cm. Find its volume if cone height is 4 cm."
+        ]
+      },
+      {
+        name: "Statistics and Probability",
+        questions: [
+          "Find the mean of 10, 12, 14, 16, 18, 20.",
+          "Find the median of 7, 3, 10, 5, 12, 8, 15.",
+          "Find the mode of 2, 3, 3, 5, 6, 3, 7, 5.",
+          "A die is thrown once. Find the probability of getting a prime number.",
+          "Two coins are tossed together. Find the probability of getting exactly one head.",
+          "A card is drawn from a deck of 52 cards. Find the probability that it is a king.",
+          "A bag has 5 red, 4 blue and 3 green balls. Find the probability of drawing a blue ball.",
+          "Find the probability of getting a number greater than 4 when a die is thrown.",
+          "The mean of 8 observations is 12. If one observation is 16, find the sum of the remaining observations.",
+          "The median of 5, 9, x, 13, 17 is 11. Find x.",
+          "Find the probability of drawing a vowel from the letters of the word MATHEMATICS.",
+          "A number is chosen from 1 to 20. Find the probability that it is divisible by 3 or 5."
+        ]
+      }
+    ];
+
+    let output = "";
+    let number = 1;
+
+    for (let i = 0; i < chapters.length; i++) {
+      output += "<h2>" + chapters[i].name + "</h2>";
+
+      for (let j = 0; j < chapters[i].questions.length; j++) {
+        output += "<div class='question'><b>Question " + number +
+          ":</b> " + chapters[i].questions[j] + "</div>";
+        number++;
+      }
+    }
+
+    document.getElementById("questions").innerHTML = output;
+  </script>
+</body>
+</html>
