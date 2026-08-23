@@ -3,796 +3,1514 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Study Question Hub | Class 9 to 12</title>
+<title>Study Question Hub | Classes 9-12</title>
 
-  <meta name="description"
-    content="Study Question Hub - Class 9, 10, 11 and 12 questions with quizzes, search and difficulty filters.">
+<meta name="description"
+content="Study Question Hub - Class 9, 10, 11 and 12 questions, quizzes and PYQ-style practice.">
 
-  <style>
-    * {
-      box-sizing: border-box;
-    }
+<style>
 
-    html {
-      scroll-behavior: smooth;
-    }
+*{
+  box-sizing:border-box;
+  scroll-behavior:smooth;
+}
 
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #eef6ff;
-      color: #172554;
-    }
+body{
+  margin:0;
+  font-family:Arial,sans-serif;
+  background:#eef6ff;
+  color:#172554;
+}
 
-    header {
-      background: linear-gradient(135deg, #172554, #2563eb);
-      color: white;
-      text-align: center;
-      padding: 35px 15px;
-    }
+/* NAVBAR */
 
-    .logo {
-      width: 85px;
-      height: 85px;
-      border-radius: 20px;
-      background: white;
-      color: #1d4ed8;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: auto;
-      font-size: 42px;
-      box-shadow: 0 5px 20px rgba(0,0,0,.2);
-    }
+nav{
+  position:sticky;
+  top:0;
+  z-index:1000;
+  background:#172554;
+  padding:14px 20px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  box-shadow:0 3px 12px rgba(0,0,0,.2);
+}
 
-    header h1 {
-      margin: 15px 0 8px;
-      font-size: 36px;
-    }
+.logo{
+  color:white;
+  font-size:22px;
+  font-weight:bold;
+}
 
-    header p {
-      margin: 0;
-      font-size: 17px;
-    }
+.nav-links{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+}
 
-    nav {
-      background: white;
-      padding: 12px;
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-      flex-wrap: wrap;
-      box-shadow: 0 2px 8px rgba(0,0,0,.1);
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
+.nav-links button{
+  background:transparent;
+  color:white;
+  border:1px solid #60a5fa;
+  padding:8px 13px;
+  border-radius:7px;
+  cursor:pointer;
+}
 
-    nav a {
-      text-decoration: none;
-      color: #1d4ed8;
-      font-weight: bold;
-      padding: 10px 15px;
-      border-radius: 8px;
-    }
+.nav-links button:hover{
+  background:#2563eb;
+}
 
-    nav a:hover {
-      background: #dbeafe;
-    }
+/* HERO */
 
-    .container {
-      max-width: 1100px;
-      margin: 30px auto;
-      padding: 0 15px;
-    }
+.hero{
+  background:linear-gradient(135deg,#1d4ed8,#2563eb,#3b82f6);
+  color:white;
+  text-align:center;
+  padding:75px 20px;
+}
 
-    .hero {
-      background: white;
-      padding: 35px 20px;
-      text-align: center;
-      border-radius: 16px;
-      box-shadow: 0 4px 15px rgba(0,0,0,.08);
-    }
+.hero h1{
+  font-size:46px;
+  margin:0 0 15px;
+}
 
-    .hero h2 {
-      font-size: 30px;
-      margin-top: 0;
-    }
+.hero p{
+  font-size:20px;
+  max-width:750px;
+  margin:auto;
+  line-height:1.6;
+}
 
-    .hero p {
-      color: #475569;
-      font-size: 17px;
-    }
+.hero-buttons{
+  margin-top:30px;
+}
 
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 18px;
-      margin-top: 25px;
-    }
+.hero-buttons button{
+  padding:14px 25px;
+  margin:6px;
+  border:0;
+  border-radius:9px;
+  font-size:16px;
+  cursor:pointer;
+  font-weight:bold;
+}
 
-    .card {
-      background: white;
-      padding: 25px 15px;
-      text-align: center;
-      border-radius: 14px;
-      box-shadow: 0 3px 12px rgba(0,0,0,.08);
-      transition: .2s;
-    }
+.primary{
+  background:white;
+  color:#1d4ed8;
+}
 
-    .card:hover {
-      transform: translateY(-5px);
-    }
+.secondary{
+  background:#172554;
+  color:white;
+}
 
-    .card .icon {
-      font-size: 40px;
-    }
+/* COMMON */
 
-    .card h3 {
-      margin: 12px 0 8px;
-    }
+.container{
+  max-width:1150px;
+  margin:auto;
+  padding:40px 18px;
+}
 
-    .card p {
-      color: #64748b;
-      min-height: 40px;
-    }
+.section-title{
+  text-align:center;
+  font-size:32px;
+  margin-bottom:10px;
+}
 
-    .btn {
-      display: inline-block;
-      border: none;
-      background: #2563eb;
-      color: white;
-      padding: 11px 18px;
-      border-radius: 8px;
-      text-decoration: none;
-      cursor: pointer;
-      font-weight: bold;
-    }
+.section-subtitle{
+  text-align:center;
+  color:#475569;
+  margin-bottom:30px;
+}
 
-    .btn:hover {
-      background: #1e40af;
-    }
+/* CARDS */
 
-    .quiz-section {
-      margin-top: 35px;
-      background: linear-gradient(135deg, #1d4ed8, #7c3aed);
-      color: white;
-      padding: 35px 20px;
-      text-align: center;
-      border-radius: 16px;
-    }
+.cards{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:18px;
+}
 
-    .quiz-section .btn {
-      background: white;
-      color: #1d4ed8;
-      margin-top: 10px;
-    }
+.card{
+  background:white;
+  padding:25px;
+  border-radius:15px;
+  text-align:center;
+  box-shadow:0 4px 15px rgba(0,0,0,.1);
+  transition:.2s;
+}
 
-    .quiz-box {
-      background: white;
-      color: #172554;
-      max-width: 750px;
-      margin: 30px auto 0;
-      padding: 25px;
-      border-radius: 14px;
-      text-align: left;
-      display: none;
-    }
+.card:hover{
+  transform:translateY(-5px);
+}
 
-    .quiz-question {
-      font-size: 20px;
-      font-weight: bold;
-      margin-bottom: 20px;
-    }
+.card .icon{
+  font-size:42px;
+}
 
-    .option {
-      display: block;
-      width: 100%;
-      padding: 13px;
-      margin: 10px 0;
-      border: 2px solid #dbeafe;
-      background: #f8fafc;
-      border-radius: 8px;
-      cursor: pointer;
-      text-align: left;
-      font-size: 16px;
-    }
+.card h3{
+  font-size:23px;
+}
 
-    .option:hover {
-      background: #dbeafe;
-    }
+.card button{
+  background:#2563eb;
+  color:white;
+  border:0;
+  padding:11px 18px;
+  border-radius:8px;
+  cursor:pointer;
+}
 
-    .option.correct {
-      background: #dcfce7;
-      border-color: #16a34a;
-    }
+/* FEATURES */
 
-    .option.wrong {
-      background: #fee2e2;
-      border-color: #dc2626;
-    }
+.features{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:20px;
+}
 
-    #quizResult {
-      font-size: 22px;
-      font-weight: bold;
-      text-align: center;
-    }
+.feature{
+  background:white;
+  padding:25px;
+  border-radius:14px;
+  box-shadow:0 3px 12px rgba(0,0,0,.08);
+}
 
-    .progress {
-      height: 8px;
-      background: #e2e8f0;
-      border-radius: 10px;
-      margin-bottom: 20px;
-      overflow: hidden;
-    }
+.feature h3{
+  color:#1d4ed8;
+}
 
-    .progress-bar {
-      height: 100%;
-      width: 0%;
-      background: #2563eb;
-      transition: .3s;
-    }
+/* SECTIONS */
 
-    footer {
-      background: #172554;
-      color: white;
-      text-align: center;
-      padding: 30px 15px;
-      margin-top: 40px;
-    }
+.page{
+  display:none;
+}
 
-    @media (max-width: 800px) {
-      .cards {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
+.page.active{
+  display:block;
+}
 
-    @media (max-width: 550px) {
-      header h1 {
-        font-size: 27px;
-      }
+/* QUESTIONS */
 
-      .cards {
-        grid-template-columns: 1fr;
-      }
+.controls{
+  background:white;
+  padding:20px;
+  border-radius:14px;
+  box-shadow:0 3px 12px rgba(0,0,0,.1);
+  margin-bottom:25px;
+}
 
-      nav a {
-        width: 45%;
-        text-align: center;
-      }
+.search{
+  width:100%;
+  padding:14px;
+  border:2px solid #93c5fd;
+  border-radius:9px;
+  font-size:16px;
+}
 
-      .hero h2 {
-        font-size: 24px;
-      }
-    }
-  </style>
+.filter-buttons{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-top:15px;
+}
+
+.filter-buttons button{
+  border:0;
+  padding:11px 16px;
+  border-radius:8px;
+  background:#2563eb;
+  color:white;
+  cursor:pointer;
+}
+
+.filter-buttons button:hover{
+  background:#1e40af;
+}
+
+.question{
+  background:white;
+  padding:20px;
+  margin:14px 0;
+  border-radius:12px;
+  border-left:5px solid #2563eb;
+  box-shadow:0 2px 9px rgba(0,0,0,.08);
+}
+
+.question-number{
+  color:#1d4ed8;
+  font-weight:bold;
+  margin-bottom:10px;
+}
+
+.badge{
+  display:inline-block;
+  margin-top:12px;
+  padding:5px 10px;
+  border-radius:6px;
+  font-size:12px;
+  font-weight:bold;
+}
+
+.easy{
+  background:#dcfce7;
+  color:#166534;
+}
+
+.medium{
+  background:#fef3c7;
+  color:#92400e;
+}
+
+.hard{
+  background:#fee2e2;
+  color:#991b1b;
+}
+
+.pyq{
+  background:#ede9fe;
+  color:#6d28d9;
+}
+
+/* QUIZ */
+
+.quiz-box{
+  max-width:750px;
+  margin:auto;
+  background:white;
+  padding:30px;
+  border-radius:18px;
+  box-shadow:0 4px 18px rgba(0,0,0,.12);
+}
+
+.quiz-top{
+  display:flex;
+  justify-content:space-between;
+  margin-bottom:20px;
+  font-weight:bold;
+}
+
+.quiz-question{
+  font-size:23px;
+  font-weight:bold;
+  line-height:1.5;
+  margin-bottom:25px;
+}
+
+.option{
+  display:block;
+  width:100%;
+  text-align:left;
+  padding:14px;
+  margin:10px 0;
+  border:2px solid #bfdbfe;
+  background:#f8fafc;
+  border-radius:9px;
+  cursor:pointer;
+  font-size:16px;
+}
+
+.option:hover{
+  background:#dbeafe;
+}
+
+.option.correct{
+  background:#dcfce7;
+  border-color:#16a34a;
+}
+
+.option.wrong{
+  background:#fee2e2;
+  border-color:#dc2626;
+}
+
+.quiz-buttons{
+  display:flex;
+  justify-content:space-between;
+  margin-top:20px;
+}
+
+.quiz-buttons button{
+  padding:12px 20px;
+  border:0;
+  border-radius:8px;
+  background:#2563eb;
+  color:white;
+  cursor:pointer;
+}
+
+.quiz-buttons button:disabled{
+  opacity:.5;
+  cursor:not-allowed;
+}
+
+#quizResult{
+  text-align:center;
+  font-size:24px;
+  font-weight:bold;
+  margin-top:20px;
+}
+
+/* PYQ */
+
+.pyq-info{
+  background:#fff;
+  padding:20px;
+  border-radius:12px;
+  border-left:5px solid #7c3aed;
+  margin-bottom:20px;
+}
+
+/* FOOTER */
+
+footer{
+  background:#172554;
+  color:white;
+  text-align:center;
+  padding:35px 20px;
+  margin-top:40px;
+}
+
+footer p{
+  margin:8px;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:850px){
+
+  .cards{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .features{
+    grid-template-columns:1fr;
+  }
+
+}
+
+@media(max-width:600px){
+
+  nav{
+    flex-direction:column;
+    gap:12px;
+  }
+
+  .hero h1{
+    font-size:32px;
+  }
+
+  .hero p{
+    font-size:17px;
+  }
+
+  .cards{
+    grid-template-columns:1fr;
+  }
+
+  .quiz-question{
+    font-size:19px;
+  }
+
+  .nav-links{
+    justify-content:center;
+  }
+
+}
+
+</style>
 </head>
 
 <body>
 
-  <!-- HEADER -->
+<!-- NAVBAR -->
 
-  <header>
+<nav>
 
-    <div class="logo">
-      📚
-    </div>
+<div class="logo">
+📚 Study Question Hub
+</div>
 
-    <h1>Study Question Hub</h1>
+<div class="nav-links">
 
-    <p>
-      Class 9 • Class 10 • Class 11 • Class 12
-    </p>
+<button onclick="showPage('home')">🏠 Home</button>
+<button onclick="showPage('classes')">📚 Classes</button>
+<button onclick="showPage('quiz')">🎯 Quiz</button>
+<button onclick="showPage('pyq')">📖 PYQ</button>
 
-  </header>
+</div>
 
+</nav>
 
-  <!-- NAVIGATION -->
 
-  <nav>
+<!-- ================= HOME ================= -->
 
-    <a href="#home">🏠 Home</a>
-    <a href="#classes">📚 Classes</a>
-    <a href="#quiz">🎯 Quiz</a>
+<section id="home" class="page active">
 
-  </nav>
+<div class="hero">
 
+<h1>📚 Study Question Hub</h1>
 
-  <main class="container">
+<p>
+Your complete practice platform for Class 9, 10, 11 and 12.
+Practice questions, test yourself with quizzes and prepare with PYQ-style questions.
+</p>
 
+<div class="hero-buttons">
 
-    <!-- HOME -->
+<button class="primary"
+onclick="showPage('classes')">
+🚀 Start Studying
+</button>
 
-    <section id="home" class="hero">
+<button class="secondary"
+onclick="showPage('quiz')">
+🎯 Start Quiz
+</button>
 
-      <h2>Welcome to Study Question Hub 🎓</h2>
+</div>
 
-      <p>
-        Practice important questions, improve your concepts
-        and test your preparation with quizzes.
-      </p>
+</div>
 
-      <a href="#classes" class="btn">
-        Start Studying 🚀
-      </a>
 
-    </section>
+<div class="container">
 
+<h2 class="section-title">
+Choose Your Class
+</h2>
 
-    <!-- CLASS CARDS -->
+<p class="section-subtitle">
+Select your class and start practising.
+</p>
 
-    <section id="classes">
 
-      <div class="cards">
+<div class="cards">
 
+<div class="card">
 
-        <!-- CLASS 9 -->
+<div class="icon">📐</div>
 
-        <div class="card">
+<h3>Class 9</h3>
 
-          <div class="icon">📐</div>
+<p>Maths, Science and important practice questions.</p>
 
-          <h3>Class 9</h3>
+<button onclick="openClass(9)">
+Open Class 9
+</button>
 
-          <p>
-            Maths practice questions
-          </p>
+</div>
 
-          <a href="class9.html" class="btn">
-            Open Class 9
-          </a>
 
-        </div>
+<div class="card">
 
+<div class="icon">📊</div>
 
-        <!-- CLASS 10 -->
+<h3>Class 10</h3>
 
-        <div class="card">
+<p>Maths, Science and board-style practice.</p>
 
-          <div class="icon">📊</div>
+<button onclick="openClass(10)">
+Open Class 10
+</button>
 
-          <h3>Class 10</h3>
+</div>
 
-          <p>
-            Maths chapter-wise questions
-          </p>
 
-          <a href="class10.html" class="btn">
-            Open Class 10
-          </a>
+<div class="card">
 
-        </div>
+<div class="icon">🧪</div>
 
+<h3>Class 11</h3>
 
-        <!-- CLASS 11 -->
+<p>Physics, Chemistry and Biology practice.</p>
 
-        <div class="card">
+<button onclick="openClass(11)">
+Open Class 11
+</button>
 
-          <div class="icon">🧪</div>
+</div>
 
-          <h3>Class 11</h3>
 
-          <p>
-            Physics • Chemistry • Biology
-          </p>
+<div class="card">
 
-          <a href="class11.html" class="btn">
-            Open Class 11
-          </a>
+<div class="icon">🔬</div>
 
-        </div>
+<h3>Class 12</h3>
 
+<p>Physics, Chemistry and Biology preparation.</p>
 
-        <!-- CLASS 12 -->
+<button onclick="openClass(12)">
+Open Class 12
+</button>
 
-        <div class="card">
+</div>
 
-          <div class="icon">🔬</div>
+</div>
 
-          <h3>Class 12</h3>
 
-          <p>
-            Physics • Chemistry • Biology
-          </p>
+<br><br>
 
-          <a href="class12.html" class="btn">
-            Open Class 12
-          </a>
 
-        </div>
+<h2 class="section-title">
+🔥 Website Features
+</h2>
 
-      </div>
+<div class="features">
 
-    </section>
+<div class="feature">
 
+<h3>📝 Practice Questions</h3>
 
-    <!-- QUIZ -->
+<p>
+Search questions and filter them according to difficulty.
+</p>
 
-    <section id="quiz" class="quiz-section">
+</div>
 
-      <h2>🎯 Quick Science & Maths Quiz</h2>
 
-      <p>
-        Test yourself with random questions.
-      </p>
+<div class="feature">
 
-      <button class="btn" onclick="startQuiz()">
-        Start Quiz
-      </button>
+<h3>🎯 Interactive Quiz</h3>
 
+<p>
+Answer one question and click Next to get a new question.
+</p>
 
-      <div id="quizBox" class="quiz-box">
+</div>
 
-        <div class="progress">
-          <div id="progressBar" class="progress-bar"></div>
-        </div>
 
-        <div id="questionNumber"></div>
+<div class="feature">
 
-        <div id="quizQuestion" class="quiz-question"></div>
+<h3>📖 PYQ Practice</h3>
 
-        <div id="options"></div>
+<p>
+Practice PYQ-style questions for exam preparation.
+</p>
 
-        <div id="quizResult"></div>
+</div>
 
-        <button
-          id="nextButton"
-          class="btn"
-          onclick="nextQuestion()"
-          style="display:none; margin-top:15px;">
-          Next Question →
-        </button>
+</div>
 
-      </div>
+</div>
 
-    </section>
+</section>
 
-  </main>
 
+<!-- ================= CLASSES ================= -->
 
-  <!-- FOOTER -->
+<section id="classes" class="page">
 
-  <footer>
+<div class="container">
 
-    <h3>📚 Study Question Hub</h3>
+<h2 class="section-title">
+📚 Classes 9-12
+</h2>
 
-    <p>
-      Learn • Practice • Improve • Succeed
-    </p>
+<p class="section-subtitle">
+Select a class to see its questions.
+</p>
 
-    <p>
-      © 2026 Study Question Hub
-    </p>
+<div class="cards">
 
-  </footer>
+<div class="card">
+<div class="icon">📐</div>
+<h3>Class 9</h3>
+<button onclick="openClass(9)">Questions</button>
+</div>
 
+<div class="card">
+<div class="icon">📊</div>
+<h3>Class 10</h3>
+<button onclick="openClass(10)">Questions</button>
+</div>
 
-  <script>
+<div class="card">
+<div class="icon">🧪</div>
+<h3>Class 11</h3>
+<button onclick="openClass(11)">Questions</button>
+</div>
 
-    /* ================= QUIZ QUESTIONS ================= */
+<div class="card">
+<div class="icon">🔬</div>
+<h3>Class 12</h3>
+<button onclick="openClass(12)">Questions</button>
+</div>
 
-    const quizQuestions = [
+</div>
 
-      {
-        question: "What is the SI unit of force?",
-        options: [
-          "Joule",
-          "Newton",
-          "Watt",
-          "Pascal"
-        ],
-        answer: 1
-      },
-
-      {
-        question: "What is the value of √81?",
-        options: [
-          "7",
-          "8",
-          "9",
-          "10"
-        ],
-        answer: 2
-      },
 
-      {
-        question: "Which organelle is known as the powerhouse of the cell?",
-        options: [
-          "Nucleus",
-          "Ribosome",
-          "Mitochondria",
-          "Golgi body"
-        ],
-        answer: 2
-      },
+<div id="classQuestions" style="margin-top:35px;"></div>
 
-      {
-        question: "What is the formula for kinetic energy?",
-        options: [
-          "mv",
-          "mgh",
-          "1/2 mv²",
-          "F × d"
-        ],
-        answer: 2
-      },
+</div>
 
-      {
-        question: "What is the molecular formula of water?",
-        options: [
-          "CO₂",
-          "H₂O",
-          "O₂",
-          "H₂"
-        ],
-        answer: 1
-      },
+</section>
 
-      {
-        question: "What is 25% of 400?",
-        options: [
-          "50",
-          "75",
-          "100",
-          "125"
-        ],
-        answer: 2
-      },
 
-      {
-        question: "Which pigment is required for photosynthesis?",
-        options: [
-          "Haemoglobin",
-          "Chlorophyll",
-          "Insulin",
-          "Keratin"
-        ],
-        answer: 1
-      },
+<!-- ================= QUIZ ================= -->
 
-      {
-        question: "What is the SI unit of power?",
-        options: [
-          "Newton",
-          "Joule",
-          "Watt",
-          "Pascal"
-        ],
-        answer: 2
-      },
+<section id="quiz" class="page">
 
-      {
-        question: "What is the atomic number of hydrogen?",
-        options: [
-          "1",
-          "2",
-          "8",
-          "10"
-        ],
-        answer: 0
-      },
+<div class="container">
 
-      {
-        question: "The sum of angles of a triangle is:",
-        options: [
-          "90°",
-          "180°",
-          "270°",
-          "360°"
-        ],
-        answer: 1
-      }
+<h2 class="section-title">
+🎯 Interactive Quiz
+</h2>
 
-    ];
+<p class="section-subtitle">
+Answer the question, then click Next Question.
+</p>
 
 
-    let quizIndex = 0;
-    let score = 0;
-    let answered = false;
+<div class="quiz-box">
 
+<div class="quiz-top">
 
-    /* ================= START QUIZ ================= */
+<span id="quizNumber">
+Question 1
+</span>
 
-    function startQuiz() {
+<span id="quizScore">
+Score: 0
+</span>
 
-      quizIndex = 0;
-      score = 0;
+</div>
 
-      document.getElementById("quizBox").style.display = "block";
 
-      document.getElementById("quizResult").innerHTML = "";
+<div id="quizQuestion"
+class="quiz-question">
+Loading question...
+</div>
 
-      showQuestion();
 
-      document.getElementById("quizBox")
-        .scrollIntoView({
-          behavior: "smooth"
-        });
+<div id="options"></div>
 
-    }
 
+<div class="quiz-buttons">
 
-    /* ================= SHOW QUESTION ================= */
+<button id="nextBtn"
+onclick="nextQuestion()"
+disabled>
+Next Question ➡️
+</button>
 
-    function showQuestion() {
+<button onclick="restartQuiz()">
+🔄 Restart
+</button>
 
-      answered = false;
+</div>
 
-      const q = quizQuestions[quizIndex];
 
-      document.getElementById("questionNumber").innerText =
-        "Question " +
-        (quizIndex + 1) +
-        " of " +
-        quizQuestions.length;
+<div id="quizResult"></div>
 
-      document.getElementById("quizQuestion").innerText =
-        q.question;
+</div>
 
-      const optionsBox =
-        document.getElementById("options");
+</div>
 
-      optionsBox.innerHTML = "";
+</section>
 
 
-      q.options.forEach(function(option, index) {
+<!-- ================= PYQ ================= -->
 
-        const button =
-          document.createElement("button");
+<section id="pyq" class="page">
 
-        button.className = "option";
+<div class="container">
 
-        button.innerText = option;
+<h2 class="section-title">
+📖 PYQ Practice
+</h2>
 
-        button.onclick = function() {
+<div class="pyq-info">
 
-          checkAnswer(index, button);
+<strong>Important:</strong>
+These are PYQ-style practice questions for exam preparation.
+They are not presented as verified questions from a specific board/year.
 
-        };
+</div>
 
-        optionsBox.appendChild(button);
 
-      });
+<div class="controls">
 
+<input
+class="search"
+id="pyqSearch"
+placeholder="🔍 Search PYQ-style questions..."
+onkeyup="displayPYQ()"
+>
 
-      document.getElementById("nextButton")
-        .style.display = "none";
+<div class="filter-buttons">
 
+<button onclick="setPYQClass('All')">
+All
+</button>
 
-      const progress =
-        (quizIndex / quizQuestions.length) * 100;
+<button onclick="setPYQClass('9')">
+Class 9
+</button>
 
-      document.getElementById("progressBar")
-        .style.width = progress + "%";
+<button onclick="setPYQClass('10')">
+Class 10
+</button>
 
-    }
+<button onclick="setPYQClass('11')">
+Class 11
+</button>
 
+<button onclick="setPYQClass('12')">
+Class 12
+</button>
 
-    /* ================= CHECK ANSWER ================= */
+</div>
 
-    function checkAnswer(selected, button) {
+<div id="pyqCount"></div>
 
-      if (answered) {
-        return;
-      }
+</div>
 
-      answered = true;
 
-      const correct =
-        quizQuestions[quizIndex].answer;
+<div id="pyqList"></div>
 
-      const allOptions =
-        document.querySelectorAll(".option");
+</div>
 
+</section>
 
-      if (selected === correct) {
 
-        button.classList.add("correct");
+<footer>
 
-        score++;
+<p>📚 <strong>Study Question Hub</strong></p>
 
-        document.getElementById("quizResult")
-          .innerText = "✅ Correct!";
+<p>
+Class 9 • Class 10 • Class 11 • Class 12
+</p>
 
-      } else {
+<p>
+Practice • Quiz • PYQ-style Questions
+</p>
 
-        button.classList.add("wrong");
+<p>
+© 2026 Study Question Hub
+</p>
 
-        allOptions[correct]
-          .classList.add("correct");
+</footer>
 
-        document.getElementById("quizResult")
-          .innerText = "❌ Wrong!";
 
-      }
+<script>
 
+/* ================= PAGE SYSTEM ================= */
 
-      document.getElementById("nextButton")
-        .style.display = "inline-block";
+function showPage(page){
 
-    }
+document.querySelectorAll(".page")
+.forEach(function(p){
+p.classList.remove("active");
+});
 
+document.getElementById(page)
+.classList.add("active");
 
-    /* ================= NEXT QUESTION ================= */
+window.scrollTo(0,0);
 
-    function nextQuestion() {
+}
 
-      quizIndex++;
 
+/* ================= QUESTION DATABASE ================= */
 
-      if (quizIndex >= quizQuestions.length) {
+const classQuestions = {
 
-        finishQuiz();
+9:[
 
-        return;
+{
+text:"Find the distance between the points (2,3) and (5,7).",
+level:"Medium"
+},
 
-      }
+{
+text:"Factorise: x² + 5x + 6.",
+level:"Medium"
+},
 
+{
+text:"Find the value of √144.",
+level:"Easy"
+},
 
-      document.getElementById("quizResult")
-        .innerText = "";
+{
+text:"Find the area of a triangle with base 14 cm and height 8 cm.",
+level:"Easy"
+},
 
-      showQuestion();
+{
+text:"Prove that the diagonals of a parallelogram bisect each other.",
+level:"Hard"
+},
 
-    }
+{
+text:"Find the mean of 5, 10, 15, 20 and 25.",
+level:"Medium"
+},
 
+{
+text:"A number is increased by 20% to become 120. Find the original number.",
+level:"Hard"
+},
 
-    /* ================= FINISH QUIZ ================= */
+{
+text:"Find the circumference of a circle of radius 7 cm.",
+level:"Easy"
+}
 
-    function finishQuiz() {
+],
 
-      document.getElementById("quizQuestion")
-        .innerText = "🎉 Quiz Completed!";
+10:[
 
-      document.getElementById("questionNumber")
-        .innerText = "";
+{
+text:"Use Euclid's division algorithm to find the HCF of 867 and 255.",
+level:"Medium"
+},
 
-      document.getElementById("options")
-        .innerHTML = "";
+{
+text:"Prove that √5 is irrational.",
+level:"Hard"
+},
 
-      document.getElementById("nextButton")
-        .style.display = "none";
+{
+text:"Find the zeroes of 2x² - 7x + 3.",
+level:"Hard"
+},
 
-      document.getElementById("progressBar")
-        .style.width = "100%";
+{
+text:"Solve: 2x + 3y = 13 and 3x - 2y = 4.",
+level:"Medium"
+},
 
+{
+text:"Find the 20th term of the AP: 5, 9, 13, 17, ...",
+level:"Easy"
+},
 
-      document.getElementById("quizResult")
-        .innerHTML =
-        "Your Score: " +
-        score +
-        " / " +
-        quizQuestions.length +
-        "<br><br>" +
-        getMessage(score);
+{
+text:"If tan θ = 3/4, find sin θ and cos θ.",
+level:"Medium"
+},
 
-    }
+{
+text:"Prove: sin² A + cos² A = 1.",
+level:"Hard"
+},
 
+{
+text:"Find the probability of getting a prime number when a die is thrown.",
+level:"Easy"
+}
 
-    function getMessage(score) {
+],
 
-      if (score === quizQuestions.length) {
-        return "🏆 Excellent! Perfect Score!";
-      }
+11:[
 
-      if (score >= 7) {
-        return "🔥 Great job! Keep practicing!";
-      }
+{
+text:"Define scalar and vector quantities with examples.",
+level:"Easy"
+},
 
-      if (score >= 5) {
-        return "👍 Good! You can improve more!";
-      }
+{
+text:"State Newton's second law of motion.",
+level:"Easy"
+},
 
-      return "📚 Keep studying and try again!";
+{
+text:"A car starts from rest with acceleration 2 m/s² for 10 s. Find its final velocity.",
+level:"Medium"
+},
 
-    }
+{
+text:"Find the force required to accelerate a 5 kg object at 3 m/s².",
+level:"Easy"
+},
 
-  </script>
+{
+text:"Define momentum and write its SI unit.",
+level:"Easy"
+},
+
+{
+text:"Calculate the kinetic energy of a 2 kg body moving at 4 m/s.",
+level:"Medium"
+},
+
+{
+text:"State the law of conservation of energy.",
+level:"Medium"
+},
+
+{
+text:"Explain why a person falls forward when a moving bus suddenly stops.",
+level:"Hard"
+}
+
+],
+
+12:[
+
+{
+text:"State Coulomb's law and write its mathematical expression.",
+level:"Easy"
+},
+
+{
+text:"Define electric field and write its SI unit.",
+level:"Easy"
+},
+
+{
+text:"Define capacitance and write its SI unit.",
+level:"Easy"
+},
+
+{
+text:"Derive the expression for the capacitance of a parallel plate capacitor.",
+level:"Hard"
+},
+
+{
+text:"State Ohm's law and explain the V-I characteristic of an ohmic conductor.",
+level:"Medium"
+},
+
+{
+text:"State Faraday's laws of electromagnetic induction.",
+level:"Medium"
+},
+
+{
+text:"Explain total internal reflection and give two applications.",
+level:"Medium"
+},
+
+{
+text:"What is photoelectric effect? State Einstein's photoelectric equation.",
+level:"Hard"
+}
+
+]
+
+};
+
+
+/* ================= OPEN CLASS ================= */
+
+function openClass(classNumber){
+
+showPage("classes");
+
+const data=classQuestions[classNumber];
+
+let html=`
+
+<h2 style="color:#1d4ed8;">
+📚 Class ${classNumber} Questions
+</h2>
+
+<div class="controls">
+
+<input
+class="search"
+id="classSearch"
+placeholder="🔍 Search Class ${classNumber} questions..."
+onkeyup="displayClassQuestions(${classNumber})"
+>
+
+<div class="filter-buttons">
+
+<button onclick="filterClass(${classNumber},'All')">
+All
+</button>
+
+<button onclick="filterClass(${classNumber},'Easy')">
+Easy
+</button>
+
+<button onclick="filterClass(${classNumber},'Medium')">
+Medium
+</button>
+
+<button onclick="filterClass(${classNumber},'Hard')">
+Hard
+</button>
+
+</div>
+
+<div id="classCount"></div>
+
+</div>
+
+<div id="classQuestionList"></div>
+`;
+
+document.getElementById("classQuestions").innerHTML=html;
+
+window.currentClass=classNumber;
+window.currentClassFilter="All";
+
+displayClassQuestions(classNumber);
+
+}
+
+
+/* ================= CLASS FILTER ================= */
+
+function filterClass(classNumber,level){
+
+window.currentClassFilter=level;
+
+displayClassQuestions(classNumber);
+
+}
+
+
+function displayClassQuestions(classNumber){
+
+const search=document
+.getElementById("classSearch")
+.value
+.toLowerCase();
+
+const data=classQuestions[classNumber];
+
+const filtered=data.filter(function(q){
+
+const searchMatch=q.text
+.toLowerCase()
+.includes(search);
+
+const levelMatch=
+window.currentClassFilter==="All" ||
+q.level===window.currentClassFilter;
+
+return searchMatch && levelMatch;
+
+});
+
+
+let html="";
+
+filtered.forEach(function(q,index){
+
+let badgeClass=q.level.toLowerCase();
+
+html+=`
+
+<div class="question">
+
+<div class="question-number">
+Question ${index+1}
+</div>
+
+<div>
+${q.text}
+</div>
+
+<span class="badge ${badgeClass}">
+${q.level}
+</span>
+
+</div>
+
+`;
+
+});
+
+
+document.getElementById("classQuestionList")
+.innerHTML=html;
+
+document.getElementById("classCount")
+.innerText=
+"Showing "+filtered.length+
+" of "+data.length+" questions";
+
+}
+
+
+/* ================= QUIZ DATABASE ================= */
+
+const quizQuestions=[
+
+{
+q:"What is the SI unit of force?",
+options:["Joule","Newton","Watt","Pascal"],
+answer:1
+},
+
+{
+q:"What is the square root of 144?",
+options:["10","11","12","14"],
+answer:2
+},
+
+{
+q:"What is the formula of kinetic energy?",
+options:["mv","mgh","½mv²","ma"],
+answer:2
+},
+
+{
+q:"Which organelle is known as the powerhouse of the cell?",
+options:["Nucleus","Ribosome","Mitochondria","Chloroplast"],
+answer:2
+},
+
+{
+q:"What is the value of 2³?",
+options:["4","6","8","9"],
+answer:2
+},
+
+{
+q:"Which gas is required for photosynthesis?",
+options:["Oxygen","Nitrogen","Carbon dioxide","Hydrogen"],
+answer:2
+},
+
+{
+q:"What is the SI unit of electric current?",
+options:["Volt","Ampere","Ohm","Watt"],
+answer:1
+},
+
+{
+q:"What is the chemical formula of water?",
+options:["CO₂","H₂O","O₂","NaCl"],
+answer:1
+},
+
+{
+q:"How many degrees are there in a straight angle?",
+options:["90°","120°","180°","360°"],
+answer:2
+},
+
+{
+q:"Which law is also called the law of inertia?",
+options:["Newton's First Law","Newton's Second Law","Newton's Third Law","Law of Gravitation"],
+answer:0
+}
+
+];
+
+
+let quizIndex=0;
+let score=0;
+let answered=false;
+
+
+/* ================= START QUIZ ================= */
+
+function loadQuiz(){
+
+if(quizIndex>=quizQuestions.length){
+
+document.getElementById("quizQuestion")
+.innerText="🎉 Quiz Completed!";
+
+document.getElementById("options")
+.innerHTML="";
+
+document.getElementById("quizResult")
+.innerText=
+"Your Final Score: "+score+" / "+quizQuestions.length;
+
+document.getElementById("nextBtn")
+.disabled=true;
+
+return;
+
+}
+
+
+const current=quizQuestions[quizIndex];
+
+answered=false;
+
+document.getElementById("quizNumber")
+.innerText=
+"Question "+(quizIndex+1)+" / "+quizQuestions.length;
+
+document.getElementById("quizScore")
+.innerText=
+"Score: "+score;
+
+document.getElementById("quizQuestion")
+.innerText=current.q;
+
+document.getElementById("quizResult")
+.innerText="";
+
+document.getElementById("nextBtn")
+.disabled=true;
+
+
+let html="";
+
+current.options.forEach(function(option,index){
+
+html+=`
+
+<button
+class="option"
+onclick="selectAnswer(${index})">
+
+${String.fromCharCode(65+index)}. ${option}
+
+</button>
+
+`;
+
+});
+
+document.getElementById("options")
+.innerHTML=html;
+
+}
+
+
+/* ================= ANSWER ================= */
+
+function selectAnswer(selected){
+
+if(answered)return;
+
+answered=true;
+
+const current=quizQuestions[quizIndex];
+
+const buttons=document
+.querySelectorAll(".option");
+
+buttons.forEach(function(btn,index){
+
+btn.disabled=true;
+
+if(index===current.answer){
+
+btn.classList.add("correct");
+
+}
+
+});
+
+if(selected===current.answer){
+
+score++;
+
+}else{
+
+buttons[selected].classList.add("wrong");
+
+}
+
+document.getElementById("quizScore")
+.innerText="Score: "+score;
+
+document.getElementById("nextBtn")
+.disabled=false;
+
+}
+
+
+/* ================= NEXT QUESTION ================= */
+
+function nextQuestion(){
+
+if(!answered)return;
+
+quizIndex++;
+
+loadQuiz();
+
+}
+
+
+/* ================= RESTART ================= */
+
+function restartQuiz(){
+
+quizIndex=0;
+
+score=0;
+
+answered=false;
+
+loadQuiz();
+
+}
+
+
+/* ================= PYQ DATABASE ================= */
+
+const pyqQuestions=[
+
+{
+class:"9",
+text:"Explain why the graph of a linear equation in two variables is a straight line.",
+subject:"Mathematics"
+},
+
+{
+class:"9",
+text:"State and explain the law of conservation of mass.",
+subject:"Science"
+},
+
+{
+class:"9",
+text:"Explain the difference between distance and displacement.",
+subject:"Science"
+},
+
+{
+class:"10",
+text:"Prove that √5 is irrational.",
+subject:"Mathematics"
+},
+
+{
+class:"10",
+text:"Solve a pair of linear equations in two variables using the elimination method.",
+subject:"Mathematics"
+},
+
+{
+class:"10",
+text:"Explain the process of reflection of light from a spherical mirror.",
+subject:"Science"
+},
+
+{
+class:"11",
+text:"State Newton's laws of motion and give suitable examples.",
+subject:"Physics"
+},
+
+{
+class:"11",
+text:"Calculate the kinetic energy of an object of mass 5 kg moving with velocity 4 m/s.",
+subject:"Physics"
+},
+
+{
+class:"11",
+text:"Explain the difference between ionic and covalent bonds.",
+subject:"Chemistry"
+},
+
+{
+class:"12",
+text:"State Coulomb's law and derive its mathematical expression.",
+subject:"Physics"
+},
+
+{
+class:"12",
+text:"Explain the working principle of an AC generator.",
+subject:"Physics"
+},
+
+{
+class:"12",
+text:"Explain Mendel's laws of inheritance.",
+subject:"Biology"
+}
+
+];
+
+
+let currentPYQClass="All";
+
+
+function setPYQClass(c){
+
+currentPYQClass=c;
+
+displayPYQ();
+
+}
+
+
+function displayPYQ(){
+
+const search=document
+.getElementById("pyqSearch")
+.value
+.toLowerCase();
+
+const filtered=pyqQuestions.filter(function(q){
+
+const classMatch=
+currentPYQClass==="All" ||
+q.class===currentPYQClass;
+
+const searchMatch=
+q.text.toLowerCase().includes(search) ||
+q.subject.toLowerCase().includes(search);
+
+return classMatch && searchMatch;
+
+});
+
+
+let html="";
+
+filtered.forEach(function(q,index){
+
+html+=`
+
+<div class="question">
+
+<div class="question-number">
+
+Class ${q.class} • ${q.subject}
+
+</div>
+
+<div>
+${q.text}
+</div>
+
+<span class="badge pyq">
+PYQ-STYLE
+
+</span>
+
+</div>
+
+`;
+
+});
+
+
+document.getElementById("pyqList")
+.innerHTML=html;
+
+document.getElementById("pyqCount")
+.innerText=
+"Showing "+filtered.length+
+" of "+pyqQuestions.length+" PYQ-style questions";
+
+}
+
+
+/* ================= INITIALIZE ================= */
+
+loadQuiz();
+
+displayPYQ();
+
+</script>
 
 </body>
-
 </html>
 ```
