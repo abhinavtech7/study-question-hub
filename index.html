@@ -11,14 +11,13 @@
 
     <title>Study Question Hub | Study, Practice & Quiz</title>
 
-    <!-- Website Logo / Favicon -->
+    <!-- Website Logo -->
     <link rel="icon"
         type="image/png"
         href="logo.png">
 
-    <!-- Google Search Description -->
     <meta name="description"
-        content="Study Question Hub - Learn, practice questions and take quizzes for students.">
+        content="Study Question Hub - Learn, practice questions, question sets and quizzes for students.">
 
     <style>
 
@@ -57,6 +56,9 @@
             gap: 25px;
             padding: 15px;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 10;
         }
 
         nav a {
@@ -70,7 +72,7 @@
         }
 
         .container {
-            max-width: 1000px;
+            max-width: 1100px;
             margin: auto;
             padding: 30px 20px;
         }
@@ -102,27 +104,67 @@
             line-height: 1.6;
         }
 
-        .quiz-button {
+        .quiz-button,
+        .set-button {
             display: inline-block;
             margin-top: 15px;
             background: #123c88;
             color: white;
-            padding: 14px 28px;
+            padding: 13px 25px;
             border-radius: 10px;
             text-decoration: none;
             font-weight: bold;
-            font-size: 17px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
         }
 
-        .quiz-button:hover {
+        .quiz-button:hover,
+        .set-button:hover {
             background: #1e40af;
         }
 
         .section-title {
             text-align: center;
             color: #123c88;
-            margin-top: 40px;
+            margin-top: 45px;
         }
+
+        /* QUESTION SETS */
+
+        .question-sets {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 22px;
+            margin-top: 25px;
+        }
+
+        .question-card {
+            background: white;
+            padding: 28px;
+            border-radius: 16px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            text-align: center;
+            transition: 0.2s;
+        }
+
+        .question-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 7px 18px rgba(0, 0, 0, 0.12);
+        }
+
+        .question-card h3 {
+            color: #123c88;
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+
+        .question-card p {
+            color: #475569;
+            line-height: 1.5;
+        }
+
+        /* SUBJECTS */
 
         .subjects {
             display: grid;
@@ -146,6 +188,8 @@
         .subject p {
             color: #475569;
         }
+
+        /* FEATURES */
 
         .features {
             display: grid;
@@ -171,7 +215,7 @@
             color: white;
             text-align: center;
             padding: 25px;
-            margin-top: 40px;
+            margin-top: 50px;
         }
 
         @media (max-width: 700px) {
@@ -185,10 +229,8 @@
                 flex-wrap: wrap;
             }
 
-            .subjects {
-                grid-template-columns: 1fr;
-            }
-
+            .question-sets,
+            .subjects,
             .features {
                 grid-template-columns: 1fr;
             }
@@ -225,21 +267,13 @@
 
     <nav>
 
-        <a href="index.html">
-            Home
-        </a>
+        <a href="index.html">Home</a>
 
-        <a href="quiz.html">
-            Quiz
-        </a>
+        <a href="#question-sets">Question Sets</a>
 
-        <a href="#subjects">
-            Subjects
-        </a>
+        <a href="quiz.html">Quiz</a>
 
-        <a href="#features">
-            Features
-        </a>
+        <a href="#subjects">Subjects</a>
 
     </nav>
 
@@ -280,157 +314,98 @@
             </section>
 
 
-            <!-- SUBJECTS -->
+            <!-- QUESTION SETS -->
 
-            <section id="subjects">
+            <section id="question-sets">
 
                 <h2 class="section-title">
-                    📖 Subjects
+                    📝 Question Sets
                 </h2>
 
-                <div class="subjects">
+                <div class="question-sets">
 
 
-                    <div class="subject">
+                    <div class="question-card">
 
                         <h3>
                             🔬 Science
                         </h3>
 
                         <p>
-                            Physics, Chemistry
-                            and Biology practice.
+                            Practice important
+                            Science questions and
+                            exam-level problems.
                         </p>
+
+                        <a
+                            href="quiz.html"
+                            class="set-button">
+
+                            Start Science
+
+                        </a>
 
                     </div>
 
 
-                    <div class="subject">
+                    <div class="question-card">
 
                         <h3>
                             ➗ Mathematics
                         </h3>
 
                         <p>
-                            Concepts, numericals
-                            and practice questions.
+                            Practice concepts,
+                            formulas and numerical
+                            questions.
                         </p>
+
+                        <a
+                            href="quiz.html"
+                            class="set-button">
+
+                            Start Mathematics
+
+                        </a>
 
                     </div>
 
 
-                    <div class="subject">
+                    <div class="question-card">
 
                         <h3>
                             🌍 Social Science
                         </h3>
 
                         <p>
-                            History, Geography,
-                            Civics and Economics.
+                            Practice History,
+                            Geography, Civics and
+                            Economics questions.
                         </p>
+
+                        <a
+                            href="quiz.html"
+                            class="set-button">
+
+                            Start Social Science
+
+                        </a>
 
                     </div>
 
 
-                    <div class="subject">
+                    <div class="question-card">
 
                         <h3>
                             📘 English
                         </h3>
 
                         <p>
-                            Grammar, literature
-                            and practice.
+                            Practice grammar,
+                            literature and English
+                            questions.
                         </p>
 
-                    </div>
-
-
-                </div>
-
-            </section>
-
-
-            <!-- FEATURES -->
-
-            <section id="features">
-
-                <h2 class="section-title">
-                    🎯 What You Can Do
-                </h2>
-
-                <div class="features">
-
-
-                    <div class="feature">
-
-                        <h3>
-                            📝 Practice
-                        </h3>
-
-                        <p>
-                            Practice questions
-                            to strengthen concepts.
-                        </p>
-
-                    </div>
-
-
-                    <div class="feature">
-
-                        <h3>
-                            🧠 Quiz
-                        </h3>
-
-                        <p>
-                            Test your knowledge
-                            with interactive quizzes.
-                        </p>
-
-                    </div>
-
-
-                    <div class="feature">
-
-                        <h3>
-                            🏆 Improve
-                        </h3>
-
-                        <p>
-                            Check your score
-                            and improve your performance.
-                        </p>
-
-                    </div>
-
-
-                </div>
-
-            </section>
-
-
-        </div>
-
-    </main>
-
-
-    <!-- FOOTER -->
-
-    <footer>
-
-        <p>
-            © 2026 Study Question Hub
-        </p>
-
-        <p>
-            Learn • Practice • Improve
-        </p>
-
-    </footer>
-
-
-</body>
-
-</html>
-```
+                        <a
+                            href="quiz.html"
+                           
