@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,6 +14,7 @@
         content="mMHiYvYvxlZlBrQwq23YILaAbr515k4HBrYhXa9C_ik">
 
   <style>
+
     * {
       box-sizing: border-box;
       margin: 0;
@@ -27,9 +29,11 @@
       font-family: Arial, sans-serif;
       background: #f4f8ff;
       color: #222;
+      transition: 0.3s;
     }
 
     /* NAVBAR */
+
     nav {
       background: #123c88;
       padding: 18px 7%;
@@ -58,11 +62,26 @@
       text-decoration: underline;
     }
 
+    /* DARK MODE BUTTON */
+
+    #darkModeBtn {
+      margin-left: 15px;
+      padding: 9px 14px;
+      border: none;
+      border-radius: 8px;
+      background: white;
+      color: #123c88;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
     /* HERO */
+
     .hero {
       text-align: center;
       padding: 70px 20px;
       background: linear-gradient(135deg, #dceeff, #ffffff);
+      transition: 0.3s;
     }
 
     .hero h1 {
@@ -78,6 +97,7 @@
     }
 
     /* SEARCH */
+
     .search-box {
       max-width: 650px;
       margin: auto;
@@ -104,7 +124,12 @@
       font-size: 16px;
     }
 
+    .search-box button:hover {
+      background: #0b2c68;
+    }
+
     /* SECTION */
+
     section {
       padding: 55px 7%;
     }
@@ -117,6 +142,7 @@
     }
 
     /* CARDS */
+
     .cards {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -155,7 +181,12 @@
       border-radius: 8px;
     }
 
+    .card a:hover {
+      background: #0b2c68;
+    }
+
     /* SUBJECTS */
+
     .subject {
       background: white;
       padding: 20px;
@@ -169,7 +200,8 @@
       margin-bottom: 8px;
     }
 
-    /* POPULAR */
+    /* QUESTIONS */
+
     .questions {
       max-width: 800px;
       margin: auto;
@@ -182,9 +214,15 @@
       border-left: 5px solid #123c88;
       border-radius: 8px;
       text-align: left;
+      transition: 0.3s;
+    }
+
+    .question:hover {
+      transform: translateX(5px);
     }
 
     /* ABOUT */
+
     .about {
       max-width: 800px;
       margin: auto;
@@ -194,6 +232,7 @@
     }
 
     /* FOOTER */
+
     footer {
       background: #123c88;
       color: white;
@@ -206,7 +245,79 @@
       margin: 8px;
     }
 
+    /* BACK TO TOP */
+
+    #topBtn {
+      display: none;
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      z-index: 99;
+      border: none;
+      background: #123c88;
+      color: white;
+      padding: 13px 16px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 18px;
+    }
+
+    #topBtn:hover {
+      background: #0b2c68;
+    }
+
+    /* DARK MODE */
+
+    body.dark {
+      background: #111827;
+      color: #f9fafb;
+    }
+
+    body.dark .hero {
+      background: linear-gradient(135deg, #1f2937, #111827);
+    }
+
+    body.dark .hero h1 {
+      color: #60a5fa;
+    }
+
+    body.dark .hero p {
+      color: #d1d5db;
+    }
+
+    body.dark .section-title {
+      color: #60a5fa;
+    }
+
+    body.dark .card,
+    body.dark .subject,
+    body.dark .question {
+      background: #1f2937;
+      color: #f9fafb;
+    }
+
+    body.dark .card h3,
+    body.dark .subject h3 {
+      color: #60a5fa;
+    }
+
+    body.dark .card p,
+    body.dark .about {
+      color: #d1d5db;
+    }
+
+    body.dark .search-box input {
+      background: #1f2937;
+      color: white;
+      border-color: #60a5fa;
+    }
+
+    body.dark .search-box input::placeholder {
+      color: #d1d5db;
+    }
+
     /* MOBILE */
+
     @media (max-width: 600px) {
 
       nav {
@@ -216,6 +327,10 @@
 
       nav a {
         margin: 5px;
+      }
+
+      #darkModeBtn {
+        margin-left: 5px;
       }
 
       .hero h1 {
@@ -237,50 +352,76 @@
       section {
         padding: 40px 5%;
       }
+
+      .section-title {
+        font-size: 27px;
+      }
     }
+
   </style>
 </head>
+
 
 <body>
 
   <!-- NAVIGATION -->
+
   <nav>
-    <div class="logo">📚 Study Question Hub</div>
+
+    <div class="logo">
+      📚 Study Question Hub
+    </div>
 
     <div>
+
       <a href="#home">Home</a>
+
       <a href="#classes">Classes</a>
+
       <a href="#subjects">Subjects</a>
+
       <a href="#about">About</a>
+
+      <button id="darkModeBtn" onclick="toggleDarkMode()">
+        🌙 Dark
+      </button>
+
     </div>
+
   </nav>
 
 
   <!-- HERO -->
+
   <section class="hero" id="home">
 
-    <h1>Study Question Hub</h1>
+    <h1>
+      Study Question Hub
+    </h1>
 
     <p>
       Learn • Practice • Improve
     </p>
 
     <div class="search-box">
+
       <input
         type="text"
         id="searchInput"
-        placeholder="Search questions..."
+        placeholder="🔎 Search popular questions..."
         onkeyup="searchQuestions()">
 
       <button onclick="searchQuestions()">
         🔎 Search
       </button>
+
     </div>
 
   </section>
 
 
   <!-- CLASSES -->
+
   <section id="classes">
 
     <h2 class="section-title">
@@ -290,42 +431,62 @@
     <div class="cards">
 
       <div class="card">
+
         <h3>Class 9</h3>
-        <p>Questions and study material for Class 9 students.</p>
+
+        <p>
+          Questions and study material for Class 9 students.
+        </p>
 
         <a href="class9.html">
           Study Class 9
         </a>
+
       </div>
 
 
       <div class="card">
+
         <h3>Class 10</h3>
-        <p>Important questions and practice material for Class 10.</p>
+
+        <p>
+          Important questions and practice material for Class 10.
+        </p>
 
         <a href="class10.html">
           Study Class 10
         </a>
+
       </div>
 
 
       <div class="card">
+
         <h3>Class 11 Science</h3>
-        <p>Science questions and study resources for Class 11.</p>
+
+        <p>
+          Science questions and study resources for Class 11.
+        </p>
 
         <a href="class11.html">
           Study Class 11
         </a>
+
       </div>
 
 
       <div class="card">
+
         <h3>Class 12 Science</h3>
-        <p>Important Science questions for Class 12 students.</p>
+
+        <p>
+          Important Science questions for Class 12 students.
+        </p>
 
         <a href="class12.html">
           Study Class 12
         </a>
+
       </div>
 
     </div>
@@ -334,6 +495,7 @@
 
 
   <!-- SUBJECTS -->
+
   <section id="subjects">
 
     <h2 class="section-title">
@@ -343,23 +505,46 @@
     <div class="cards">
 
       <div class="subject">
+
         <h3>🔬 Science</h3>
-        <p>Physics • Chemistry • Biology</p>
+
+        <p>
+          Physics • Chemistry • Biology
+        </p>
+
       </div>
 
+
       <div class="subject">
+
         <h3>📐 Mathematics</h3>
-        <p>Formulas • Questions • Practice</p>
+
+        <p>
+          Formulas • Questions • Practice
+        </p>
+
       </div>
 
+
       <div class="subject">
+
         <h3>🌍 Social Science</h3>
-        <p>History • Geography • Civics • Economics</p>
+
+        <p>
+          History • Geography • Civics • Economics
+        </p>
+
       </div>
 
+
       <div class="subject">
+
         <h3>📚 English</h3>
-        <p>Grammar • Literature • Writing</p>
+
+        <p>
+          Grammar • Literature • Writing
+        </p>
+
       </div>
 
     </div>
@@ -368,6 +553,7 @@
 
 
   <!-- POPULAR QUESTIONS -->
+
   <section>
 
     <h2 class="section-title">
@@ -377,23 +563,56 @@
     <div class="questions">
 
       <div class="question">
+
         <b>Class 9 Science:</b>
+
         What is the difference between an element and a compound?
+
       </div>
 
+
       <div class="question">
+
         <b>Class 9 Physics:</b>
+
         What is the SI unit of momentum?
+
       </div>
 
+
       <div class="question">
+
         <b>Class 10 Science:</b>
+
         What is the difference between acids and bases?
+
       </div>
 
+
       <div class="question">
+
         <b>Class 11 Physics:</b>
+
         What is Newton's second law of motion?
+
+      </div>
+
+
+      <div class="question">
+
+        <b>Class 12 Physics:</b>
+
+        What is the principle of electromagnetic induction?
+
+      </div>
+
+
+      <div class="question">
+
+        <b>Class 12 Chemistry:</b>
+
+        What is the difference between an aldehyde and a ketone?
+
       </div>
 
     </div>
@@ -402,6 +621,7 @@
 
 
   <!-- ABOUT -->
+
   <section id="about">
 
     <h2 class="section-title">
@@ -429,9 +649,12 @@
 
 
   <!-- FOOTER -->
+
   <footer>
 
-    <h3>📚 Study Question Hub</h3>
+    <h3>
+      📚 Study Question Hub
+    </h3>
 
     <p>
       Learn • Practice • Improve
@@ -444,13 +667,24 @@
   </footer>
 
 
-  <!-- SEARCH JAVASCRIPT -->
+  <!-- BACK TO TOP -->
+
+  <button id="topBtn" onclick="goTop()">
+    ↑
+  </button>
+
+
+  <!-- JAVASCRIPT -->
+
   <script>
+
+    /* SEARCH */
 
     function searchQuestions() {
 
       let input =
-        document.getElementById("searchInput")
+        document
+        .getElementById("searchInput")
         .value
         .toLowerCase();
 
@@ -463,11 +697,90 @@
           question.innerText.toLowerCase();
 
         if (text.includes(input)) {
+
           question.style.display = "block";
+
         } else {
+
           question.style.display = "none";
+
         }
 
+      });
+
+    }
+
+
+    /* DARK MODE */
+
+    function toggleDarkMode() {
+
+      document.body.classList.toggle("dark");
+
+      let button =
+        document.getElementById("darkModeBtn");
+
+      if (document.body.classList.contains("dark")) {
+
+        button.innerHTML = "☀️ Light";
+
+        localStorage.setItem("darkMode", "enabled");
+
+      } else {
+
+        button.innerHTML = "🌙 Dark";
+
+        localStorage.setItem("darkMode", "disabled");
+
+      }
+
+    }
+
+
+    /* REMEMBER DARK MODE */
+
+    window.onload = function() {
+
+      if (localStorage.getItem("darkMode") === "enabled") {
+
+        document.body.classList.add("dark");
+
+        document.getElementById("darkModeBtn").innerHTML =
+          "☀️ Light";
+
+      }
+
+    };
+
+
+    /* BACK TO TOP */
+
+    window.onscroll = function() {
+
+      let button =
+        document.getElementById("topBtn");
+
+      if (
+        document.body.scrollTop > 300 ||
+        document.documentElement.scrollTop > 300
+      ) {
+
+        button.style.display = "block";
+
+      } else {
+
+        button.style.display = "none";
+
+      }
+
+    };
+
+
+    function goTop() {
+
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
       });
 
     }
@@ -475,4 +788,5 @@
   </script>
 
 </body>
+
 </html>
