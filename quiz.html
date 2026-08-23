@@ -58,7 +58,18 @@
     #liveScore {
       font-weight: bold;
       color: #16a34a;
+      margin-bottom: 12px;
+      font-size: 18px;
+    }
+
+    #timer {
+      background: #fff7ed;
+      color: #c2410c;
+      padding: 10px;
+      border-radius: 8px;
+      font-weight: bold;
       margin-bottom: 20px;
+      text-align: center;
       font-size: 18px;
     }
 
@@ -183,8 +194,7 @@
 
   <div class="container">
 
-
-    <!-- QUIZ BOX -->
+    <!-- QUIZ -->
 
     <div class="quiz-box" id="quizBox">
 
@@ -194,18 +204,26 @@
         Score: 0 / 0
       </div>
 
+      <div id="timer">
+        ⏱️ Time Left:
+        <span id="time">60</span>
+        seconds
+      </div>
+
       <div id="question"></div>
 
       <div id="options"></div>
 
-      <button id="nextBtn" onclick="nextQuestion()" disabled>
+      <button id="nextBtn"
+        onclick="nextQuestion()"
+        disabled>
         Next →
       </button>
 
     </div>
 
 
-    <!-- RESULT BOX -->
+    <!-- RESULT -->
 
     <div class="quiz-box" id="result">
 
@@ -215,17 +233,18 @@
 
       <p id="score"></p>
 
-      <button id="restartBtn" onclick="restartQuiz()">
+      <button id="restartBtn"
+        onclick="restartQuiz()">
         🔄 New Quiz
       </button>
 
     </div>
 
 
-    <a class="back" href="index.html">
+    <a class="back"
+      href="index.html">
       ← Back to Home
     </a>
-
 
   </div>
 
@@ -239,7 +258,6 @@
 
     const questions = [
 
-
       {
         question: "What is the SI unit of force?",
         options: [
@@ -250,7 +268,6 @@
         ],
         answer: "Newton"
       },
-
 
       {
         question: "What is √81?",
@@ -263,7 +280,6 @@
         answer: "9"
       },
 
-
       {
         question: "What is the chemical formula of water?",
         options: [
@@ -274,7 +290,6 @@
         ],
         answer: "H₂O"
       },
-
 
       {
         question: "How many sides does a triangle have?",
@@ -287,7 +302,6 @@
         answer: "3"
       },
 
-
       {
         question: "What is the SI unit of momentum?",
         options: [
@@ -298,7 +312,6 @@
         ],
         answer: "kg m/s"
       },
-
 
       {
         question: "What is 15% of 200?",
@@ -311,7 +324,6 @@
         answer: "30"
       },
 
-
       {
         question: "Which organelle is called the powerhouse of the cell?",
         options: [
@@ -322,7 +334,6 @@
         ],
         answer: "Mitochondria"
       },
-
 
       {
         question: "What is the value of 5²?",
@@ -335,7 +346,6 @@
         answer: "25"
       },
 
-
       {
         question: "What is the acceleration due to gravity on Earth approximately?",
         options: [
@@ -346,7 +356,6 @@
         ],
         answer: "9.8 m/s²"
       },
-
 
       {
         question: "Which gas is required for photosynthesis?",
@@ -359,7 +368,6 @@
         answer: "Carbon dioxide"
       },
 
-
       {
         question: "What is the square of 12?",
         options: [
@@ -370,7 +378,6 @@
         ],
         answer: "144"
       },
-
 
       {
         question: "What is the SI unit of work?",
@@ -383,7 +390,6 @@
         answer: "Joule"
       },
 
-
       {
         question: "How many bones are there approximately in an adult human body?",
         options: [
@@ -394,7 +400,6 @@
         ],
         answer: "206"
       },
-
 
       {
         question: "What is the chemical symbol of sodium?",
@@ -407,7 +412,6 @@
         answer: "Na"
       },
 
-
       {
         question: "What is 25% of 400?",
         options: [
@@ -418,7 +422,6 @@
         ],
         answer: "100"
       },
-
 
       {
         question: "Which planet is known as the Red Planet?",
@@ -431,7 +434,6 @@
         answer: "Mars"
       },
 
-
       {
         question: "What is the SI unit of power?",
         options: [
@@ -442,7 +444,6 @@
         ],
         answer: "Watt"
       },
-
 
       {
         question: "What is the value of 3³?",
@@ -455,7 +456,6 @@
         answer: "27"
       },
 
-
       {
         question: "Which part of the plant carries water from roots to leaves?",
         options: [
@@ -466,7 +466,6 @@
         ],
         answer: "Xylem"
       },
-
 
       {
         question: "What is the boiling point of water at normal atmospheric pressure?",
@@ -479,7 +478,6 @@
         answer: "100°C"
       },
 
-
       {
         question: "What is the value of 7 × 8?",
         options: [
@@ -490,7 +488,6 @@
         ],
         answer: "56"
       },
-
 
       {
         question: "Which gas is most abundant in Earth's atmosphere?",
@@ -503,7 +500,6 @@
         answer: "Nitrogen"
       },
 
-
       {
         question: "What is the HCF of 12 and 18?",
         options: [
@@ -514,7 +510,6 @@
         ],
         answer: "6"
       },
-
 
       {
         question: "What is the perimeter of a square with side 5 cm?",
@@ -527,7 +522,6 @@
         answer: "20 cm"
       },
 
-
       {
         question: "Which organ pumps blood throughout the human body?",
         options: [
@@ -538,7 +532,6 @@
         ],
         answer: "Heart"
       },
-
 
       {
         question: "What is the chemical formula of carbon dioxide?",
@@ -551,7 +544,6 @@
         answer: "CO₂"
       },
 
-
       {
         question: "What is 2⁵?",
         options: [
@@ -562,7 +554,6 @@
         ],
         answer: "32"
       },
-
 
       {
         question: "Which instrument is used to measure temperature?",
@@ -575,7 +566,6 @@
         answer: "Thermometer"
       },
 
-
       {
         question: "What is the area of a square with side 6 cm?",
         options: [
@@ -586,7 +576,6 @@
         ],
         answer: "36 cm²"
       },
-
 
       {
         question: "Which blood cells help fight infections?",
@@ -603,10 +592,13 @@
 
 
     /* =====================================
-       QUIZ SETTINGS
+       SETTINGS
        ===================================== */
 
     const QUESTIONS_PER_QUIZ = 10;
+
+    const QUIZ_TIME = 60;
+
 
     let quizQuestions = [];
 
@@ -616,15 +608,22 @@
 
     let answered = false;
 
+    let timeLeft = QUIZ_TIME;
+
+    let timerInterval;
+
 
     /* =====================================
-       CREATE NEW RANDOM QUIZ
+       CREATE NEW QUIZ
        ===================================== */
 
     function createNewQuiz() {
 
+      clearInterval(timerInterval);
+
       let shuffledQuestions =
         [...questions];
+
 
       shuffledQuestions.sort(
         () => Math.random() - 0.5
@@ -644,15 +643,62 @@
 
       answered = false;
 
+      timeLeft = QUIZ_TIME;
 
-      document.getElementById("quizBox").style.display =
-        "block";
 
-      document.getElementById("result").style.display =
-        "none";
+      document.getElementById(
+        "quizBox"
+      ).style.display = "block";
+
+
+      document.getElementById(
+        "result"
+      ).style.display = "none";
+
+
+      document.getElementById(
+        "time"
+      ).innerText = timeLeft;
 
 
       loadQuestion();
+
+      startTimer();
+
+    }
+
+
+    /* =====================================
+       TIMER
+       ===================================== */
+
+    function startTimer() {
+
+      clearInterval(timerInterval);
+
+
+      timerInterval =
+        setInterval(function() {
+
+          timeLeft--;
+
+
+          document.getElementById(
+            "time"
+          ).innerText = timeLeft;
+
+
+          if (timeLeft <= 0) {
+
+            clearInterval(
+              timerInterval
+            );
+
+            showResult();
+
+          }
+
+        }, 1000);
 
     }
 
@@ -670,7 +716,9 @@
         quizQuestions[currentQuestion];
 
 
-      document.getElementById("progress").innerText =
+      document.getElementById(
+        "progress"
+      ).innerText =
 
         "Question " +
         (currentQuestion + 1) +
@@ -678,7 +726,9 @@
         quizQuestions.length;
 
 
-      document.getElementById("liveScore").innerText =
+      document.getElementById(
+        "liveScore"
+      ).innerText =
 
         "Score: " +
         score +
@@ -686,56 +736,64 @@
         currentQuestion;
 
 
-      document.getElementById("question").innerText =
+      document.getElementById(
+        "question"
+      ).innerText =
         q.question;
 
 
       const optionsDiv =
-        document.getElementById("options");
+        document.getElementById(
+          "options"
+        );
 
 
       optionsDiv.innerHTML = "";
 
 
-      document.getElementById("nextBtn").disabled =
-        true;
+      document.getElementById(
+        "nextBtn"
+      ).disabled = true;
 
 
-      q.options.forEach(function(option) {
+      q.options.forEach(
+        function(option) {
 
 
-        const button =
-          document.createElement("button");
-
-
-        button.type = "button";
-
-
-        button.innerText =
-          option;
-
-
-        button.className =
-          "option";
-
-
-        button.onclick =
-          function() {
-
-            checkAnswer(
-              button,
-              option
+          const button =
+            document.createElement(
+              "button"
             );
 
-          };
+
+          button.type = "button";
 
 
-        optionsDiv.appendChild(
-          button
-        );
+          button.innerText =
+            option;
 
 
-      });
+          button.className =
+            "option";
+
+
+          button.onclick =
+            function() {
+
+              checkAnswer(
+                button,
+                option
+              );
+
+            };
+
+
+          optionsDiv.appendChild(
+            button
+          );
+
+        }
+      );
 
     }
 
@@ -759,7 +817,9 @@
 
 
       const correctAnswer =
-        quizQuestions[currentQuestion].answer;
+        quizQuestions[
+          currentQuestion
+        ].answer;
 
 
       const allOptions =
@@ -806,8 +866,6 @@
 
       }
 
-
-      /* LIVE SCORE */
 
       document.getElementById(
         "liveScore"
@@ -858,10 +916,12 @@
 
 
     /* =====================================
-       SHOW FINAL RESULT
+       FINAL RESULT
        ===================================== */
 
     function showResult() {
+
+      clearInterval(timerInterval);
 
 
       document.getElementById(
@@ -928,7 +988,6 @@
         "score"
       ).innerHTML =
 
-
         "Your Score: " +
         score +
         " / " +
@@ -966,11 +1025,10 @@
 
 
     /* =====================================
-       START QUIZ
+       START FIRST QUIZ
        ===================================== */
 
     createNewQuiz();
-
 
   </script>
 
