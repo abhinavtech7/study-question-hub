@@ -1,112 +1,681 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-  <title>Class 10 Maths Questions</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Class 10 Maths Questions | Study Question Hub</title>
+
+  <meta name="description"
+    content="Practice Class 10 Maths questions chapter-wise with Easy, Medium and Hard difficulty levels.">
 
   <style>
-    body { background-color: lightblue; font-family: Arial; padding: 30px; }
-    h1 { color: blue; text-align: center; }
-    h2 { color: #003399; margin-top: 35px; }
-    .question { background: white; padding: 15px; margin: 12px 0; border-radius: 8px; }
-    a { color: blue; font-size: 18px; }
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: #e0f2fe;
+      font-family: Arial, sans-serif;
+      color: #172554;
+    }
+
+    header {
+      background: linear-gradient(135deg, #1d4ed8, #2563eb);
+      color: white;
+      text-align: center;
+      padding: 35px 15px;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 34px;
+    }
+
+    header p {
+      font-size: 17px;
+      margin-bottom: 0;
+    }
+
+    .container {
+      max-width: 1050px;
+      margin: 25px auto;
+      padding: 0 15px;
+    }
+
+    .controls {
+      background: white;
+      padding: 20px;
+      border-radius: 14px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      margin-bottom: 25px;
+    }
+
+    #search,
+    #chapter {
+      width: 100%;
+      padding: 14px;
+      border: 2px solid #93c5fd;
+      border-radius: 9px;
+      font-size: 16px;
+      margin-bottom: 12px;
+    }
+
+    #search:focus,
+    #chapter:focus {
+      outline: none;
+      border-color: #2563eb;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 8px;
+    }
+
+    .filter {
+      border: none;
+      padding: 11px 18px;
+      border-radius: 8px;
+      background: #2563eb;
+      color: white;
+      cursor: pointer;
+      font-size: 15px;
+    }
+
+    .filter:hover {
+      background: #1e40af;
+    }
+
+    #count {
+      margin-top: 15px;
+      font-weight: bold;
+      color: #1e3a8a;
+    }
+
+    .chapter-title {
+      background: #1d4ed8;
+      color: white;
+      padding: 14px 18px;
+      border-radius: 10px;
+      margin-top: 25px;
+      margin-bottom: 15px;
+      font-size: 21px;
+    }
+
+    .question {
+      background: white;
+      padding: 18px;
+      margin-bottom: 14px;
+      border-radius: 10px;
+      border-left: 5px solid #2563eb;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    }
+
+    .question-number {
+      color: #1d4ed8;
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+
+    .difficulty {
+      display: inline-block;
+      margin-top: 12px;
+      padding: 5px 10px;
+      border-radius: 6px;
+      font-size: 13px;
+      font-weight: bold;
+    }
+
+    .Easy {
+      background: #dcfce7;
+      color: #166534;
+    }
+
+    .Medium {
+      background: #fef3c7;
+      color: #92400e;
+    }
+
+    .Hard {
+      background: #fee2e2;
+      color: #991b1b;
+    }
+
+    #noResult {
+      display: none;
+      background: white;
+      padding: 25px;
+      text-align: center;
+      border-radius: 10px;
+      color: #dc2626;
+      font-weight: bold;
+      margin-top: 20px;
+    }
+
+    .back {
+      display: inline-block;
+      margin: 25px 0 40px;
+      background: #1d4ed8;
+      color: white;
+      padding: 12px 20px;
+      border-radius: 8px;
+      text-decoration: none;
+    }
+
+    .back:hover {
+      background: #1e40af;
+    }
+
+    footer {
+      background: #172554;
+      color: white;
+      text-align: center;
+      padding: 25px;
+      margin-top: 30px;
+    }
+
+    @media (max-width: 600px) {
+
+      header h1 {
+        font-size: 26px;
+      }
+
+      header p {
+        font-size: 15px;
+      }
+
+      .filter {
+        width: 100%;
+      }
+
+      .question {
+        font-size: 15px;
+      }
+    }
   </style>
 </head>
 
 <body>
-  <h1>Class 10 Maths – Hard Questions</h1>
-  <div id="questions"></div>
 
-  <br>
-  <a href="index.html">← Back to Home</a>
+  <header>
+    <h1>📐 Class 10 Maths</h1>
+    <p>Chapter-wise Practice Questions</p>
+  </header>
+
+  <div class="container">
+
+    <div class="controls">
+
+      <input
+        type="text"
+        id="search"
+        placeholder="🔍 Search a question..."
+        onkeyup="displayQuestions()"
+      >
+
+      <select id="chapter" onchange="displayQuestions()">
+        <option value="All">📚 All Chapters</option>
+        <option value="Algebra">Algebra</option>
+        <option value="Geometry and Coordinate Geometry">
+          Geometry and Coordinate Geometry
+        </option>
+        <option value="Trigonometry and Mensuration">
+          Trigonometry and Mensuration
+        </option>
+        <option value="Statistics and Probability">
+          Statistics and Probability
+        </option>
+      </select>
+
+      <div class="buttons">
+        <button class="filter" onclick="setDifficulty('All')">
+          All
+        </button>
+
+        <button class="filter" onclick="setDifficulty('Easy')">
+          🟢 Easy
+        </button>
+
+        <button class="filter" onclick="setDifficulty('Medium')">
+          🟡 Medium
+        </button>
+
+        <button class="filter" onclick="setDifficulty('Hard')">
+          🔴 Hard
+        </button>
+      </div>
+
+      <div id="count"></div>
+
+    </div>
+
+    <div id="questions"></div>
+
+    <div id="noResult">
+      ❌ No question found.
+      <br>
+      Try another search or filter.
+    </div>
+
+    <a class="back" href="index.html">
+      ← Back to Home
+    </a>
+
+  </div>
+
+  <footer>
+    © 2026 Study Question Hub | Class 10 Maths
+  </footer>
 
   <script>
-    let chapters = [
+
+    const questions = [
+
+      /* ================= ALGEBRA ================= */
+
       {
-        name: "Algebra",
-        questions: [
-          "Use Euclid's division algorithm to find the HCF of 867 and 255.",
-          "Prove that √5 is irrational.",
-          "Find the zeroes of 2x² - 7x + 3 and verify the relationship between zeroes and coefficients.",
-          "If α and β are zeroes of x² - 6x + k, and αβ = 8, find k.",
-          "Solve: 2x + 3y = 13 and 3x - 2y = 4.",
-          "Solve graphically: x + y = 5 and 2x - y = 4.",
-          "Solve: 2x² - 5x - 3 = 0.",
-          "Find the value of k if x² + kx + 16 has equal roots.",
-          "The sum of two numbers is 27 and their product is 182. Find the numbers.",
-          "Find the 20th term of the AP: 5, 9, 13, 17, ...",
-          "Find the sum of first 30 terms of the AP: 7, 11, 15, ...",
-          "Which term of the AP 3, 8, 13, ... is 78?",
-          "Find the sum of all two-digit numbers divisible by 7."
-        ]
+        chapter: "Algebra",
+        text: "Use Euclid's division algorithm to find the HCF of 867 and 255.",
+        level: "Medium"
       },
+
       {
-        name: "Geometry and Coordinate Geometry",
-        questions: [
-          "Find the distance between A(2, 3) and B(8, 11).",
-          "Find the midpoint of the line segment joining (-4, 6) and (8, -2).",
-          "Find the point which divides the line joining (2, 3) and (8, 15) in the ratio 1:2.",
-          "Find the area of the triangle with vertices (0, 0), (4, 0), and (0, 6).",
-          "Prove that triangles with equal corresponding angles are similar.",
-          "In ΔABC, DE ∥ BC. If AD = 3 cm, DB = 2 cm and AE = 4.5 cm, find EC.",
-          "The areas of two similar triangles are 64 cm² and 100 cm². Find the ratio of their corresponding sides.",
-          "A tangent touches a circle of radius 5 cm. What is the angle between the radius and tangent at the point of contact?",
-          "From an external point P, two tangents PA and PB are drawn to a circle. Prove that PA = PB.",
-          "Find the angle subtended by a diameter at a point on the remaining part of the circle.",
-          "Find the length of a tangent from a point 13 cm away from the centre of a circle of radius 5 cm.",
-          "A chord of a circle is 16 cm long and its distance from the centre is 6 cm. Find the radius."
-        ]
+        chapter: "Algebra",
+        text: "Prove that √5 is irrational.",
+        level: "Hard"
       },
+
       {
-        name: "Trigonometry and Mensuration",
-        questions: [
-          "If tan θ = 3/4, find sin θ and cos θ.",
-          "Prove: sin² A + cos² A = 1.",
-          "If sec θ = 13/12, find tan θ.",
-          "A pole 10 m high casts a shadow 10√3 m long. Find the angle of elevation of the sun.",
-          "From a point 20 m away from a tower, the angle of elevation is 45°. Find the height of the tower.",
-          "The angle of elevation of the top of a building is 30° from a point 30 m away. Find its height.",
-          "Find the area of a sector of angle 90° in a circle of radius 14 cm.",
-          "Find the length of an arc subtending an angle of 120° at the centre of a circle of radius 21 cm.",
-          "Find the area of the region between two concentric circles of radii 14 cm and 7 cm.",
-          "A solid sphere of radius 6 cm is melted to form small spheres of radius 2 cm. Find their number.",
-          "Find the volume of a cone with radius 7 cm and height 24 cm.",
-          "Find the curved surface area of a cylinder with radius 7 cm and height 10 cm.",
-          "A toy is in the form of a cone mounted on a hemisphere, both having radius 3.5 cm. Find its volume if cone height is 4 cm."
-        ]
+        chapter: "Algebra",
+        text: "Find the zeroes of 2x² - 7x + 3 and verify the relationship between zeroes and coefficients.",
+        level: "Hard"
       },
+
       {
-        name: "Statistics and Probability",
-        questions: [
-          "Find the mean of 10, 12, 14, 16, 18, 20.",
-          "Find the median of 7, 3, 10, 5, 12, 8, 15.",
-          "Find the mode of 2, 3, 3, 5, 6, 3, 7, 5.",
-          "A die is thrown once. Find the probability of getting a prime number.",
-          "Two coins are tossed together. Find the probability of getting exactly one head.",
-          "A card is drawn from a deck of 52 cards. Find the probability that it is a king.",
-          "A bag has 5 red, 4 blue and 3 green balls. Find the probability of drawing a blue ball.",
-          "Find the probability of getting a number greater than 4 when a die is thrown.",
-          "The mean of 8 observations is 12. If one observation is 16, find the sum of the remaining observations.",
-          "The median of 5, 9, x, 13, 17 is 11. Find x.",
-          "Find the probability of drawing a vowel from the letters of the word MATHEMATICS.",
-          "A number is chosen from 1 to 20. Find the probability that it is divisible by 3 or 5."
-        ]
+        chapter: "Algebra",
+        text: "If α and β are zeroes of x² - 6x + k, and αβ = 8, find k.",
+        level: "Medium"
+      },
+
+      {
+        chapter: "Algebra",
+        text: "Solve: 2x + 3y = 13 and 3x - 2y = 4.",
+        level: "Medium"
+      },
+
+      {
+        chapter: "Algebra",
+        text: "Solve graphically: x + y = 5 and 2x - y = 4.",
+        level: "Hard"
+      },
+
+      {
+        chapter: "Algebra",
+        text: "Solve: 2x² - 5x - 3 = 0.",
+        level: "Medium"
+      },
+
+      {
+        chapter: "Algebra",
+        text: "Find the value of k if x² + kx + 16 has equal roots.",
+        level: "Hard"
+      },
+
+      {
+        chapter: "Algebra",
+        text: "The sum of two numbers is 27 and their product is 182. Find the numbers.",
+        level: "Hard"
+      },
+
+      {
+        chapter: "Algebra",
+        text: "Find the 20th term of the AP: 5, 9, 13, 17, ...",
+        level: "Easy"
+      },
+
+      {
+        chapter: "Algebra",
+        text: "Find the sum of first 30 terms of the AP: 7, 11, 15, ...",
+        level: "Medium"
+      },
+
+      {
+        chapter: "Algebra",
+        text: "Which term of the AP 3, 8, 13, ... is 78?",
+        level: "Medium"
+      },
+
+      {
+        chapter: "Algebra",
+        text: "Find the sum of all two-digit numbers divisible by 7.",
+        level: "Hard"
+      },
+
+
+      /* ========== GEOMETRY ========== */
+
+      {
+        chapter: "Geometry and Coordinate Geometry",
+        text: "Find the distance between A(2, 3) and B(8, 11).",
+        level: "Easy"
+      },
+
+      {
+        chapter: "Geometry and Coordinate Geometry",
+        text: "Find the midpoint of the line segment joining (-4, 6) and (8, -2).",
+        level: "Easy"
+      },
+
+      {
+        chapter: "Geometry and Coordinate Geometry",
+        text: "Find the point which divides the line joining (2, 3) and (8, 15) in the ratio 1:2.",
+        level: "Medium"
+      },
+
+      {
+        chapter: "Geometry and Coordinate Geometry",
+        text: "Find the area of the triangle with vertices (0, 0), (4, 0), and (0, 6).",
+        level: "Medium"
+      },
+
+      {
+        chapter: "Geometry and Coordinate Geometry",
+        text: "Prove that triangles with equal corresponding angles are similar.",
+        level: "Hard"
+      },
+
+      {
+        chapter: "Geometry and Coordinate Geometry",
+        text: "In ΔABC, DE ∥ BC. If AD = 3 cm, DB = 2 cm and AE = 4.5 cm, find EC.",
+        level: "Hard"
+      },
+
+      {
+        chapter: "Geometry and Coordinate Geometry",
+        text: "The areas of two similar triangles are 64 cm² and 100 cm². Find the ratio of their corresponding sides.",
+        level: "Hard"
+      },
+
+      {
+        chapter: "Geometry and Coordinate Geometry",
+        text: "A tangent touches a circle of radius 5 cm. What is the angle between the radius and tangent at the point of contact?",
+        level: "Easy"
+      },
+
+      {
+        chapter: "Geometry and Coordinate Geometry",
+        text: "From an external point P, two tangents PA and PB are drawn to a circle. Prove that PA = PB.",
+        level: "Hard"
+      },
+
+      {
+        chapter: "Geometry and Coordinate Geometry",
+        text: "Find the angle subtended by a diameter at a point on the remaining part of the circle.",
+        level: "Easy"
+      },
+
+      {
+        chapter: "Geometry and Coordinate Geometry",
+        text: "Find the length of a tangent from a point 13 cm away from the centre of a circle of radius 5 cm.",
+        level: "Medium"
+      },
+
+      {
+        chapter: "Geometry and Coordinate Geometry",
+        text: "A chord of a circle is 16 cm long and its distance from the centre is 6 cm. Find the radius.",
+        level: "Hard"
+      },
+
+
+      /* ========== TRIGONOMETRY ========== */
+
+      {
+        chapter: "Trigonometry and Mensuration",
+        text: "If tan θ = 3/4, find sin θ and cos θ.",
+        level: "Medium"
+      },
+
+      {
+        chapter: "Trigonometry and Mensuration",
+        text: "Prove: sin² A + cos² A = 1.",
+        level: "Medium"
+      },
+
+      {
+        chapter: "Trigonometry and Mensuration",
+        text: "If sec θ = 13/12, find tan θ.",
+        level: "Medium"
+      },
+
+      {
+        chapter: "Trigonometry and Mensuration",
+        text: "A pole 10 m high casts a shadow 10√3 m long. Find the angle of elevation of the sun.",
+        level: "Medium"
+      },
+
+      {
+        chapter: "Trigonometry and Mensuration",
+        text: "From a point 20 m away from a tower, the angle of elevation is 45°. Find the height of the tower.",
+        level: "Easy"
+      },
+
+      {
+        chapter: "Trigonometry and Mensuration",
+        text: "The angle of elevation of the top of a building is 30° from a point 30 m away. Find its height.",
+        level: "Medium"
+      },
+
+      {
+        chapter: "Trigonometry and Mensuration",
+        text: "Find the area of a sector of angle 90° in a circle of radius 14 cm.",
+        level: "Easy"
+      },
+
+      {
+        chapter: "Trigonometry and Mensuration",
+        text: "Find the length of an arc subtending an angle of 120° at the centre of a circle of radius 21 cm.",
+        level: "Medium"
+      },
+
+      {
+        chapter: "Trigonometry and Mensuration",
+        text: "Find the area of the region between two concentric circles of radii 14 cm and 7 cm.",
+        level: "Medium"
+      },
+
+      {
+        chapter: "Trigonometry and Mensuration",
+        text: "A solid sphere of radius 6 cm is melted to form small spheres of radius 2 cm. Find their number.",
+        level: "Hard"
+      },
+
+      {
+        chapter: "Trigonometry and Mensuration",
+        text: "Find the volume of a cone with radius 7 cm and height 24 cm.",
+        level: "Medium"
+      },
+
+      {
+        chapter: "Trigonometry and Mensuration",
+        text: "Find the curved surface area of a cylinder with radius 7 cm and height 10 cm.",
+        level: "Easy"
+      },
+
+      {
+        chapter: "Trigonometry and Mensuration",
+        text: "A toy is in the form of a cone mounted on a hemisphere, both having radius 3.5 cm. Find its volume if cone height is 4 cm.",
+        level: "Hard"
+      },
+
+
+      /* ========== STATISTICS ========== */
+
+      {
+        chapter: "Statistics and Probability",
+        text: "Find the mean of 10, 12, 14, 16, 18, 20.",
+        level: "Easy"
+      },
+
+      {
+        chapter: "Statistics and Probability",
+        text: "Find the median of 7, 3, 10, 5, 12, 8, 15.",
+        level: "Easy"
+      },
+
+      {
+        chapter: "Statistics and Probability",
+        text: "Find the mode of 2, 3, 3, 5, 6, 3, 7, 5.",
+        level: "Easy"
+      },
+
+      {
+        chapter: "Statistics and Probability",
+        text: "A die is thrown once. Find the probability of getting a prime number.",
+        level: "Easy"
+      },
+
+      {
+        chapter: "Statistics and Probability",
+        text: "Two coins are tossed together. Find the probability of getting exactly one head.",
+        level: "Medium"
+      },
+
+      {
+        chapter: "Statistics and Probability",
+        text: "A card is drawn from a deck of 52 cards. Find the probability that it is a king.",
+        level: "Easy"
+      },
+
+      {
+        chapter: "Statistics and Probability",
+        text: "A bag has 5 red, 4 blue and 3 green balls. Find the probability of drawing a blue ball.",
+        level: "Easy"
+      },
+
+      {
+        chapter: "Statistics and Probability",
+        text: "Find the probability of getting a number greater than 4 when a die is thrown.",
+        level: "Easy"
+      },
+
+      {
+        chapter: "Statistics and Probability",
+        text: "The mean of 8 observations is 12. If one observation is 16, find the sum of the remaining observations.",
+        level: "Medium"
+      },
+
+      {
+        chapter: "Statistics and Probability",
+        text: "The median of 5, 9, x, 13, 17 is 11. Find x.",
+        level: "Medium"
+      },
+
+      {
+        chapter: "Statistics and Probability",
+        text: "Find the probability of drawing a vowel from the letters of the word MATHEMATICS.",
+        level: "Hard"
+      },
+
+      {
+        chapter: "Statistics and Probability",
+        text: "A number is chosen from 1 to 20. Find the probability that it is divisible by 3 or 5.",
+        level: "Hard"
       }
+
     ];
 
-    let output = "";
-    let number = 1;
 
-    for (let i = 0; i < chapters.length; i++) {
-      output += "<h2>" + chapters[i].name + "</h2>";
+    let currentDifficulty = "All";
 
-      for (let j = 0; j < chapters[i].questions.length; j++) {
-        output += "<div class='question'><b>Question " + number +
-          ":</b> " + chapters[i].questions[j] + "</div>";
-        number++;
-      }
+
+    function setDifficulty(level) {
+      currentDifficulty = level;
+      displayQuestions();
     }
 
-    document.getElementById("questions").innerHTML = output;
+
+    function displayQuestions() {
+
+      const container = document.getElementById("questions");
+
+      const searchText =
+        document.getElementById("search").value.toLowerCase();
+
+      const selectedChapter =
+        document.getElementById("chapter").value;
+
+      container.innerHTML = "";
+
+      let filtered = questions.filter(function(q) {
+
+        const searchMatch =
+          q.text.toLowerCase().includes(searchText);
+
+        const chapterMatch =
+          selectedChapter === "All" ||
+          q.chapter === selectedChapter;
+
+        const difficultyMatch =
+          currentDifficulty === "All" ||
+          q.level === currentDifficulty;
+
+        return searchMatch &&
+          chapterMatch &&
+          difficultyMatch;
+
+      });
+
+
+      let number = 1;
+
+
+      filtered.forEach(function(q) {
+
+        container.innerHTML += `
+
+          <div class="question">
+
+            <div class="question-number">
+              Question ${number}
+            </div>
+
+            <div>
+              ${q.text}
+            </div>
+
+            <span class="difficulty ${q.level}">
+              ${q.level}
+            </span>
+
+          </div>
+
+        `;
+
+        number++;
+
+      });
+
+
+      document.getElementById("count").innerText =
+        "Showing " + filtered.length +
+        " of " + questions.length +
+        " questions";
+
+
+      document.getElementById("noResult").style.display =
+        filtered.length === 0 ? "block" : "none";
+
+    }
+
+
+    displayQuestions();
+
   </script>
+
 </body>
+
 </html>
