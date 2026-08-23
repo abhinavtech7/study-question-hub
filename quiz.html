@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Quiz | Study Question Hub</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #e0f2fe;
+      color: #172554;
+    }
+
+    header {
+      background: #123c88;
+      color: white;
+      text-align: center;
+      padding: 25px 15px;
+    }
+
+    header h1 {
+      margin: 0;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 30px auto;
+      padding: 20px;
+    }
+
+    .quiz-box {
+      background: white;
+      padding: 25px;
+      border-radius: 15px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+    #question {
+      font-size: 22px;
+      margin-bottom: 20px;
+    }
+
+    .option {
+      display: block;
+      width: 100%;
+      padding: 14px;
+      margin: 10px 0;
+      border: 2px solid #bfdbfe;
+      border-radius: 8px;
+      background: white;
+      text-align: left;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .option:hover {
+      background: #eff6ff;
+    }
+
+    .correct {
+      background: #dcfce7;
+      border-color: #16a34a;
+    }
+
+    .wrong {
+      background: #fee2e2;
+      border-color: #dc2626;
+    }
+
+    #nextBtn,
+    #restartBtn {
+      background: #123c88;
+      color: white;
+      border: none;
+      padding: 13px 25px;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      margin-top: 15px;
+    }
+
+    #nextBtn:hover,
+    #restartBtn:hover {
+      background: #1e40af;
+    }
+
+    #result {
+      text-align: center;
+      display: none;
+    }
+
+    #result h2 {
+      color: #123c88;
+    }
+
+    .back {
+      display: inline-block;
+      margin-top: 20px;
+      color: #123c88;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    #progress {
+      margin-bottom: 15px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <h1>🧠 Study Question Hub Quiz</h1>
+    <p>Learn • Practice • Improve</p>
+  </header>
+
+  <div class="container">
+
+    <div class="quiz-box" id="quizBox">
+
+      <div id="progress"></div>
+
+      <div id="question"></div>
+
+      <div id="options"></div>
+
+      <button id="nextBtn" onclick="nextQuestion()" disabled>
+        Next →
+      </button>
+
+    </div>
+
+
+    <div class="quiz-box" id="result">
+
+      <h2>🎉 Quiz Completed!</h2>
+
+      <p id="score"></p>
+
+      <button id="restartBtn" onclick="restartQuiz()">
+        🔄 Restart Quiz
+      </button>
+
+    </div>
+
+    <a class="back" href="index.html">
+      ← Back to Home
+    </a>
+
+  </div>
+
+
+  <script>
+
+    const questions = [
+
+      {
+        question: "What is the SI unit of force?",
+        options: [
+          "Joule",
+          "Newton",
+          "Watt",
+          "Pascal"
+        ],
+        answer: "Newton"
+      },
+
+      {
+        question: "What is √81?",
+        options: [
+          "7",
+          "8",
+          "9",
+          "10"
+        ],
+        answer: "9"
+      },
+
+      {
+        question: "What is the chemical formula of water?",
+        options: [
+          "CO₂",
+          "H₂O",
+          "O₂",
+          "H₂"
+        ],
+        answer: "H₂O"
+      },
+
+      {
+        question: "How many sides does a triangle have?",
+        options: [
+          "2",
+          "3",
+          "4",
+          "5"
+        ],
+        answer: "3"
+      },
+
+      {
+        question: "What is the SI unit of momentum?",
+        options: [
+          "kg m/s",
+          "Newton",
+          "Joule",
+          "Watt"
+        ],
+        answer: "kg m/s"
+      },
+
+      {
+        question: "What is 15% of 200?",
+        options: [
+          "20",
+          "25",
+          "30",
+          "35"
+        ],
+        answer: "30"
+      },
+
+      {
+        question: "Which organelle is known as the powerhouse of the cell?",
+        options: [
+          "Nucleus",
+          "Ribosome",
+          "Mitochondria",
+          "Vacuole"
+        ],
+        answer: "Mitochondria"
+      },
+
+      {
+        question: "What is the value of 5²?",
+        options: [
+          "10",
+          "15",
+          "20",
+          "25"
+        ],
+        answer: "25"
+      },
+
+      {
+        question: "What is the acceleration due to gravity on Earth approximately?",
+        options: [
+          "5.8 m/s²",
+          "9.8 m/s²",
+          "15 m/s²",
+          "20 m/s²"
+        ],
+        answer: "9.8 m/s²"
+      },
+
+      {
+        question: "Which gas is required for photosynthesis?",
+        options: [
+          "Oxygen",
+          "Nitrogen",
+          "Carbon dioxide",
+          "Hydrogen"
+        ],
+        answer: "Carbon dioxide"
+      }
+
+    ];
+
+
+    let currentQuestion = 0;
+    let score = 0;
+    let answered = false;
+
+
+    function loadQuestion() {
+
+      answered = false;
+
+      const q = questions[currentQuestion];
+
+      document.getElementById("progress").innerText =
+        "Question " + (currentQuestion + 1) +
+        " of " + questions.length;
+
+      document.getElementById("question").innerText =
+        q.question;
+
+      const optionsDiv =
+        document.getElementById("options");
+
+      optionsDiv.innerHTML = "";
+
+      document.getElementById("nextBtn").disabled = true;
+
+
+      q.options.forEach(function(option) {
+
+        const button = document.createElement("button");
+
+        button.innerText = option;
+
+        button.className = "option";
+
+        button.onclick = function() {
+
+          checkAnswer(button, option);
+
+        };
+
+        optionsDiv.appendChild(button);
+
+      });
+
+    }
+
+
+    function checkAnswer(button, selectedAnswer) {
+
+      if (answered) {
+        return;
+      }
+
+      answered = true;
+
+      const correctAnswer =
+        questions[currentQuestion].answer;
+
+      const allOptions =
+        document.querySelectorAll(".option");
+
+      allOptions.forEach(function(optionButton) {
+
+        if (optionButton.innerText === correctAnswer) {
+          optionButton.classList.add("correct");
+        }
+
+      });
+
+
+      if (selectedAnswer === correctAnswer) {
+
+        button.classList.add("correct");
+
+        score++;
+
+      } else {
+
+        button.classList.add("wrong");
+
+      }
+
+      document.getElementById("nextBtn").disabled = false;
+
+    }
+
+
+    function nextQuestion() {
+
+      currentQuestion++;
+
+      if (currentQuestion < questions.length) {
+
+        loadQuestion();
+
+      } else {
+
+        showResult();
+
+      }
+
+    }
+
+
+    function showResult() {
+
+      document.getElementById("quizBox").style.display = "none";
+
+      document.getElementById("result").style.display = "block";
+
+      document.getElementById("score").innerText =
+        "Your Score: " + score +
+        " / " + questions.length;
+
+    }
+
+
+    function restartQuiz() {
+
+      currentQuestion = 0;
+
+      score = 0;
+
+      document.getElementById("quizBox").style.display = "block";
+
+      document.getElementById("result").style.display = "none";
+
+      loadQuestion();
+
+    }
+
+
+    loadQuestion();
+
+  </script>
+
+</body>
+</html>
