@@ -1,106 +1,539 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-  <title>Class 9 Maths PYQ</title>
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Class 9 Maths Questions | Study Question Hub</title>
+
+  <meta name="description"
+        content="Practice Class 9 Maths questions with Study Question Hub. Search and filter questions for Class 9 Maths preparation.">
 
   <style>
-    body {
-      background-color: lightblue;
-      font-family: Arial;
-      padding: 30px;
+    * {
+      box-sizing: border-box;
     }
 
-    h1 {
-      color: blue;
+    body {
+      margin: 0;
+      background: #e0f2fe;
+      font-family: Arial, sans-serif;
+      color: #172554;
+    }
+
+    header {
+      background: #1d4ed8;
+      color: white;
+      padding: 25px 15px;
       text-align: center;
     }
 
-    .question {
-      background-color: white;
-      padding: 15px;
-      margin: 15px;
-      border-radius: 8px;
+    header h1 {
+      margin: 0;
+      font-size: 32px;
     }
 
-    a {
-      color: blue;
-      font-size: 18px;
+    header p {
+      margin-top: 8px;
+      font-size: 17px;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 25px auto;
+      padding: 0 15px;
+    }
+
+    .controls {
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+      margin-bottom: 20px;
+    }
+
+    #search {
+      width: 100%;
+      padding: 13px;
+      border: 2px solid #93c5fd;
+      border-radius: 8px;
+      font-size: 16px;
+      outline: none;
+    }
+
+    .buttons {
+      margin-top: 15px;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .filter {
+      border: none;
+      padding: 10px 18px;
+      border-radius: 8px;
+      background: #2563eb;
+      color: white;
+      cursor: pointer;
+      font-size: 15px;
+    }
+
+    .filter:hover {
+      background: #1e40af;
+    }
+
+    #count {
+      margin-top: 15px;
+      font-weight: bold;
+      color: #1e3a8a;
+    }
+
+    .question {
+      background: white;
+      padding: 18px;
+      margin-bottom: 15px;
+      border-radius: 10px;
+      border-left: 5px solid #2563eb;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    }
+
+    .question-number {
+      color: #1d4ed8;
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+
+    .difficulty {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 5px 10px;
+      border-radius: 6px;
+      background: #dbeafe;
+      color: #1e40af;
+      font-size: 13px;
+      font-weight: bold;
+    }
+
+    .back {
+      display: inline-block;
+      margin: 20px 0 40px;
+      background: #1d4ed8;
+      color: white;
+      padding: 12px 20px;
+      border-radius: 8px;
+      text-decoration: none;
+    }
+
+    .back:hover {
+      background: #1e40af;
+    }
+
+    #noResult {
+      display: none;
+      background: white;
+      padding: 20px;
+      text-align: center;
+      border-radius: 10px;
+      color: #dc2626;
+      font-weight: bold;
+    }
+
+    footer {
+      background: #172554;
+      color: white;
+      text-align: center;
+      padding: 25px;
+      margin-top: 30px;
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 25px;
+      }
+
+      .question {
+        font-size: 15px;
+      }
+
+      .filter {
+        width: 100%;
+      }
     }
   </style>
 </head>
 
 <body>
-  <h1>Class 9 Maths PYQ – 50 Questions</h1>
 
-  <div id="questions"></div>
+  <header>
+    <h1>📐 Class 9 Maths</h1>
+    <p>Practice Questions - Study Question Hub</p>
+  </header>
 
-  <br>
-  <a href="index.html">← Back to Home</a>
+  <div class="container">
+
+    <div class="controls">
+
+      <input
+        type="text"
+        id="search"
+        placeholder="🔍 Search a question..."
+        onkeyup="filterQuestions()"
+      >
+
+      <div class="buttons">
+        <button class="filter" onclick="showAll()">All Questions</button>
+        <button class="filter" onclick="showDifficulty('Easy')">Easy</button>
+        <button class="filter" onclick="showDifficulty('Medium')">Medium</button>
+        <button class="filter" onclick="showDifficulty('Hard')">Hard</button>
+      </div>
+
+      <div id="count"></div>
+
+    </div>
+
+    <div id="questions"></div>
+
+    <div id="noResult">
+      ❌ No question found.
+    </div>
+
+    <a class="back" href="index.html">← Back to Home</a>
+
+  </div>
+
+  <footer>
+    © 2026 Study Question Hub | Class 9 Maths
+  </footer>
 
   <script>
-    let questions = [
-     "Find the distance between point A(2, 4) and B(3,4).",
-    "Find the value of 3² + 4².",
-      "Find the distance between the points (2, 3) and (5, 7).",
-      "Find the coordinates of the median of triangle with vertices A(2, 3), B(4, 5) and C(6, 7).",
-      "Factorise: x² + 5x + 6.",
-      "Find the area of a triangle with base 10 cm and height 6 cm.",
-      "Solve: 2x + 5 = 15.",
-      "Find the perimeter of a square whose side is 8 cm.",
-      "Simplify: 7x + 3x - 5.",
-      "Find the value of √81.",
-      "Find the circumference of a circle with radius 7 cm. Use π = 22/7.",
-      "A rectangle has length 12 cm and breadth 5 cm. Find its area.",
-      "Find the value of 15% of 200.",
-      "Find the value of 5² + 12².",
-      "Solve: 3x - 7 = 11.",
-      "Find the area of a square with side 9 cm.",
-      "Find the perimeter of a rectangle with length 12 cm and breadth 7 cm.",
-      "Simplify: 8x + 5x - 4.",
-      "Find √144.",
-      "Find the value of 25% of 400.",
-      "Convert 0.75 into a fraction.",
-      "Find the area of a triangle with base 14 cm and height 8 cm.",
-      "Find the circumference of a circle with radius 14 cm. Use π = 22/7.",
-      "Solve: 4x + 9 = 25.",
-      "Factorise: x² + 7x + 12.",
-      "Find the value of 2³ × 2².",
-      "Find the area of a rectangle with length 15 cm and breadth 6 cm.",
-      "Find the value of 3/4 + 1/4.",
-      "Find the value of 7/8 - 3/8.",
-      "Find the simple interest on ₹1000 at 5% per year for 2 years.",
-      "Find the mean of 5, 10, 15, 20, 25.",
-      "Find the probability of getting a head when a coin is tossed.",
-      "Find the diagonal of a square with side 5 cm.",
-      "Solve: 5x = 45.",
-      "Find the value of 6² - 4².",
-      "Find the area of a parallelogram with base 12 cm and height 5 cm.",
-      "Find the volume of a cube with side 4 cm.",
-      "Convert 2.5 km into metres.",
-      "Find the supplement of 65°.",
-      "Find the complement of 35°.",
-      "Find the sum of angles of a triangle.",
-      "Find the area of a circle with radius 7 cm. Use π = 22/7.",
-      "Find the perimeter of an equilateral triangle with side 11 cm.",
-      "Solve: x/3 = 7.",
-      "Find the value of 9³.",
-      "Find the LCM of 12 and 18.",
-      "Find the HCF of 24 and 36.",
-      "Find 15% of ₹800.",
-      "Find the area of a rhombus with diagonals 10 cm and 8 cm.",
-      "Find the volume of a cuboid with length 8 cm, breadth 5 cm and height 4 cm.",
-      "Find the value of 1/2 × 3/4.",
-      "A number is increased by 20% to become 120. Find the original number.",
-      "Find the area of a semicircle with radius 7 cm. Use π = 22/7."
+
+    const questions = [
+
+      {
+        text: "Find the distance between points A(2, 4) and B(3, 4).",
+        level: "Easy"
+      },
+
+      {
+        text: "Find the value of 3² + 4².",
+        level: "Easy"
+      },
+
+      {
+        text: "Find the distance between the points (2, 3) and (5, 7).",
+        level: "Medium"
+      },
+
+      {
+        text: "Find the coordinates of the median of a triangle with vertices A(2, 3), B(4, 5) and C(6, 7).",
+        level: "Hard"
+      },
+
+      {
+        text: "Factorise: x² + 5x + 6.",
+        level: "Medium"
+      },
+
+      {
+        text: "Find the area of a triangle with base 10 cm and height 6 cm.",
+        level: "Easy"
+      },
+
+      {
+        text: "Solve: 2x + 5 = 15.",
+        level: "Easy"
+      },
+
+      {
+        text: "Find the perimeter of a square whose side is 8 cm.",
+        level: "Easy"
+      },
+
+      {
+        text: "Simplify: 7x + 3x - 5.",
+        level: "Easy"
+      },
+
+      {
+        text: "Find the value of √81.",
+        level: "Easy"
+      },
+
+      {
+        text: "Find the circumference of a circle with radius 7 cm. Use π = 22/7.",
+        level: "Medium"
+      },
+
+      {
+        text: "A rectangle has length 12 cm and breadth 5 cm. Find its area.",
+        level: "Easy"
+      },
+
+      {
+        text: "Find the value of 15% of 200.",
+        level: "Easy"
+      },
+
+      {
+        text: "Find the value of 5² + 12².",
+        level: "Easy"
+      },
+
+      {
+        text: "Solve: 3x - 7 = 11.",
+        level: "Easy"
+      },
+
+      {
+        text: "Find the area of a square with side 9 cm.",
+        level: "Easy"
+      },
+
+      {
+        text: "Find the perimeter of a rectangle with length 12 cm and breadth 7 cm.",
+        level: "Easy"
+      },
+
+      {
+        text: "Simplify: 8x + 5x - 4.",
+        level: "Easy"
+      },
+
+      {
+        text: "Find √144.",
+        level: "Easy"
+      },
+
+      {
+        text: "Find the value of 25% of 400.",
+        level: "Easy"
+      },
+
+      {
+        text: "Convert 0.75 into a fraction.",
+        level: "Medium"
+      },
+
+      {
+        text: "Find the area of a triangle with base 14 cm and height 8 cm.",
+        level: "Easy"
+      },
+
+      {
+        text: "Find the circumference of a circle with radius 14 cm. Use π = 22/7.",
+        level: "Medium"
+      },
+
+      {
+        text: "Solve: 4x + 9 = 25.",
+        level: "Easy"
+      },
+
+      {
+        text: "Factorise: x² + 7x + 12.",
+        level: "Medium"
+      },
+
+      {
+        text: "Find the value of 2³ × 2².",
+        level: "Medium"
+      },
+
+      {
+        text: "Find the area of a rectangle with length 15 cm and breadth 6 cm.",
+        level: "Easy"
+      },
+
+      {
+        text: "Find the value of 3/4 + 1/4.",
+        level: "Easy"
+      },
+
+      {
+        text: "Find the value of 7/8 - 3/8.",
+        level: "Easy"
+      },
+
+      {
+        text: "Find the mean of 5, 10, 15, 20 and 25.",
+        level: "Medium"
+      },
+
+      {
+        text: "Find the probability of getting a head when a coin is tossed.",
+        level: "Easy"
+      },
+
+      {
+        text: "Find the diagonal of a square with side 5 cm.",
+        level: "Hard"
+      },
+
+      {
+        text: "Solve: 5x = 45.",
+        level: "Easy"
+      },
+
+      {
+        text: "Find the value of 6² - 4².",
+        level: "Easy"
+      },
+
+      {
+        text: "Find the area of a parallelogram with base 12 cm and height 5 cm.",
+        level: "Easy"
+      },
+
+      {
+        text: "Find the volume of a cube with side 4 cm.",
+        level: "Medium"
+      },
+
+      {
+        text: "Convert 2.5 km into metres.",
+        level: "Easy"
+      },
+
+      {
+        text: "Find the supplement of 65°.",
+        level: "Easy"
+      },
+
+      {
+        text: "Find the complement of 35°.",
+        level: "Easy"
+      },
+
+      {
+        text: "Find the sum of the angles of a triangle.",
+        level: "Easy"
+      },
+
+      {
+        text: "Find the area of a circle with radius 7 cm. Use π = 22/7.",
+        level: "Medium"
+      },
+
+      {
+        text: "Find the perimeter of an equilateral triangle with side 11 cm.",
+        level: "Easy"
+      },
+
+      {
+        text: "Solve: x/3 = 7.",
+        level: "Easy"
+      },
+
+      {
+        text: "Find the value of 9³.",
+        level: "Easy"
+      },
+
+      {
+        text: "Find the LCM of 12 and 18.",
+        level: "Easy"
+      },
+
+      {
+        text: "Find the HCF of 24 and 36.",
+        level: "Easy"
+      },
+
+      {
+        text: "Find the area of a rhombus with diagonals 10 cm and 8 cm.",
+        level: "Medium"
+      },
+
+      {
+        text: "Find the volume of a cuboid with length 8 cm, breadth 5 cm and height 4 cm.",
+        level: "Medium"
+      },
+
+      {
+        text: "Find the value of 1/2 × 3/4.",
+        level: "Easy"
+      },
+
+      {
+        text: "A number is increased by 20% to become 120. Find the original number.",
+        level: "Hard"
+      },
+
+      {
+        text: "Find the area of a semicircle with radius 7 cm. Use π = 22/7.",
+        level: "Medium"
+      }
+
     ];
 
-    let output = "";
+    let currentFilter = "All";
 
-    for (let i = 0; i < questions.length; i++) {
-      output += "<div class='question'><b>Question " + (i + 1) + ":</b> " + questions[i] + "</div>";
+    function displayQuestions() {
+
+      const container = document.getElementById("questions");
+      const searchText =
+        document.getElementById("search").value.toLowerCase();
+
+      container.innerHTML = "";
+
+      let visibleQuestions = questions.filter(function(q) {
+
+        const matchesSearch =
+          q.text.toLowerCase().includes(searchText);
+
+        const matchesDifficulty =
+          currentFilter === "All" ||
+          q.level === currentFilter;
+
+        return matchesSearch && matchesDifficulty;
+
+      });
+
+      visibleQuestions.forEach(function(q, index) {
+
+        container.innerHTML += `
+          <div class="question">
+            <div class="question-number">
+              Question ${index + 1}
+            </div>
+
+            <div>${q.text}</div>
+
+            <span class="difficulty">
+              ${q.level}
+            </span>
+          </div>
+        `;
+
+      });
+
+      document.getElementById("count").innerText =
+        "Showing " + visibleQuestions.length +
+        " of " + questions.length + " questions";
+
+      document.getElementById("noResult").style.display =
+        visibleQuestions.length === 0 ? "block" : "none";
     }
 
-    document.getElementById("questions").innerHTML = output;
+    function filterQuestions() {
+      displayQuestions();
+    }
+
+    function showAll() {
+      currentFilter = "All";
+      displayQuestions();
+    }
+
+    function showDifficulty(level) {
+      currentFilter = level;
+      displayQuestions();
+    }
+
+    displayQuestions();
+
   </script>
+
 </body>
 </html>
