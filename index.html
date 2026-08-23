@@ -1,66 +1,478 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>Study Question Hub - Class 9 to 12 Questions</title>
 
   <meta name="description"
-        content="Study Question Hub: Class 9, Class 10, Class 11 and Class 12 questions for students.">
+        content="Study Question Hub provides useful Class 9, 10, 11 and 12 Science questions, study materials and chapter-wise practice for students.">
 
   <meta name="google-site-verification"
-        content="mMHiYvYvxlZlBrQwq23YILaAbr515k4HBrYhXa9C_ik" />
+        content="mMHiYvYvxlZlBrQwq23YILaAbr515k4HBrYhXa9C_ik">
 
   <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
-      background-color: lightblue;
-      text-align: center;
-      font-family: Arial;
-      padding: 40px;
+      font-family: Arial, sans-serif;
+      background: #f4f8ff;
+      color: #222;
     }
 
-    h1 {
-      color: blue;
+    /* NAVBAR */
+    nav {
+      background: #123c88;
+      padding: 18px 7%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
     }
 
-    button {
-      background-color: blue;
+    .logo {
       color: white;
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin-left: 20px;
+      font-size: 16px;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    /* HERO */
+    .hero {
+      text-align: center;
+      padding: 70px 20px;
+      background: linear-gradient(135deg, #dceeff, #ffffff);
+    }
+
+    .hero h1 {
+      font-size: 45px;
+      color: #123c88;
+      margin-bottom: 15px;
+    }
+
+    .hero p {
+      font-size: 20px;
+      color: #555;
+      margin-bottom: 30px;
+    }
+
+    /* SEARCH */
+    .search-box {
+      max-width: 650px;
+      margin: auto;
+      display: flex;
+      gap: 10px;
+    }
+
+    .search-box input {
+      flex: 1;
       padding: 15px;
-      margin: 8px;
+      border: 2px solid #123c88;
+      border-radius: 10px;
+      font-size: 16px;
+      outline: none;
+    }
+
+    .search-box button {
+      background: #123c88;
+      color: white;
       border: none;
-      border-radius: 8px;
-      font-size: 18px;
+      padding: 15px 25px;
+      border-radius: 10px;
       cursor: pointer;
+      font-size: 16px;
+    }
+
+    /* SECTION */
+    section {
+      padding: 55px 7%;
+    }
+
+    .section-title {
+      text-align: center;
+      color: #123c88;
+      font-size: 32px;
+      margin-bottom: 30px;
+    }
+
+    /* CARDS */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: white;
+      padding: 25px;
+      border-radius: 15px;
+      text-align: center;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+      transition: 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .card h3 {
+      color: #123c88;
+      margin-bottom: 12px;
+    }
+
+    .card p {
+      color: #666;
+      margin-bottom: 15px;
+    }
+
+    .card a {
+      display: inline-block;
+      background: #123c88;
+      color: white;
+      text-decoration: none;
+      padding: 10px 18px;
+      border-radius: 8px;
+    }
+
+    /* SUBJECTS */
+    .subject {
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      text-align: center;
+      box-shadow: 0 3px 12px rgba(0,0,0,0.07);
+    }
+
+    .subject h3 {
+      color: #123c88;
+      margin-bottom: 8px;
+    }
+
+    /* POPULAR */
+    .questions {
+      max-width: 800px;
+      margin: auto;
+    }
+
+    .question {
+      background: white;
+      padding: 18px;
+      margin-bottom: 12px;
+      border-left: 5px solid #123c88;
+      border-radius: 8px;
+      text-align: left;
+    }
+
+    /* ABOUT */
+    .about {
+      max-width: 800px;
+      margin: auto;
+      text-align: center;
+      line-height: 1.7;
+      color: #555;
+    }
+
+    /* FOOTER */
+    footer {
+      background: #123c88;
+      color: white;
+      text-align: center;
+      padding: 30px 20px;
+      margin-top: 30px;
+    }
+
+    footer p {
+      margin: 8px;
+    }
+
+    /* MOBILE */
+    @media (max-width: 600px) {
+
+      nav {
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      nav a {
+        margin: 5px;
+      }
+
+      .hero h1 {
+        font-size: 32px;
+      }
+
+      .hero p {
+        font-size: 17px;
+      }
+
+      .search-box {
+        flex-direction: column;
+      }
+
+      .search-box button {
+        width: 100%;
+      }
+
+      section {
+        padding: 40px 5%;
+      }
     }
   </style>
 </head>
 
 <body>
 
-  <h1>Study Question Hub</h1>
+  <!-- NAVIGATION -->
+  <nav>
+    <div class="logo">📚 Study Question Hub</div>
 
-  <p>Class-wise Questions for Students</p>
+    <div>
+      <a href="#home">Home</a>
+      <a href="#classes">Classes</a>
+      <a href="#subjects">Subjects</a>
+      <a href="#about">About</a>
+    </div>
+  </nav>
 
-  <h2>Choose your class</h2>
 
-  <a href="class9.html">
-    <button>Class 9</button>
-  </a>
+  <!-- HERO -->
+  <section class="hero" id="home">
 
-  <a href="class10.html">
-    <button>Class 10</button>
-  </a>
+    <h1>Study Question Hub</h1>
 
-  <a href="class11.html">
-    <button>Class 11 Science</button>
-  </a>
+    <p>
+      Learn • Practice • Improve
+    </p>
 
-  <a href="class12.html">
-    <button>Class 12 Science</button>
-  </a>
+    <div class="search-box">
+      <input
+        type="text"
+        id="searchInput"
+        placeholder="Search questions..."
+        onkeyup="searchQuestions()">
+
+      <button onclick="searchQuestions()">
+        🔎 Search
+      </button>
+    </div>
+
+  </section>
+
+
+  <!-- CLASSES -->
+  <section id="classes">
+
+    <h2 class="section-title">
+      📚 Choose Your Class
+    </h2>
+
+    <div class="cards">
+
+      <div class="card">
+        <h3>Class 9</h3>
+        <p>Questions and study material for Class 9 students.</p>
+
+        <a href="class9.html">
+          Study Class 9
+        </a>
+      </div>
+
+
+      <div class="card">
+        <h3>Class 10</h3>
+        <p>Important questions and practice material for Class 10.</p>
+
+        <a href="class10.html">
+          Study Class 10
+        </a>
+      </div>
+
+
+      <div class="card">
+        <h3>Class 11 Science</h3>
+        <p>Science questions and study resources for Class 11.</p>
+
+        <a href="class11.html">
+          Study Class 11
+        </a>
+      </div>
+
+
+      <div class="card">
+        <h3>Class 12 Science</h3>
+        <p>Important Science questions for Class 12 students.</p>
+
+        <a href="class12.html">
+          Study Class 12
+        </a>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- SUBJECTS -->
+  <section id="subjects">
+
+    <h2 class="section-title">
+      📖 Subjects
+    </h2>
+
+    <div class="cards">
+
+      <div class="subject">
+        <h3>🔬 Science</h3>
+        <p>Physics • Chemistry • Biology</p>
+      </div>
+
+      <div class="subject">
+        <h3>📐 Mathematics</h3>
+        <p>Formulas • Questions • Practice</p>
+      </div>
+
+      <div class="subject">
+        <h3>🌍 Social Science</h3>
+        <p>History • Geography • Civics • Economics</p>
+      </div>
+
+      <div class="subject">
+        <h3>📚 English</h3>
+        <p>Grammar • Literature • Writing</p>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- POPULAR QUESTIONS -->
+  <section>
+
+    <h2 class="section-title">
+      ⭐ Popular Questions
+    </h2>
+
+    <div class="questions">
+
+      <div class="question">
+        <b>Class 9 Science:</b>
+        What is the difference between an element and a compound?
+      </div>
+
+      <div class="question">
+        <b>Class 9 Physics:</b>
+        What is the SI unit of momentum?
+      </div>
+
+      <div class="question">
+        <b>Class 10 Science:</b>
+        What is the difference between acids and bases?
+      </div>
+
+      <div class="question">
+        <b>Class 11 Physics:</b>
+        What is Newton's second law of motion?
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ABOUT -->
+  <section id="about">
+
+    <h2 class="section-title">
+      ℹ️ About Study Question Hub
+    </h2>
+
+    <div class="about">
+
+      <p>
+        Study Question Hub is an educational website designed
+        to help students find useful questions, practice material
+        and study resources for different classes.
+      </p>
+
+      <br>
+
+      <p>
+        Our goal is to make studying easier, simpler and more
+        accessible for students.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <!-- FOOTER -->
+  <footer>
+
+    <h3>📚 Study Question Hub</h3>
+
+    <p>
+      Learn • Practice • Improve
+    </p>
+
+    <p>
+      © 2026 Study Question Hub
+    </p>
+
+  </footer>
+
+
+  <!-- SEARCH JAVASCRIPT -->
+  <script>
+
+    function searchQuestions() {
+
+      let input =
+        document.getElementById("searchInput")
+        .value
+        .toLowerCase();
+
+      let questions =
+        document.querySelectorAll(".question");
+
+      questions.forEach(function(question) {
+
+        let text =
+          question.innerText.toLowerCase();
+
+        if (text.includes(input)) {
+          question.style.display = "block";
+        } else {
+          question.style.display = "none";
+        }
+
+      });
+
+    }
+
+  </script>
 
 </body>
 </html>
