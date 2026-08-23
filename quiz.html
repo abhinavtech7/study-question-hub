@@ -6,7 +6,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Online Quiz | Study Question Hub</title>
+  <title>Quiz | Study Question Hub</title>
 
   <style>
     * {
@@ -52,7 +52,14 @@
     #progress {
       font-weight: bold;
       color: #123c88;
-      margin-bottom: 18px;
+      margin-bottom: 8px;
+    }
+
+    #liveScore {
+      font-weight: bold;
+      color: #16a34a;
+      margin-bottom: 20px;
+      font-size: 18px;
     }
 
     #question {
@@ -141,6 +148,7 @@
     }
 
     @media (max-width: 600px) {
+
       .container {
         padding: 12px;
       }
@@ -163,17 +171,28 @@
 <body>
 
   <header>
+
     <h1>🧠 Study Question Hub Quiz</h1>
-    <p>Learn • Practice • Improve</p>
+
+    <p>
+      Learn • Practice • Improve
+    </p>
+
   </header>
+
 
   <div class="container">
 
-    <!-- QUIZ -->
+
+    <!-- QUIZ BOX -->
 
     <div class="quiz-box" id="quizBox">
 
       <div id="progress"></div>
+
+      <div id="liveScore">
+        Score: 0 / 0
+      </div>
 
       <div id="question"></div>
 
@@ -186,16 +205,18 @@
     </div>
 
 
-    <!-- RESULT -->
+    <!-- RESULT BOX -->
 
     <div class="quiz-box" id="result">
 
-      <h2>🎉 Quiz Completed!</h2>
+      <h2>
+        🎉 Quiz Completed!
+      </h2>
 
       <p id="score"></p>
 
       <button id="restartBtn" onclick="restartQuiz()">
-        🔄 Restart Quiz
+        🔄 New Quiz
       </button>
 
     </div>
@@ -205,12 +226,19 @@
       ← Back to Home
     </a>
 
+
   </div>
 
 
   <script>
 
+
+    /* =====================================
+       QUESTION BANK
+       ===================================== */
+
     const questions = [
+
 
       {
         question: "What is the SI unit of force?",
@@ -223,6 +251,7 @@
         answer: "Newton"
       },
 
+
       {
         question: "What is √81?",
         options: [
@@ -233,6 +262,7 @@
         ],
         answer: "9"
       },
+
 
       {
         question: "What is the chemical formula of water?",
@@ -245,6 +275,7 @@
         answer: "H₂O"
       },
 
+
       {
         question: "How many sides does a triangle have?",
         options: [
@@ -255,6 +286,7 @@
         ],
         answer: "3"
       },
+
 
       {
         question: "What is the SI unit of momentum?",
@@ -267,6 +299,7 @@
         answer: "kg m/s"
       },
 
+
       {
         question: "What is 15% of 200?",
         options: [
@@ -278,8 +311,9 @@
         answer: "30"
       },
 
+
       {
-        question: "Which organelle is known as the powerhouse of the cell?",
+        question: "Which organelle is called the powerhouse of the cell?",
         options: [
           "Nucleus",
           "Ribosome",
@@ -288,6 +322,7 @@
         ],
         answer: "Mitochondria"
       },
+
 
       {
         question: "What is the value of 5²?",
@@ -300,6 +335,7 @@
         answer: "25"
       },
 
+
       {
         question: "What is the acceleration due to gravity on Earth approximately?",
         options: [
@@ -311,6 +347,7 @@
         answer: "9.8 m/s²"
       },
 
+
       {
         question: "Which gas is required for photosynthesis?",
         options: [
@@ -320,201 +357,286 @@
           "Hydrogen"
         ],
         answer: "Carbon dioxide"
+      },
+
+
+      {
+        question: "What is the square of 12?",
+        options: [
+          "124",
+          "144",
+          "154",
+          "164"
+        ],
+        answer: "144"
+      },
+
+
+      {
+        question: "What is the SI unit of work?",
+        options: [
+          "Newton",
+          "Joule",
+          "Watt",
+          "Pascal"
+        ],
+        answer: "Joule"
+      },
+
+
+      {
+        question: "How many bones are there approximately in an adult human body?",
+        options: [
+          "106",
+          "206",
+          "306",
+          "406"
+        ],
+        answer: "206"
+      },
+
+
+      {
+        question: "What is the chemical symbol of sodium?",
+        options: [
+          "So",
+          "S",
+          "Na",
+          "N"
+        ],
+        answer: "Na"
+      },
+
+
+      {
+        question: "What is 25% of 400?",
+        options: [
+          "50",
+          "75",
+          "100",
+          "125"
+        ],
+        answer: "100"
+      },
+
+
+      {
+        question: "Which planet is known as the Red Planet?",
+        options: [
+          "Earth",
+          "Mars",
+          "Jupiter",
+          "Venus"
+        ],
+        answer: "Mars"
+      },
+
+
+      {
+        question: "What is the SI unit of power?",
+        options: [
+          "Joule",
+          "Newton",
+          "Watt",
+          "Pascal"
+        ],
+        answer: "Watt"
+      },
+
+
+      {
+        question: "What is the value of 3³?",
+        options: [
+          "9",
+          "18",
+          "27",
+          "36"
+        ],
+        answer: "27"
+      },
+
+
+      {
+        question: "Which part of the plant carries water from roots to leaves?",
+        options: [
+          "Phloem",
+          "Xylem",
+          "Stomata",
+          "Root hair"
+        ],
+        answer: "Xylem"
+      },
+
+
+      {
+        question: "What is the boiling point of water at normal atmospheric pressure?",
+        options: [
+          "50°C",
+          "75°C",
+          "100°C",
+          "150°C"
+        ],
+        answer: "100°C"
+      },
+
+
+      {
+        question: "What is the value of 7 × 8?",
+        options: [
+          "48",
+          "54",
+          "56",
+          "64"
+        ],
+        answer: "56"
+      },
+
+
+      {
+        question: "Which gas is most abundant in Earth's atmosphere?",
+        options: [
+          "Oxygen",
+          "Nitrogen",
+          "Carbon dioxide",
+          "Hydrogen"
+        ],
+        answer: "Nitrogen"
+      },
+
+
+      {
+        question: "What is the HCF of 12 and 18?",
+        options: [
+          "2",
+          "3",
+          "6",
+          "9"
+        ],
+        answer: "6"
+      },
+
+
+      {
+        question: "What is the perimeter of a square with side 5 cm?",
+        options: [
+          "10 cm",
+          "15 cm",
+          "20 cm",
+          "25 cm"
+        ],
+        answer: "20 cm"
+      },
+
+
+      {
+        question: "Which organ pumps blood throughout the human body?",
+        options: [
+          "Lungs",
+          "Brain",
+          "Heart",
+          "Kidney"
+        ],
+        answer: "Heart"
+      },
+
+
+      {
+        question: "What is the chemical formula of carbon dioxide?",
+        options: [
+          "CO",
+          "CO₂",
+          "C₂O",
+          "C₂O₂"
+        ],
+        answer: "CO₂"
+      },
+
+
+      {
+        question: "What is 2⁵?",
+        options: [
+          "16",
+          "24",
+          "32",
+          "64"
+        ],
+        answer: "32"
+      },
+
+
+      {
+        question: "Which instrument is used to measure temperature?",
+        options: [
+          "Barometer",
+          "Thermometer",
+          "Ammeter",
+          "Speedometer"
+        ],
+        answer: "Thermometer"
+      },
+
+
+      {
+        question: "What is the area of a square with side 6 cm?",
+        options: [
+          "12 cm²",
+          "24 cm²",
+          "36 cm²",
+          "42 cm²"
+        ],
+        answer: "36 cm²"
+      },
+
+
+      {
+        question: "Which blood cells help fight infections?",
+        options: [
+          "Red blood cells",
+          "White blood cells",
+          "Platelets",
+          "Plasma"
+        ],
+        answer: "White blood cells"
       }
 
     ];
 
 
+    /* =====================================
+       QUIZ SETTINGS
+       ===================================== */
+
+    const QUESTIONS_PER_QUIZ = 10;
+
+    let quizQuestions = [];
+
     let currentQuestion = 0;
+
     let score = 0;
+
     let answered = false;
 
 
-    function loadQuestion() {
+    /* =====================================
+       CREATE NEW RANDOM QUIZ
+       ===================================== */
 
-      answered = false;
+    function createNewQuiz() {
 
-      const q = questions[currentQuestion];
+      let shuffledQuestions =
+        [...questions];
 
-      document.getElementById("progress").innerText =
-        "Question " +
-        (currentQuestion + 1) +
-        " of " +
-        questions.length;
-
-      document.getElementById("question").innerText =
-        q.question;
-
-      const optionsDiv =
-        document.getElementById("options");
-
-      optionsDiv.innerHTML = "";
-
-      const nextBtn =
-        document.getElementById("nextBtn");
-
-      nextBtn.disabled = true;
-
-      q.options.forEach(function(option) {
-
-        const button =
-          document.createElement("button");
-
-        button.type = "button";
-
-        button.innerText = option;
-
-        button.className = "option";
-
-        button.onclick = function() {
-          checkAnswer(button, option);
-        };
-
-        optionsDiv.appendChild(button);
-
-      });
-
-    }
-
-
-    function checkAnswer(button, selectedAnswer) {
-
-      if (answered) {
-        return;
-      }
-
-      answered = true;
-
-      const correctAnswer =
-        questions[currentQuestion].answer;
-
-      const allOptions =
-        document.querySelectorAll(".option");
-
-
-      allOptions.forEach(function(optionButton) {
-
-        if (optionButton.innerText === correctAnswer) {
-          optionButton.classList.add("correct");
-        }
-
-      });
-
-
-      if (selectedAnswer === correctAnswer) {
-
-        button.classList.add("correct");
-
-        score++;
-
-      } else {
-
-        button.classList.add("wrong");
-
-      }
-
-
-      document.getElementById("nextBtn").disabled = false;
-
-    }
-
-
-    function nextQuestion() {
-
-      if (!answered) {
-        return;
-      }
-
-      currentQuestion++;
-
-
-      if (currentQuestion < questions.length) {
-
-        loadQuestion();
-
-      } else {
-
-        showResult();
-
-      }
-
-    }
-
-
-    function showResult() {
-
-      document.getElementById("quizBox").style.display = "none";
-
-      document.getElementById("result").style.display = "block";
-
-
-      const percentage = Math.round(
-        (score / questions.length) * 100
+      shuffledQuestions.sort(
+        () => Math.random() - 0.5
       );
 
 
-      let message;
-
-
-      if (percentage >= 80) {
-
-        message = "🏆 Excellent! Keep it up!";
-
-      } else if (percentage >= 50) {
-
-        message = "👏 Good Job! Practice more.";
-
-      } else {
-
-        message = "📚 Keep Learning and Try Again.";
-
-      }
-
-
-      let highScore =
-        Number(localStorage.getItem("studyHubHighScore")) || 0;
-
-
-      if (score > highScore) {
-
-        highScore = score;
-
-        localStorage.setItem(
-          "studyHubHighScore",
-          highScore
+      quizQuestions =
+        shuffledQuestions.slice(
+          0,
+          QUESTIONS_PER_QUIZ
         );
 
-      }
-
-
-      document.getElementById("score").innerHTML =
-
-        "Your Score: " +
-        score +
-        " / " +
-        questions.length +
-
-        "<br>" +
-
-        "Percentage: " +
-        percentage +
-        "%" +
-
-        "<br><br>" +
-
-        message +
-
-        "<br><br>" +
-
-        "⭐ High Score: " +
-        highScore +
-        " / " +
-        questions.length;
-
-    }
-
-
-    function restartQuiz() {
 
       currentQuestion = 0;
 
@@ -535,7 +657,320 @@
     }
 
 
-    loadQuestion();
+    /* =====================================
+       LOAD QUESTION
+       ===================================== */
+
+    function loadQuestion() {
+
+      answered = false;
+
+
+      const q =
+        quizQuestions[currentQuestion];
+
+
+      document.getElementById("progress").innerText =
+
+        "Question " +
+        (currentQuestion + 1) +
+        " of " +
+        quizQuestions.length;
+
+
+      document.getElementById("liveScore").innerText =
+
+        "Score: " +
+        score +
+        " / " +
+        currentQuestion;
+
+
+      document.getElementById("question").innerText =
+        q.question;
+
+
+      const optionsDiv =
+        document.getElementById("options");
+
+
+      optionsDiv.innerHTML = "";
+
+
+      document.getElementById("nextBtn").disabled =
+        true;
+
+
+      q.options.forEach(function(option) {
+
+
+        const button =
+          document.createElement("button");
+
+
+        button.type = "button";
+
+
+        button.innerText =
+          option;
+
+
+        button.className =
+          "option";
+
+
+        button.onclick =
+          function() {
+
+            checkAnswer(
+              button,
+              option
+            );
+
+          };
+
+
+        optionsDiv.appendChild(
+          button
+        );
+
+
+      });
+
+    }
+
+
+    /* =====================================
+       CHECK ANSWER
+       ===================================== */
+
+    function checkAnswer(
+      button,
+      selectedAnswer
+    ) {
+
+
+      if (answered) {
+        return;
+      }
+
+
+      answered = true;
+
+
+      const correctAnswer =
+        quizQuestions[currentQuestion].answer;
+
+
+      const allOptions =
+        document.querySelectorAll(
+          ".option"
+        );
+
+
+      allOptions.forEach(
+        function(optionButton) {
+
+
+          if (
+            optionButton.innerText ===
+            correctAnswer
+          ) {
+
+            optionButton.classList.add(
+              "correct"
+            );
+
+          }
+
+        }
+      );
+
+
+      if (
+        selectedAnswer ===
+        correctAnswer
+      ) {
+
+        button.classList.add(
+          "correct"
+        );
+
+        score++;
+
+      } else {
+
+        button.classList.add(
+          "wrong"
+        );
+
+      }
+
+
+      /* LIVE SCORE */
+
+      document.getElementById(
+        "liveScore"
+      ).innerText =
+
+        "Score: " +
+        score +
+        " / " +
+        (currentQuestion + 1);
+
+
+      document.getElementById(
+        "nextBtn"
+      ).disabled = false;
+
+    }
+
+
+    /* =====================================
+       NEXT QUESTION
+       ===================================== */
+
+    function nextQuestion() {
+
+
+      if (!answered) {
+        return;
+      }
+
+
+      currentQuestion++;
+
+
+      if (
+        currentQuestion <
+        quizQuestions.length
+      ) {
+
+        loadQuestion();
+
+      } else {
+
+        showResult();
+
+      }
+
+    }
+
+
+    /* =====================================
+       SHOW FINAL RESULT
+       ===================================== */
+
+    function showResult() {
+
+
+      document.getElementById(
+        "quizBox"
+      ).style.display = "none";
+
+
+      document.getElementById(
+        "result"
+      ).style.display = "block";
+
+
+      const percentage =
+        Math.round(
+          (score /
+            quizQuestions.length) *
+          100
+        );
+
+
+      let message;
+
+
+      if (percentage >= 80) {
+
+        message =
+          "🏆 Excellent! Keep it up!";
+
+      } else if (percentage >= 50) {
+
+        message =
+          "👏 Good Job! Practice more.";
+
+      } else {
+
+        message =
+          "📚 Keep Learning and Try Again.";
+
+      }
+
+
+      let highScore =
+        Number(
+          localStorage.getItem(
+            "studyHubHighScore"
+          )
+        ) || 0;
+
+
+      if (score > highScore) {
+
+        highScore = score;
+
+
+        localStorage.setItem(
+          "studyHubHighScore",
+          highScore
+        );
+
+      }
+
+
+      document.getElementById(
+        "score"
+      ).innerHTML =
+
+
+        "Your Score: " +
+        score +
+        " / " +
+        quizQuestions.length +
+
+        "<br>" +
+
+        "Percentage: " +
+        percentage +
+        "%" +
+
+        "<br><br>" +
+
+        message +
+
+        "<br><br>" +
+
+        "⭐ High Score: " +
+        highScore +
+        " / " +
+        QUESTIONS_PER_QUIZ;
+
+    }
+
+
+    /* =====================================
+       NEW QUIZ
+       ===================================== */
+
+    function restartQuiz() {
+
+      createNewQuiz();
+
+    }
+
+
+    /* =====================================
+       START QUIZ
+       ===================================== */
+
+    createNewQuiz();
+
 
   </script>
 
