@@ -42,17 +42,67 @@
       padding: 20px;
     }
 
-    .quiz-box {
+    .box {
       background: white;
       padding: 25px;
       border-radius: 15px;
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     }
 
+    #setup h2,
+    #result h2 {
+      text-align: center;
+      color: #123c88;
+    }
+
+    .select-label {
+      display: block;
+      font-weight: bold;
+      margin: 18px 0 8px;
+    }
+
+    select {
+      width: 100%;
+      padding: 13px;
+      border: 2px solid #bfdbfe;
+      border-radius: 8px;
+      font-size: 16px;
+      background: white;
+    }
+
+    #startBtn,
+    #nextBtn,
+    #restartBtn {
+      background: #123c88;
+      color: white;
+      border: none;
+      padding: 13px 25px;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+
+    #startBtn {
+      width: 100%;
+    }
+
+    #startBtn:hover,
+    #nextBtn:hover,
+    #restartBtn:hover {
+      background: #1e40af;
+    }
+
     #progress {
       font-weight: bold;
       color: #123c88;
       margin-bottom: 8px;
+    }
+
+    #quizInfo {
+      color: #64748b;
+      font-weight: bold;
+      margin-bottom: 12px;
     }
 
     #liveScore {
@@ -109,35 +159,18 @@
       color: #991b1b;
     }
 
-    #nextBtn,
-    #restartBtn {
-      background: #123c88;
-      color: white;
-      border: none;
-      padding: 13px 25px;
-      border-radius: 8px;
-      font-size: 16px;
-      cursor: pointer;
-      margin-top: 15px;
-    }
-
-    #nextBtn:hover,
-    #restartBtn:hover {
-      background: #1e40af;
-    }
-
     #nextBtn:disabled {
       background: #94a3b8;
       cursor: not-allowed;
     }
 
+    #quizBox,
     #result {
       display: none;
-      text-align: center;
     }
 
-    #result h2 {
-      color: #123c88;
+    #result {
+      text-align: center;
     }
 
     #score {
@@ -164,7 +197,7 @@
         padding: 12px;
       }
 
-      .quiz-box {
+      .box {
         padding: 18px;
       }
 
@@ -185,18 +218,111 @@
 
     <h1>🧠 Study Question Hub Quiz</h1>
 
-    <p>
-      Learn • Practice • Improve
-    </p>
+    <p>Learn • Practice • Improve</p>
 
   </header>
 
 
   <div class="container">
 
-    <!-- QUIZ -->
 
-    <div class="quiz-box" id="quizBox">
+    <!-- =========================
+         QUIZ SETUP
+         ========================= -->
+
+    <div class="box" id="setup">
+
+      <h2>📚 Choose Your Quiz</h2>
+
+
+      <label class="select-label">
+        Select Class
+      </label>
+
+      <select id="classSelect">
+
+        <option value="9">
+          Class 9
+        </option>
+
+        <option value="10">
+          Class 10
+        </option>
+
+        <option value="11">
+          Class 11
+        </option>
+
+        <option value="12">
+          Class 12
+        </option>
+
+      </select>
+
+
+      <label class="select-label">
+        Select Subject
+      </label>
+
+      <select id="subjectSelect">
+
+        <option value="Science">
+          Science
+        </option>
+
+        <option value="Mathematics">
+          Mathematics
+        </option>
+
+        <option value="English">
+          English
+        </option>
+
+        <option value="Social Science">
+          Social Science
+        </option>
+
+      </select>
+
+
+      <label class="select-label">
+        Select Difficulty
+      </label>
+
+      <select id="difficultySelect">
+
+        <option value="Easy">
+          🟢 Easy
+        </option>
+
+        <option value="Medium">
+          🟡 Medium
+        </option>
+
+        <option value="Hard">
+          🔴 Hard
+        </option>
+
+      </select>
+
+
+      <button id="startBtn"
+        onclick="startQuiz()">
+
+        🚀 Start Quiz
+
+      </button>
+
+    </div>
+
+
+    <!-- =========================
+         QUIZ BOX
+         ========================= -->
+
+    <div class="box" id="quizBox">
+
+      <div id="quizInfo"></div>
 
       <div id="progress"></div>
 
@@ -205,9 +331,11 @@
       </div>
 
       <div id="timer">
+
         ⏱️ Time Left:
         <span id="time">60</span>
         seconds
+
       </div>
 
       <div id="question"></div>
@@ -217,25 +345,29 @@
       <button id="nextBtn"
         onclick="nextQuestion()"
         disabled>
+
         Next →
+
       </button>
 
     </div>
 
 
-    <!-- RESULT -->
+    <!-- =========================
+         RESULT
+         ========================= -->
 
-    <div class="quiz-box" id="result">
+    <div class="box" id="result">
 
-      <h2>
-        🎉 Quiz Completed!
-      </h2>
+      <h2>🎉 Quiz Completed!</h2>
 
       <p id="score"></p>
 
       <button id="restartBtn"
-        onclick="restartQuiz()">
+        onclick="newQuiz()">
+
         🔄 New Quiz
+
       </button>
 
     </div>
@@ -243,7 +375,9 @@
 
     <a class="back"
       href="index.html">
+
       ← Back to Home
+
     </a>
 
   </div>
@@ -252,348 +386,443 @@
   <script>
 
 
-    /* =====================================
+    /* =========================================
        QUESTION BANK
-       ===================================== */
+       ========================================= */
 
-    const questions = [
+    const questionBank = [
+
+
+      /* =========================
+         CLASS 9 SCIENCE
+         ========================= */
+
 
       {
-        question: "What is the SI unit of force?",
+        className: "9",
+        subject: "Science",
+        difficulty: "Easy",
+
+        question:
+          "What is the SI unit of force?",
+
         options: [
           "Joule",
           "Newton",
           "Watt",
           "Pascal"
         ],
+
         answer: "Newton"
       },
 
-      {
-        question: "What is √81?",
-        options: [
-          "7",
-          "8",
-          "9",
-          "10"
-        ],
-        answer: "9"
-      },
 
       {
-        question: "What is the chemical formula of water?",
+        className: "9",
+        subject: "Science",
+        difficulty: "Easy",
+
+        question:
+          "What is the chemical formula of water?",
+
         options: [
           "CO₂",
           "H₂O",
           "O₂",
           "H₂"
         ],
+
         answer: "H₂O"
       },
 
-      {
-        question: "How many sides does a triangle have?",
-        options: [
-          "2",
-          "3",
-          "4",
-          "5"
-        ],
-        answer: "3"
-      },
 
       {
-        question: "What is the SI unit of momentum?",
-        options: [
-          "kg m/s",
-          "Newton",
-          "Joule",
-          "Watt"
-        ],
-        answer: "kg m/s"
-      },
+        className: "9",
+        subject: "Science",
+        difficulty: "Easy",
 
-      {
-        question: "What is 15% of 200?",
-        options: [
-          "20",
-          "25",
-          "30",
-          "35"
-        ],
-        answer: "30"
-      },
+        question:
+          "Which organelle is called the powerhouse of the cell?",
 
-      {
-        question: "Which organelle is called the powerhouse of the cell?",
         options: [
           "Nucleus",
           "Ribosome",
           "Mitochondria",
           "Vacuole"
         ],
+
         answer: "Mitochondria"
       },
 
-      {
-        question: "What is the value of 5²?",
-        options: [
-          "10",
-          "15",
-          "20",
-          "25"
-        ],
-        answer: "25"
-      },
 
       {
-        question: "What is the acceleration due to gravity on Earth approximately?",
+        className: "9",
+        subject: "Science",
+        difficulty: "Medium",
+
+        question:
+          "What is the SI unit of momentum?",
+
+        options: [
+          "kg m/s",
+          "Newton",
+          "Joule",
+          "Watt"
+        ],
+
+        answer: "kg m/s"
+      },
+
+
+      {
+        className: "9",
+        subject: "Science",
+        difficulty: "Medium",
+
+        question:
+          "Which gas is required for photosynthesis?",
+
+        options: [
+          "Oxygen",
+          "Nitrogen",
+          "Carbon dioxide",
+          "Hydrogen"
+        ],
+
+        answer: "Carbon dioxide"
+      },
+
+
+      {
+        className: "9",
+        subject: "Science",
+        difficulty: "Medium",
+
+        question:
+          "What is the acceleration due to gravity on Earth approximately?",
+
         options: [
           "5.8 m/s²",
           "9.8 m/s²",
           "15 m/s²",
           "20 m/s²"
         ],
+
         answer: "9.8 m/s²"
       },
 
-      {
-        question: "Which gas is required for photosynthesis?",
-        options: [
-          "Oxygen",
-          "Nitrogen",
-          "Carbon dioxide",
-          "Hydrogen"
-        ],
-        answer: "Carbon dioxide"
-      },
 
       {
-        question: "What is the square of 12?",
+        className: "9",
+        subject: "Science",
+        difficulty: "Hard",
+
+        question:
+          "A body of mass 5 kg is moving with an acceleration of 2 m/s². What force acts on it?",
+
         options: [
-          "124",
-          "144",
-          "154",
-          "164"
+          "2 N",
+          "5 N",
+          "10 N",
+          "20 N"
         ],
-        answer: "144"
+
+        answer: "10 N"
       },
 
-      {
-        question: "What is the SI unit of work?",
-        options: [
-          "Newton",
-          "Joule",
-          "Watt",
-          "Pascal"
-        ],
-        answer: "Joule"
-      },
 
       {
-        question: "How many bones are there approximately in an adult human body?",
+        className: "9",
+        subject: "Science",
+        difficulty: "Hard",
+
+        question:
+          "Why does a passenger fall forward when a moving bus suddenly stops?",
+
         options: [
-          "106",
-          "206",
-          "306",
-          "406"
+          "Due to gravity",
+          "Due to inertia of motion",
+          "Due to friction",
+          "Due to pressure"
+
         ],
-        answer: "206"
+
+        answer: "Due to inertia of motion"
       },
 
-      {
-        question: "What is the chemical symbol of sodium?",
-        options: [
-          "So",
-          "S",
-          "Na",
-          "N"
-        ],
-        answer: "Na"
-      },
+
+      /* =========================
+         CLASS 9 MATHEMATICS
+         ========================= */
+
 
       {
-        question: "What is 25% of 400?",
-        options: [
-          "50",
-          "75",
-          "100",
-          "125"
-        ],
-        answer: "100"
-      },
+        className: "9",
+        subject: "Mathematics",
+        difficulty: "Easy",
 
-      {
-        question: "Which planet is known as the Red Planet?",
-        options: [
-          "Earth",
-          "Mars",
-          "Jupiter",
-          "Venus"
-        ],
-        answer: "Mars"
-      },
+        question:
+          "What is √81?",
 
-      {
-        question: "What is the SI unit of power?",
         options: [
-          "Joule",
-          "Newton",
-          "Watt",
-          "Pascal"
-        ],
-        answer: "Watt"
-      },
-
-      {
-        question: "What is the value of 3³?",
-        options: [
+          "7",
+          "8",
           "9",
-          "18",
-          "27",
-          "36"
+          "10"
         ],
-        answer: "27"
+
+        answer: "9"
       },
 
+
       {
-        question: "Which part of the plant carries water from roots to leaves?",
+        className: "9",
+        subject: "Mathematics",
+        difficulty: "Easy",
+
+        question:
+          "What is the value of 5²?",
+
         options: [
-          "Phloem",
-          "Xylem",
-          "Stomata",
-          "Root hair"
+          "10",
+          "15",
+          "20",
+          "25"
         ],
-        answer: "Xylem"
+
+        answer: "25"
       },
 
+
       {
-        question: "What is the boiling point of water at normal atmospheric pressure?",
+        className: "9",
+        subject: "Mathematics",
+        difficulty: "Medium",
+
+        question:
+          "What is 15% of 200?",
+
         options: [
-          "50°C",
-          "75°C",
-          "100°C",
-          "150°C"
+          "20",
+          "25",
+          "30",
+          "35"
         ],
-        answer: "100°C"
+
+        answer: "30"
       },
 
-      {
-        question: "What is the value of 7 × 8?",
-        options: [
-          "48",
-          "54",
-          "56",
-          "64"
-        ],
-        answer: "56"
-      },
 
       {
-        question: "Which gas is most abundant in Earth's atmosphere?",
-        options: [
-          "Oxygen",
-          "Nitrogen",
-          "Carbon dioxide",
-          "Hydrogen"
-        ],
-        answer: "Nitrogen"
-      },
+        className: "9",
+        subject: "Mathematics",
+        difficulty: "Medium",
 
-      {
-        question: "What is the HCF of 12 and 18?",
+        question:
+          "What is the HCF of 12 and 18?",
+
         options: [
           "2",
           "3",
           "6",
           "9"
         ],
+
         answer: "6"
       },
 
-      {
-        question: "What is the perimeter of a square with side 5 cm?",
-        options: [
-          "10 cm",
-          "15 cm",
-          "20 cm",
-          "25 cm"
-        ],
-        answer: "20 cm"
-      },
 
       {
-        question: "Which organ pumps blood throughout the human body?",
+        className: "9",
+        subject: "Mathematics",
+        difficulty: "Hard",
+
+        question:
+          "If x + 7 = 15, what is the value of x?",
+
         options: [
-          "Lungs",
-          "Brain",
-          "Heart",
-          "Kidney"
+          "6",
+          "7",
+          "8",
+          "9"
         ],
-        answer: "Heart"
+
+        answer: "8"
       },
 
+
       {
-        question: "What is the chemical formula of carbon dioxide?",
+        className: "9",
+        subject: "Mathematics",
+        difficulty: "Hard",
+
+        question:
+          "What is the area of a square whose side is 12 cm?",
+
+        options: [
+          "24 cm²",
+          "48 cm²",
+          "144 cm²",
+          "120 cm²"
+        ],
+
+        answer: "144 cm²"
+      },
+
+
+      /* =========================
+         CLASS 10 SCIENCE
+         ========================= */
+
+
+      {
+        className: "10",
+        subject: "Science",
+        difficulty: "Easy",
+
+        question:
+          "What is the chemical formula of carbon dioxide?",
+
         options: [
           "CO",
           "CO₂",
           "C₂O",
           "C₂O₂"
         ],
+
         answer: "CO₂"
       },
 
-      {
-        question: "What is 2⁵?",
-        options: [
-          "16",
-          "24",
-          "32",
-          "64"
-        ],
-        answer: "32"
-      },
 
       {
-        question: "Which instrument is used to measure temperature?",
+        className: "10",
+        subject: "Science",
+        difficulty: "Medium",
+
+        question:
+          "Which gas is most abundant in Earth's atmosphere?",
+
         options: [
-          "Barometer",
-          "Thermometer",
-          "Ammeter",
-          "Speedometer"
+          "Oxygen",
+          "Nitrogen",
+          "Carbon dioxide",
+          "Hydrogen"
         ],
-        answer: "Thermometer"
+
+        answer: "Nitrogen"
       },
 
-      {
-        question: "What is the area of a square with side 6 cm?",
-        options: [
-          "12 cm²",
-          "24 cm²",
-          "36 cm²",
-          "42 cm²"
-        ],
-        answer: "36 cm²"
-      },
 
       {
-        question: "Which blood cells help fight infections?",
+        className: "10",
+        subject: "Science",
+        difficulty: "Hard",
+
+        question:
+          "Which law explains the conservation of mass during a chemical reaction?",
+
         options: [
-          "Red blood cells",
-          "White blood cells",
-          "Platelets",
-          "Plasma"
+          "Law of constant proportions",
+          "Law of conservation of mass",
+          "Newton's law",
+          "Ohm's law"
         ],
-        answer: "White blood cells"
+
+        answer: "Law of conservation of mass"
+      },
+
+
+      /* =========================
+         CLASS 11 SCIENCE
+         ========================= */
+
+
+      {
+        className: "11",
+        subject: "Science",
+        difficulty: "Easy",
+
+        question:
+          "What is Newton's second law of motion?",
+
+        options: [
+          "F = ma",
+          "F = m/a",
+          "F = a/m",
+          "F = mv"
+        ],
+
+        answer: "F = ma"
+      },
+
+
+      {
+        className: "11",
+        subject: "Science",
+        difficulty: "Medium",
+
+        question:
+          "What is the SI unit of energy?",
+
+        options: [
+          "Watt",
+          "Newton",
+          "Joule",
+          "Pascal"
+        ],
+
+        answer: "Joule"
+      },
+
+
+      /* =========================
+         CLASS 12 SCIENCE
+         ========================= */
+
+
+      {
+        className: "12",
+        subject: "Science",
+        difficulty: "Easy",
+
+        question:
+          "What is the SI unit of electric charge?",
+
+        options: [
+          "Ampere",
+          "Volt",
+          "Coulomb",
+          "Ohm"
+        ],
+
+        answer: "Coulomb"
+      },
+
+
+      {
+        className: "12",
+        subject: "Science",
+        difficulty: "Medium",
+
+        question:
+          "What is the SI unit of electric current?",
+
+        options: [
+          "Volt",
+          "Ampere",
+          "Ohm",
+          "Coulomb"
+        ],
+
+        answer: "Ampere"
       }
 
     ];
 
 
-    /* =====================================
+    /* =========================================
        SETTINGS
-       ===================================== */
+       ========================================= */
 
     const QUESTIONS_PER_QUIZ = 10;
 
@@ -604,7 +833,7 @@
 
     let currentQuestion = 0;
 
-    let score = 0;
+    let scoreValue = 0;
 
     let answered = false;
 
@@ -613,37 +842,82 @@
     let timerInterval;
 
 
-    /* =====================================
-       CREATE NEW QUIZ
-       ===================================== */
+    /* =========================================
+       START QUIZ
+       ========================================= */
 
-    function createNewQuiz() {
+    function startQuiz() {
 
-      clearInterval(timerInterval);
+      const selectedClass =
+        document.getElementById(
+          "classSelect"
+        ).value;
 
-      let shuffledQuestions =
-        [...questions];
+
+      const selectedSubject =
+        document.getElementById(
+          "subjectSelect"
+        ).value;
 
 
-      shuffledQuestions.sort(
+      const selectedDifficulty =
+        document.getElementById(
+          "difficultySelect"
+        ).value;
+
+
+      let filteredQuestions =
+        questionBank.filter(
+          function(q) {
+
+            return (
+              q.className === selectedClass &&
+              q.subject === selectedSubject &&
+              q.difficulty === selectedDifficulty
+            );
+
+          }
+        );
+
+
+      if (filteredQuestions.length === 0) {
+
+        alert(
+          "Questions for this Class, Subject and Difficulty will be added soon."
+        );
+
+        return;
+
+      }
+
+
+      filteredQuestions.sort(
         () => Math.random() - 0.5
       );
 
 
       quizQuestions =
-        shuffledQuestions.slice(
+        filteredQuestions.slice(
           0,
-          QUESTIONS_PER_QUIZ
+          Math.min(
+            QUESTIONS_PER_QUIZ,
+            filteredQuestions.length
+          )
         );
 
 
       currentQuestion = 0;
 
-      score = 0;
+      scoreValue = 0;
 
       answered = false;
 
       timeLeft = QUIZ_TIME;
+
+
+      document.getElementById(
+        "setup"
+      ).style.display = "none";
 
 
       document.getElementById(
@@ -654,6 +928,18 @@
       document.getElementById(
         "result"
       ).style.display = "none";
+
+
+      document.getElementById(
+        "quizInfo"
+      ).innerText =
+
+        "Class " +
+        selectedClass +
+        " • " +
+        selectedSubject +
+        " • " +
+        selectedDifficulty;
 
 
       document.getElementById(
@@ -668,9 +954,9 @@
     }
 
 
-    /* =====================================
+    /* =========================================
        TIMER
-       ===================================== */
+       ========================================= */
 
     function startTimer() {
 
@@ -685,7 +971,8 @@
 
           document.getElementById(
             "time"
-          ).innerText = timeLeft;
+          ).innerText =
+            timeLeft;
 
 
           if (timeLeft <= 0) {
@@ -703,9 +990,9 @@
     }
 
 
-    /* =====================================
+    /* =========================================
        LOAD QUESTION
-       ===================================== */
+       ========================================= */
 
     function loadQuestion() {
 
@@ -713,7 +1000,9 @@
 
 
       const q =
-        quizQuestions[currentQuestion];
+        quizQuestions[
+          currentQuestion
+        ];
 
 
       document.getElementById(
@@ -731,7 +1020,7 @@
       ).innerText =
 
         "Score: " +
-        score +
+        scoreValue +
         " / " +
         currentQuestion;
 
@@ -759,7 +1048,6 @@
       q.options.forEach(
         function(option) {
 
-
           const button =
             document.createElement(
               "button"
@@ -768,10 +1056,8 @@
 
           button.type = "button";
 
-
           button.innerText =
             option;
-
 
           button.className =
             "option";
@@ -798,15 +1084,14 @@
     }
 
 
-    /* =====================================
+    /* =========================================
        CHECK ANSWER
-       ===================================== */
+       ========================================= */
 
     function checkAnswer(
       button,
       selectedAnswer
     ) {
-
 
       if (answered) {
         return;
@@ -830,7 +1115,6 @@
 
       allOptions.forEach(
         function(optionButton) {
-
 
           if (
             optionButton.innerText ===
@@ -856,7 +1140,7 @@
           "correct"
         );
 
-        score++;
+        scoreValue++;
 
       } else {
 
@@ -872,7 +1156,7 @@
       ).innerText =
 
         "Score: " +
-        score +
+        scoreValue +
         " / " +
         (currentQuestion + 1);
 
@@ -884,12 +1168,11 @@
     }
 
 
-    /* =====================================
+    /* =========================================
        NEXT QUESTION
-       ===================================== */
+       ========================================= */
 
     function nextQuestion() {
-
 
       if (!answered) {
         return;
@@ -915,9 +1198,9 @@
     }
 
 
-    /* =====================================
-       FINAL RESULT
-       ===================================== */
+    /* =========================================
+       RESULT
+       ========================================= */
 
     function showResult() {
 
@@ -936,9 +1219,10 @@
 
       const percentage =
         Math.round(
-          (score /
-            quizQuestions.length) *
-          100
+          (
+            scoreValue /
+            quizQuestions.length
+          ) * 100
         );
 
 
@@ -971,9 +1255,10 @@
         ) || 0;
 
 
-      if (score > highScore) {
+      if (scoreValue > highScore) {
 
-        highScore = score;
+        highScore =
+          scoreValue;
 
 
         localStorage.setItem(
@@ -989,7 +1274,7 @@
       ).innerHTML =
 
         "Your Score: " +
-        score +
+        scoreValue +
         " / " +
         quizQuestions.length +
 
@@ -1013,22 +1298,30 @@
     }
 
 
-    /* =====================================
+    /* =========================================
        NEW QUIZ
-       ===================================== */
+       ========================================= */
 
-    function restartQuiz() {
+    function newQuiz() {
 
-      createNewQuiz();
+      clearInterval(timerInterval);
+
+
+      document.getElementById(
+        "result"
+      ).style.display = "none";
+
+
+      document.getElementById(
+        "quizBox"
+      ).style.display = "none";
+
+
+      document.getElementById(
+        "setup"
+      ).style.display = "block";
 
     }
-
-
-    /* =====================================
-       START FIRST QUIZ
-       ===================================== */
-
-    createNewQuiz();
 
   </script>
 
