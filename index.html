@@ -3,12 +3,13 @@
 
 <head>
   <meta charset="UTF-8">
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Study Question Hub - Class 9 to 12 Questions</title>
+  <title>Study Question Hub - Class 9 to 12 Questions & Quiz</title>
 
   <meta name="description"
-        content="Study Question Hub provides useful Class 9, 10, 11 and 12 Science questions, study materials and chapter-wise practice for students.">
+        content="Study Question Hub provides Class 9, 10, 11 and 12 questions, study material and interactive quizzes for students.">
 
   <meta name="google-site-verification"
         content="mMHiYvYvxlZlBrQwq23YILaAbr515k4HBrYhXa9C_ik">
@@ -29,7 +30,6 @@
       font-family: Arial, sans-serif;
       background: #f4f8ff;
       color: #222;
-      transition: 0.3s;
     }
 
     /* NAVBAR */
@@ -62,26 +62,12 @@
       text-decoration: underline;
     }
 
-    /* DARK MODE BUTTON */
-
-    #darkModeBtn {
-      margin-left: 15px;
-      padding: 9px 14px;
-      border: none;
-      border-radius: 8px;
-      background: white;
-      color: #123c88;
-      cursor: pointer;
-      font-weight: bold;
-    }
-
     /* HERO */
 
     .hero {
       text-align: center;
       padding: 70px 20px;
       background: linear-gradient(135deg, #dceeff, #ffffff);
-      transition: 0.3s;
     }
 
     .hero h1 {
@@ -125,7 +111,7 @@
     }
 
     .search-box button:hover {
-      background: #0b2c68;
+      background: #1e40af;
     }
 
     /* SECTION */
@@ -170,6 +156,7 @@
     .card p {
       color: #666;
       margin-bottom: 15px;
+      line-height: 1.5;
     }
 
     .card a {
@@ -182,7 +169,41 @@
     }
 
     .card a:hover {
-      background: #0b2c68;
+      background: #1e40af;
+    }
+
+    /* QUIZ CARD */
+
+    .quiz-card {
+      background: linear-gradient(135deg, #123c88, #2563eb);
+      color: white;
+      padding: 30px;
+      border-radius: 15px;
+      text-align: center;
+      box-shadow: 0 5px 18px rgba(0,0,0,0.15);
+    }
+
+    .quiz-card h3 {
+      font-size: 25px;
+      margin-bottom: 12px;
+    }
+
+    .quiz-card p {
+      margin-bottom: 20px;
+    }
+
+    .quiz-button {
+      display: inline-block;
+      background: white;
+      color: #123c88;
+      padding: 12px 25px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .quiz-button:hover {
+      background: #e0f2fe;
     }
 
     /* SUBJECTS */
@@ -200,7 +221,11 @@
       margin-bottom: 8px;
     }
 
-    /* QUESTIONS */
+    .subject p {
+      color: #666;
+    }
+
+    /* POPULAR QUESTIONS */
 
     .questions {
       max-width: 800px;
@@ -214,11 +239,6 @@
       border-left: 5px solid #123c88;
       border-radius: 8px;
       text-align: left;
-      transition: 0.3s;
-    }
-
-    .question:hover {
-      transform: translateX(5px);
     }
 
     /* ABOUT */
@@ -245,77 +265,6 @@
       margin: 8px;
     }
 
-    /* BACK TO TOP */
-
-    #topBtn {
-      display: none;
-      position: fixed;
-      bottom: 25px;
-      right: 25px;
-      z-index: 99;
-      border: none;
-      background: #123c88;
-      color: white;
-      padding: 13px 16px;
-      border-radius: 50%;
-      cursor: pointer;
-      font-size: 18px;
-    }
-
-    #topBtn:hover {
-      background: #0b2c68;
-    }
-
-    /* DARK MODE */
-
-    body.dark {
-      background: #111827;
-      color: #f9fafb;
-    }
-
-    body.dark .hero {
-      background: linear-gradient(135deg, #1f2937, #111827);
-    }
-
-    body.dark .hero h1 {
-      color: #60a5fa;
-    }
-
-    body.dark .hero p {
-      color: #d1d5db;
-    }
-
-    body.dark .section-title {
-      color: #60a5fa;
-    }
-
-    body.dark .card,
-    body.dark .subject,
-    body.dark .question {
-      background: #1f2937;
-      color: #f9fafb;
-    }
-
-    body.dark .card h3,
-    body.dark .subject h3 {
-      color: #60a5fa;
-    }
-
-    body.dark .card p,
-    body.dark .about {
-      color: #d1d5db;
-    }
-
-    body.dark .search-box input {
-      background: #1f2937;
-      color: white;
-      border-color: #60a5fa;
-    }
-
-    body.dark .search-box input::placeholder {
-      color: #d1d5db;
-    }
-
     /* MOBILE */
 
     @media (max-width: 600px) {
@@ -327,10 +276,6 @@
 
       nav a {
         margin: 5px;
-      }
-
-      #darkModeBtn {
-        margin-left: 5px;
       }
 
       .hero h1 {
@@ -353,16 +298,14 @@
         padding: 40px 5%;
       }
 
-      .section-title {
-        font-size: 27px;
-      }
     }
 
   </style>
+
 </head>
 
-
 <body>
+
 
   <!-- NAVIGATION -->
 
@@ -378,13 +321,11 @@
 
       <a href="#classes">Classes</a>
 
+      <a href="#quiz">Quiz</a>
+
       <a href="#subjects">Subjects</a>
 
       <a href="#about">About</a>
-
-      <button id="darkModeBtn" onclick="toggleDarkMode()">
-        🌙 Dark
-      </button>
 
     </div>
 
@@ -408,11 +349,11 @@
       <input
         type="text"
         id="searchInput"
-        placeholder="🔎 Search popular questions..."
+        placeholder="🔎 Search questions..."
         onkeyup="searchQuestions()">
 
       <button onclick="searchQuestions()">
-        🔎 Search
+        Search
       </button>
 
     </div>
@@ -429,6 +370,7 @@
     </h2>
 
     <div class="cards">
+
 
       <div class="card">
 
@@ -465,7 +407,7 @@
         <h3>Class 11 Science</h3>
 
         <p>
-          Science questions and study resources for Class 11.
+          Physics, Chemistry and Biology questions.
         </p>
 
         <a href="class11.html">
@@ -480,7 +422,7 @@
         <h3>Class 12 Science</h3>
 
         <p>
-          Important Science questions for Class 12 students.
+          Important Science questions for Class 12.
         </p>
 
         <a href="class12.html">
@@ -488,6 +430,36 @@
         </a>
 
       </div>
+
+
+    </div>
+
+  </section>
+
+
+  <!-- QUIZ -->
+
+  <section id="quiz">
+
+    <h2 class="section-title">
+      🧠 Interactive Quiz
+    </h2>
+
+    <div class="quiz-card">
+
+      <h3>
+        Test Your Knowledge!
+      </h3>
+
+      <p>
+        Answer MCQ questions and check your score instantly.
+      </p>
+
+      <a
+        href="quiz.html"
+        class="quiz-button">
+        🚀 Start Quiz
+      </a>
 
     </div>
 
@@ -503,6 +475,7 @@
     </h2>
 
     <div class="cards">
+
 
       <div class="subject">
 
@@ -547,6 +520,7 @@
 
       </div>
 
+
     </div>
 
   </section>
@@ -561,6 +535,7 @@
     </h2>
 
     <div class="questions">
+
 
       <div class="question">
 
@@ -598,23 +573,6 @@
       </div>
 
 
-      <div class="question">
-
-        <b>Class 12 Physics:</b>
-
-        What is the principle of electromagnetic induction?
-
-      </div>
-
-
-      <div class="question">
-
-        <b>Class 12 Chemistry:</b>
-
-        What is the difference between an aldehyde and a ketone?
-
-      </div>
-
     </div>
 
   </section>
@@ -631,16 +589,20 @@
     <div class="about">
 
       <p>
+
         Study Question Hub is an educational website designed
         to help students find useful questions, practice material
         and study resources for different classes.
+
       </p>
 
       <br>
 
       <p>
+
         Our goal is to make studying easier, simpler and more
         accessible for students.
+
       </p>
 
     </div>
@@ -667,24 +629,14 @@
   </footer>
 
 
-  <!-- BACK TO TOP -->
-
-  <button id="topBtn" onclick="goTop()">
-    ↑
-  </button>
-
-
-  <!-- JAVASCRIPT -->
+  <!-- SEARCH JAVASCRIPT -->
 
   <script>
-
-    /* SEARCH */
 
     function searchQuestions() {
 
       let input =
-        document
-        .getElementById("searchInput")
+        document.getElementById("searchInput")
         .value
         .toLowerCase();
 
@@ -710,82 +662,8 @@
 
     }
 
-
-    /* DARK MODE */
-
-    function toggleDarkMode() {
-
-      document.body.classList.toggle("dark");
-
-      let button =
-        document.getElementById("darkModeBtn");
-
-      if (document.body.classList.contains("dark")) {
-
-        button.innerHTML = "☀️ Light";
-
-        localStorage.setItem("darkMode", "enabled");
-
-      } else {
-
-        button.innerHTML = "🌙 Dark";
-
-        localStorage.setItem("darkMode", "disabled");
-
-      }
-
-    }
-
-
-    /* REMEMBER DARK MODE */
-
-    window.onload = function() {
-
-      if (localStorage.getItem("darkMode") === "enabled") {
-
-        document.body.classList.add("dark");
-
-        document.getElementById("darkModeBtn").innerHTML =
-          "☀️ Light";
-
-      }
-
-    };
-
-
-    /* BACK TO TOP */
-
-    window.onscroll = function() {
-
-      let button =
-        document.getElementById("topBtn");
-
-      if (
-        document.body.scrollTop > 300 ||
-        document.documentElement.scrollTop > 300
-      ) {
-
-        button.style.display = "block";
-
-      } else {
-
-        button.style.display = "none";
-
-      }
-
-    };
-
-
-    function goTop() {
-
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-      });
-
-    }
-
   </script>
+
 
 </body>
 
