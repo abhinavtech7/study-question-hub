@@ -1,108 +1,803 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-  <title>Class 11 Science Questions</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Class 11 Science Questions | Study Question Hub</title>
+
+  <meta name="description"
+    content="Practice Class 11 Science Physics, Chemistry and Biology questions with Study Question Hub.">
 
   <style>
-    body { background-color: lightblue; font-family: Arial; padding: 30px; }
-    h1 { color: blue; text-align: center; }
-    h2 { color: #003399; margin-top: 35px; }
-    .summary { background: rgba(255,255,255,0.7); padding: 10px 15px; border-radius: 8px; margin-bottom: 20px; font-weight: bold; }
-    .question { background: white; padding: 15px; margin: 12px 0; border-radius: 8px; }
-    a { color: blue; font-size: 18px; }
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: #eef6ff;
+      font-family: Arial, sans-serif;
+      color: #172554;
+    }
+
+    header {
+      background: linear-gradient(135deg, #1d4ed8, #2563eb);
+      color: white;
+      text-align: center;
+      padding: 30px 15px;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 32px;
+    }
+
+    header p {
+      margin: 10px 0 0;
+      font-size: 17px;
+    }
+
+    .container {
+      max-width: 1050px;
+      margin: 25px auto;
+      padding: 0 15px;
+    }
+
+    .controls {
+      background: white;
+      padding: 20px;
+      border-radius: 14px;
+      box-shadow: 0 3px 12px rgba(0,0,0,0.10);
+      margin-bottom: 25px;
+    }
+
+    #search {
+      width: 100%;
+      padding: 14px;
+      border: 2px solid #93c5fd;
+      border-radius: 9px;
+      font-size: 16px;
+      outline: none;
+    }
+
+    #search:focus {
+      border-color: #2563eb;
+    }
+
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 15px;
+    }
+
+    button {
+      border: none;
+      padding: 11px 17px;
+      border-radius: 8px;
+      background: #2563eb;
+      color: white;
+      cursor: pointer;
+      font-size: 15px;
+    }
+
+    button:hover {
+      background: #1e40af;
+    }
+
+    .subject {
+      background: #059669;
+    }
+
+    .subject:hover {
+      background: #047857;
+    }
+
+    .difficulty {
+      background: #7c3aed;
+    }
+
+    .difficulty:hover {
+      background: #5b21b6;
+    }
+
+    #count {
+      margin-top: 15px;
+      font-weight: bold;
+      color: #1e3a8a;
+    }
+
+    .chapter {
+      margin-top: 30px;
+    }
+
+    .chapter-title {
+      background: #172554;
+      color: white;
+      padding: 14px 18px;
+      border-radius: 10px;
+      font-size: 22px;
+    }
+
+    .question {
+      background: white;
+      padding: 18px;
+      margin: 12px 0;
+      border-radius: 10px;
+      border-left: 5px solid #2563eb;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+
+    .question-number {
+      color: #1d4ed8;
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+
+    .level {
+      display: inline-block;
+      margin-top: 12px;
+      padding: 5px 10px;
+      border-radius: 6px;
+      font-size: 13px;
+      font-weight: bold;
+    }
+
+    .Easy {
+      background: #dcfce7;
+      color: #166534;
+    }
+
+    .Medium {
+      background: #fef3c7;
+      color: #92400e;
+    }
+
+    .Hard {
+      background: #fee2e2;
+      color: #991b1b;
+    }
+
+    #noResult {
+      display: none;
+      background: white;
+      padding: 25px;
+      text-align: center;
+      border-radius: 10px;
+      color: #dc2626;
+      font-weight: bold;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 30px 0;
+    }
+
+    .nav-button {
+      background: #1d4ed8;
+      color: white;
+      padding: 12px 18px;
+      border-radius: 8px;
+      text-decoration: none;
+    }
+
+    .nav-button:hover {
+      background: #1e40af;
+    }
+
+    footer {
+      background: #172554;
+      color: white;
+      text-align: center;
+      padding: 25px;
+      margin-top: 30px;
+    }
+
+    @media (max-width: 600px) {
+
+      header h1 {
+        font-size: 25px;
+      }
+
+      .chapter-title {
+        font-size: 19px;
+      }
+
+      button {
+        width: 100%;
+      }
+
+      .question {
+        font-size: 15px;
+      }
+
+      .navigation a {
+        width: 100%;
+        text-align: center;
+      }
+    }
   </style>
 </head>
 
 <body>
-  <h1>Class 11 Science – Questions</h1>
-  <div id="questions"></div>
 
-  <br>
-  <a href="index.html">← Back to Home</a>
+  <header>
+    <h1>🧪 Class 11 Science</h1>
+    <p>Physics • Chemistry • Biology | Study Question Hub</p>
+  </header>
+
+  <div class="container">
+
+    <div class="controls">
+
+      <input
+        type="text"
+        id="search"
+        placeholder="🔍 Search questions..."
+        onkeyup="displayQuestions()"
+      >
+
+      <div class="buttons">
+
+        <button onclick="setSubject('All')">
+          📚 All Subjects
+        </button>
+
+        <button class="subject" onclick="setSubject('Physics')">
+          ⚡ Physics
+        </button>
+
+        <button class="subject" onclick="setSubject('Chemistry')">
+          🧪 Chemistry
+        </button>
+
+        <button class="subject" onclick="setSubject('Biology')">
+          🧬 Biology
+        </button>
+
+      </div>
+
+      <div class="buttons">
+
+        <button class="difficulty" onclick="setDifficulty('All')">
+          All Levels
+        </button>
+
+        <button class="difficulty" onclick="setDifficulty('Easy')">
+          🟢 Easy
+        </button>
+
+        <button class="difficulty" onclick="setDifficulty('Medium')">
+          🟡 Medium
+        </button>
+
+        <button class="difficulty" onclick="setDifficulty('Hard')">
+          🔴 Hard
+        </button>
+
+      </div>
+
+      <div id="count"></div>
+
+    </div>
+
+    <div id="questions"></div>
+
+    <div id="noResult">
+      ❌ No question found.
+    </div>
+
+    <div class="navigation">
+
+      <a class="nav-button" href="index.html">
+        🏠 Back to Home
+      </a>
+
+      <a class="nav-button" href="#top">
+        ⬆️ Back to Top
+      </a>
+
+    </div>
+
+  </div>
+
+  <footer>
+    © 2026 Study Question Hub | Class 11 Science
+  </footer>
+
 
   <script>
-    const chapters = [
+
+    const questions = [
+
+      /* ================= PHYSICS ================= */
+
       {
-        name: "Physics",
-        questions: [
-          "Define scalar and vector quantities with examples.",
-          "State the SI unit of force.",
-          "A car moves from rest with acceleration 2 m/s² for 10 s. Find its final velocity.",
-          "State Newton's first law of motion.",
-          "State Newton's second law of motion.",
-          "State Newton's third law of motion with an example.",
-          "Find the force required to accelerate a 5 kg object at 3 m/s².",
-          "Define momentum and write its SI unit.",
-          "What is the difference between distance and displacement?",
-          "State the law of conservation of momentum.",
-          "Define work done by a force.",
-          "Find the work done when a force of 10 N moves an object by 5 m.",
-          "Define kinetic energy.",
-          "Find the kinetic energy of a 2 kg body moving at 4 m/s.",
-          "Define potential energy.",
-          "State the law of conservation of energy.",
-          "Define power and write its SI unit."
-        ]
+        subject: "Physics",
+        text: "Define scalar and vector quantities with examples.",
+        level: "Easy"
       },
+
       {
-        name: "Chemistry",
-        questions: [
-          "State the law of conservation of mass.",
-          "State the law of definite proportions.",
-          "Calculate the number of moles in 18 g of water.",
-          "Find the molar mass of carbon dioxide.",
-          "Write the electronic configuration of sodium.",
-          "Write the electronic configuration of chlorine.",
-          "What is an isotope? Give one example.",
-          "What is an isobar? Give one example.",
-          "Define atomic number and mass number.",
-          "State the modern periodic law.",
-          "What is the difference between ionic and covalent bonds?",
-          "Write the chemical formula of calcium chloride.",
-          "Balance the equation: H₂ + O₂ → H₂O.",
-          "Balance the equation: Fe + O₂ → Fe₂O₃.",
-          "What is oxidation?",
-          "What is reduction?",
-          "Define acids, bases and salts with one example each."
-        ]
+        subject: "Physics",
+        text: "State the SI unit of force.",
+        level: "Easy"
       },
+
       {
-        name: "Biology",
-        questions: [
-          "What is the cell theory?",
-          "Name the organelle called the powerhouse of the cell.",
-          "State the function of mitochondria.",
-          "State the function of ribosomes.",
-          "What is the difference between prokaryotic and eukaryotic cells?",
-          "Define osmosis.",
-          "Define diffusion.",
-          "What is photosynthesis? Write its word equation.",
-          "Name the pigment required for photosynthesis.",
-          "What is respiration?",
-          "Write the word equation for aerobic respiration.",
-          "What is the function of red blood cells?",
-          "What is the function of white blood cells?",
-          "What is the function of the human heart?",
-          "What is a neuron?",
-          "What is the difference between xylem and phloem?"
-        ]
+        subject: "Physics",
+        text: "A car starts from rest with acceleration 2 m/s² for 10 s. Find its final velocity.",
+        level: "Medium"
+      },
+
+      {
+        subject: "Physics",
+        text: "State Newton's first law of motion.",
+        level: "Easy"
+      },
+
+      {
+        subject: "Physics",
+        text: "State Newton's second law of motion.",
+        level: "Easy"
+      },
+
+      {
+        subject: "Physics",
+        text: "State Newton's third law of motion with an example.",
+        level: "Medium"
+      },
+
+      {
+        subject: "Physics",
+        text: "Find the force required to accelerate a 5 kg object at 3 m/s².",
+        level: "Easy"
+      },
+
+      {
+        subject: "Physics",
+        text: "Define momentum and write its SI unit.",
+        level: "Easy"
+      },
+
+      {
+        subject: "Physics",
+        text: "Explain the difference between distance and displacement.",
+        level: "Medium"
+      },
+
+      {
+        subject: "Physics",
+        text: "State the law of conservation of momentum.",
+        level: "Medium"
+      },
+
+      {
+        subject: "Physics",
+        text: "Define work done by a force.",
+        level: "Easy"
+      },
+
+      {
+        subject: "Physics",
+        text: "Find the work done when a force of 10 N moves an object through 5 m.",
+        level: "Easy"
+      },
+
+      {
+        subject: "Physics",
+        text: "Define kinetic energy and write its formula.",
+        level: "Easy"
+      },
+
+      {
+        subject: "Physics",
+        text: "Find the kinetic energy of a 2 kg body moving at 4 m/s.",
+        level: "Medium"
+      },
+
+      {
+        subject: "Physics",
+        text: "Define potential energy and write its formula.",
+        level: "Easy"
+      },
+
+      {
+        subject: "Physics",
+        text: "State the law of conservation of energy.",
+        level: "Medium"
+      },
+
+      {
+        subject: "Physics",
+        text: "Define power and write its SI unit.",
+        level: "Easy"
+      },
+
+      {
+        subject: "Physics",
+        text: "A body of mass 10 kg moves with velocity 5 m/s. Calculate its momentum.",
+        level: "Medium"
+      },
+
+      {
+        subject: "Physics",
+        text: "A force of 20 N acts on a body of mass 4 kg. Find its acceleration.",
+        level: "Easy"
+      },
+
+      {
+        subject: "Physics",
+        text: "Explain why a person falls forward when a moving bus suddenly stops.",
+        level: "Hard"
+      },
+
+
+      /* ================= CHEMISTRY ================= */
+
+      {
+        subject: "Chemistry",
+        text: "State the law of conservation of mass.",
+        level: "Easy"
+      },
+
+      {
+        subject: "Chemistry",
+        text: "State the law of definite proportions.",
+        level: "Easy"
+      },
+
+      {
+        subject: "Chemistry",
+        text: "Calculate the number of moles present in 18 g of water.",
+        level: "Medium"
+      },
+
+      {
+        subject: "Chemistry",
+        text: "Find the molar mass of carbon dioxide.",
+        level: "Easy"
+      },
+
+      {
+        subject: "Chemistry",
+        text: "Write the electronic configuration of sodium.",
+        level: "Easy"
+      },
+
+      {
+        subject: "Chemistry",
+        text: "Write the electronic configuration of chlorine.",
+        level: "Easy"
+      },
+
+      {
+        subject: "Chemistry",
+        text: "What is an isotope? Give one example.",
+        level: "Easy"
+      },
+
+      {
+        subject: "Chemistry",
+        text: "What is an isobar? Give one example.",
+        level: "Easy"
+      },
+
+      {
+        subject: "Chemistry",
+        text: "Define atomic number and mass number.",
+        level: "Easy"
+      },
+
+      {
+        subject: "Chemistry",
+        text: "State the modern periodic law.",
+        level: "Medium"
+      },
+
+      {
+        subject: "Chemistry",
+        text: "Explain the difference between ionic and covalent bonds.",
+        level: "Medium"
+      },
+
+      {
+        subject: "Chemistry",
+        text: "Write the chemical formula of calcium chloride.",
+        level: "Easy"
+      },
+
+      {
+        subject: "Chemistry",
+        text: "Balance the equation: H₂ + O₂ → H₂O.",
+        level: "Easy"
+      },
+
+      {
+        subject: "Chemistry",
+        text: "Balance the equation: Fe + O₂ → Fe₂O₃.",
+        level: "Medium"
+      },
+
+      {
+        subject: "Chemistry",
+        text: "What is oxidation?",
+        level: "Easy"
+      },
+
+      {
+        subject: "Chemistry",
+        text: "What is reduction?",
+        level: "Easy"
+      },
+
+      {
+        subject: "Chemistry",
+        text: "Define acids, bases and salts with one example each.",
+        level: "Easy"
+      },
+
+      {
+        subject: "Chemistry",
+        text: "Calculate the number of molecules present in 18 g of water.",
+        level: "Hard"
+      },
+
+      {
+        subject: "Chemistry",
+        text: "Calculate the empirical formula from percentage composition of a compound.",
+        level: "Hard"
+      },
+
+      {
+        subject: "Chemistry",
+        text: "Explain the difference between atomic mass and molecular mass.",
+        level: "Medium"
+      },
+
+
+      /* ================= BIOLOGY ================= */
+
+      {
+        subject: "Biology",
+        text: "What is the cell theory?",
+        level: "Easy"
+      },
+
+      {
+        subject: "Biology",
+        text: "Name the organelle known as the powerhouse of the cell.",
+        level: "Easy"
+      },
+
+      {
+        subject: "Biology",
+        text: "State the function of mitochondria.",
+        level: "Easy"
+      },
+
+      {
+        subject: "Biology",
+        text: "State the function of ribosomes.",
+        level: "Easy"
+      },
+
+      {
+        subject: "Biology",
+        text: "Explain the difference between prokaryotic and eukaryotic cells.",
+        level: "Medium"
+      },
+
+      {
+        subject: "Biology",
+        text: "Define osmosis.",
+        level: "Easy"
+      },
+
+      {
+        subject: "Biology",
+        text: "Define diffusion.",
+        level: "Easy"
+      },
+
+      {
+        subject: "Biology",
+        text: "What is photosynthesis? Write its word equation.",
+        level: "Medium"
+      },
+
+      {
+        subject: "Biology",
+        text: "Name the pigment required for photosynthesis.",
+        level: "Easy"
+      },
+
+      {
+        subject: "Biology",
+        text: "What is respiration?",
+        level: "Easy"
+      },
+
+      {
+        subject: "Biology",
+        text: "Write the word equation for aerobic respiration.",
+        level: "Easy"
+      },
+
+      {
+        subject: "Biology",
+        text: "What is the function of red blood cells?",
+        level: "Easy"
+      },
+
+      {
+        subject: "Biology",
+        text: "What is the function of white blood cells?",
+        level: "Easy"
+      },
+
+      {
+        subject: "Biology",
+        text: "What is the function of the human heart?",
+        level: "Easy"
+      },
+
+      {
+        subject: "Biology",
+        text: "What is a neuron?",
+        level: "Easy"
+      },
+
+      {
+        subject: "Biology",
+        text: "Explain the difference between xylem and phloem.",
+        level: "Medium"
+      },
+
+      {
+        subject: "Biology",
+        text: "Explain the structure and function of the plasma membrane.",
+        level: "Medium"
+      },
+
+      {
+        subject: "Biology",
+        text: "Explain the structure and function of the nucleus.",
+        level: "Medium"
+      },
+
+      {
+        subject: "Biology",
+        text: "Compare plant cells and animal cells.",
+        level: "Hard"
+      },
+
+      {
+        subject: "Biology",
+        text: "Explain the importance of cell division in living organisms.",
+        level: "Hard"
       }
+
     ];
 
-    const totalQuestions = chapters.reduce((total, chapter) => total + chapter.questions.length, 0);
-    let number = 1;
 
-    const questionsContainer = document.getElementById("questions");
-    const output = chapters.map((chapter) => {
-      const questionsHtml = chapter.questions.map((question) => {
-        const currentQuestion = number++;
-        return "<div class='question'><b>Question " + currentQuestion + ":</b> " + question + "</div>";
-      }).join("");
+    let currentSubject = "All";
+    let currentDifficulty = "All";
 
-      return "<h2>" + chapter.name + "</h2>" + questionsHtml;
-    }).join("");
 
-    questionsContainer.innerHTML = "<div class='summary'>Total Questions: " + totalQuestions + "</div>" + output;
+    function displayQuestions() {
+
+      const container = document.getElementById("questions");
+
+      const searchText =
+        document.getElementById("search").value.toLowerCase();
+
+      container.innerHTML = "";
+
+      let visibleQuestions = questions.filter(function(q) {
+
+        const searchMatch =
+          q.text.toLowerCase().includes(searchText);
+
+        const subjectMatch =
+          currentSubject === "All" ||
+          q.subject === currentSubject;
+
+        const difficultyMatch =
+          currentDifficulty === "All" ||
+          q.level === currentDifficulty;
+
+        return searchMatch &&
+               subjectMatch &&
+               difficultyMatch;
+
+      });
+
+
+      let html = "";
+
+      let lastSubject = "";
+
+      visibleQuestions.forEach(function(q, index) {
+
+        if (q.subject !== lastSubject) {
+
+          html += `
+            <div class="chapter">
+              <div class="chapter-title">
+                ${q.subject}
+              </div>
+            </div>
+          `;
+
+          lastSubject = q.subject;
+        }
+
+
+        html += `
+          <div class="question">
+
+            <div class="question-number">
+              Question ${index + 1}
+            </div>
+
+            <div>
+              ${q.text}
+            </div>
+
+            <span class="level ${q.level}">
+              ${q.level}
+            </span>
+
+          </div>
+        `;
+
+      });
+
+
+      container.innerHTML = html;
+
+
+      document.getElementById("count").innerText =
+        "Showing " + visibleQuestions.length +
+        " of " + questions.length + " questions";
+
+
+      document.getElementById("noResult").style.display =
+        visibleQuestions.length === 0
+          ? "block"
+          : "none";
+
+    }
+
+
+    function setSubject(subject) {
+
+      currentSubject = subject;
+
+      displayQuestions();
+
+    }
+
+
+    function setDifficulty(level) {
+
+      currentDifficulty = level;
+
+      displayQuestions();
+
+    }
+
+
+    displayQuestions();
+
   </script>
+
 </body>
+
 </html>
