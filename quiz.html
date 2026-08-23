@@ -1,53 +1,50 @@
-function showResult() {
+<script>
 
-  document.getElementById("quizBox").style.display = "none";
-
-  document.getElementById("result").style.display = "block";
+  // tumhara baaki JavaScript code yahan hai
 
 
-  let percentage = Math.round(
-    (score / questions.length) * 100
-  );
+  function showResult() {
 
+    document.getElementById("quizBox").style.display = "none";
 
-  let message = "";
+    document.getElementById("result").style.display = "block";
 
-  if (percentage >= 80) {
-    message = "🏆 Excellent! Keep it up!";
-  } 
-  else if (percentage >= 50) {
-    message = "👏 Good Job! Practice more.";
-  } 
-  else {
-    message = "📚 Keep Learning and Try Again.";
-  }
-
-
-  let highScore = localStorage.getItem("highScore") || 0;
-
-
-  if (score > highScore) {
-
-    highScore = score;
-
-    localStorage.setItem(
-      "highScore",
-      score
+    let percentage = Math.round(
+      (score / questions.length) * 100
     );
 
+    let message = "";
+
+    if (percentage >= 80) {
+      message = "🏆 Excellent! Keep it up!";
+    } 
+    else if (percentage >= 50) {
+      message = "👏 Good Job! Practice more.";
+    } 
+    else {
+      message = "📚 Keep Learning and Try Again.";
+    }
+
+    let highScore = localStorage.getItem("highScore") || 0;
+
+    if (score > highScore) {
+      highScore = score;
+      localStorage.setItem("highScore", score);
+    }
+
+    document.getElementById("score").innerHTML = `
+      Your Score: ${score} / ${questions.length}
+      <br>
+      Percentage: ${percentage}%
+      <br><br>
+      ${message}
+      <br><br>
+      ⭐ High Score: ${highScore} / ${questions.length}
+    `;
   }
 
 
-  document.getElementById("score").innerHTML =
+</script>
 
-  `
-  Your Score: ${score} / ${questions.length}
-  <br>
-  Percentage: ${percentage}%
-  <br><br>
-  ${message}
-  <br><br>
-  ⭐ High Score: ${highScore} / ${questions.length}
-  `;
-
-}
+</body>
+</html>
