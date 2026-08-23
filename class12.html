@@ -1,99 +1,797 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-  <title>Class 12 Science Questions</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Class 12 Science Questions | Study Question Hub</title>
+
+  <meta name="description"
+    content="Practice Class 12 Science Physics, Chemistry and Biology questions with Study Question Hub.">
 
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
-      background-color: lightblue;
-      font-family: Arial;
-      padding: 30px;
+      margin: 0;
+      background: #eef6ff;
+      font-family: Arial, sans-serif;
+      color: #172554;
     }
 
-    h1 {
-      color: blue;
+    header {
+      background: linear-gradient(135deg, #1d4ed8, #2563eb);
+      color: white;
       text-align: center;
+      padding: 30px 15px;
     }
 
-    h2 {
-      color: #003399;
-      margin-top: 35px;
+    header h1 {
+      margin: 0;
+      font-size: 32px;
+    }
+
+    header p {
+      margin-top: 10px;
+      font-size: 17px;
+    }
+
+    .container {
+      max-width: 1050px;
+      margin: 25px auto;
+      padding: 0 15px;
+    }
+
+    .controls {
+      background: white;
+      padding: 20px;
+      border-radius: 14px;
+      box-shadow: 0 3px 12px rgba(0,0,0,0.10);
+      margin-bottom: 25px;
+    }
+
+    #search {
+      width: 100%;
+      padding: 14px;
+      border: 2px solid #93c5fd;
+      border-radius: 9px;
+      font-size: 16px;
+      outline: none;
+    }
+
+    #search:focus {
+      border-color: #2563eb;
+    }
+
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 15px;
+    }
+
+    button {
+      border: none;
+      padding: 11px 17px;
+      border-radius: 8px;
+      background: #2563eb;
+      color: white;
+      cursor: pointer;
+      font-size: 15px;
+    }
+
+    button:hover {
+      background: #1e40af;
+    }
+
+    .subject {
+      background: #059669;
+    }
+
+    .subject:hover {
+      background: #047857;
+    }
+
+    .difficulty {
+      background: #7c3aed;
+    }
+
+    .difficulty:hover {
+      background: #5b21b6;
+    }
+
+    #count {
+      margin-top: 15px;
+      font-weight: bold;
+      color: #1e3a8a;
+    }
+
+    .chapter {
+      margin-top: 30px;
+    }
+
+    .chapter-title {
+      background: #172554;
+      color: white;
+      padding: 14px 18px;
+      border-radius: 10px;
+      font-size: 22px;
     }
 
     .question {
-      background-color: white;
-      padding: 15px;
+      background: white;
+      padding: 18px;
       margin: 12px 0;
-      border-radius: 8px;
+      border-radius: 10px;
+      border-left: 5px solid #2563eb;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
     }
 
-    a {
-      color: blue;
-      font-size: 18px;
+    .question-number {
+      color: #1d4ed8;
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+
+    .level {
+      display: inline-block;
+      margin-top: 12px;
+      padding: 5px 10px;
+      border-radius: 6px;
+      font-size: 13px;
+      font-weight: bold;
+    }
+
+    .Easy {
+      background: #dcfce7;
+      color: #166534;
+    }
+
+    .Medium {
+      background: #fef3c7;
+      color: #92400e;
+    }
+
+    .Hard {
+      background: #fee2e2;
+      color: #991b1b;
+    }
+
+    #noResult {
+      display: none;
+      background: white;
+      padding: 25px;
+      text-align: center;
+      border-radius: 10px;
+      color: #dc2626;
+      font-weight: bold;
+    }
+
+    .navigation {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 30px 0;
+    }
+
+    .nav-button {
+      background: #1d4ed8;
+      color: white;
+      padding: 12px 18px;
+      border-radius: 8px;
+      text-decoration: none;
+    }
+
+    .nav-button:hover {
+      background: #1e40af;
+    }
+
+    footer {
+      background: #172554;
+      color: white;
+      text-align: center;
+      padding: 25px;
+      margin-top: 30px;
+    }
+
+    @media (max-width: 600px) {
+
+      header h1 {
+        font-size: 25px;
+      }
+
+      .chapter-title {
+        font-size: 19px;
+      }
+
+      button {
+        width: 100%;
+      }
+
+      .question {
+        font-size: 15px;
+      }
+
+      .navigation a {
+        width: 100%;
+        text-align: center;
+      }
     }
   </style>
 </head>
 
 <body>
-  <h1>Class 12 Science – Questions</h1>
 
-  <h2>Physics</h2>
-  <div class="question"><b>Question 1:</b> State Coulomb's law.</div>
-  <div class="question"><b>Question 2:</b> Define electric field intensity.</div>
-  <div class="question"><b>Question 3:</b> Define electric potential.</div>
-  <div class="question"><b>Question 4:</b> State Ohm's law.</div>
-  <div class="question"><b>Question 5:</b> Find current when voltage is 12 V and resistance is 4 Ω.</div>
-  <div class="question"><b>Question 6:</b> Find resistance of 2 Ω and 3 Ω resistors in series.</div>
-  <div class="question"><b>Question 7:</b> Find resistance of 2 Ω and 3 Ω resistors in parallel.</div>
-  <div class="question"><b>Question 8:</b> State Kirchhoff's first law.</div>
-  <div class="question"><b>Question 9:</b> State Faraday's law of electromagnetic induction.</div>
-  <div class="question"><b>Question 10:</b> Define magnetic field.</div>
-  <div class="question"><b>Question 11:</b> State the right-hand thumb rule.</div>
-  <div class="question"><b>Question 12:</b> Define alternating current.</div>
-  <div class="question"><b>Question 13:</b> What is the principle of a transformer?</div>
-  <div class="question"><b>Question 14:</b> State Snell's law of refraction.</div>
-  <div class="question"><b>Question 15:</b> Define total internal reflection.</div>
-  <div class="question"><b>Question 16:</b> Define photoelectric effect.</div>
-  <div class="question"><b>Question 17:</b> State de Broglie's hypothesis.</div>
+  <header>
+    <h1>🔬 Class 12 Science</h1>
+    <p>Physics • Chemistry • Biology | Study Question Hub</p>
+  </header>
 
-  <h2>Chemistry</h2>
-  <div class="question"><b>Question 18:</b> Define molarity.</div>
-  <div class="question"><b>Question 19:</b> State Raoult's law.</div>
-  <div class="question"><b>Question 20:</b> Define conductance.</div>
-  <div class="question"><b>Question 21:</b> State Faraday's first law of electrolysis.</div>
-  <div class="question"><b>Question 22:</b> Define electrode potential.</div>
-  <div class="question"><b>Question 23:</b> What is a galvanic cell?</div>
-  <div class="question"><b>Question 24:</b> Define rate of reaction.</div>
-  <div class="question"><b>Question 25:</b> What is the order of a reaction?</div>
-  <div class="question"><b>Question 26:</b> Define activation energy.</div>
-  <div class="question"><b>Question 27:</b> What is adsorption?</div>
-  <div class="question"><b>Question 28:</b> Define coordination compound.</div>
-  <div class="question"><b>Question 29:</b> Write the IUPAC name of CH₃CH₂OH.</div>
-  <div class="question"><b>Question 30:</b> What is an aldehyde?</div>
-  <div class="question"><b>Question 31:</b> What is a carboxylic acid?</div>
-  <div class="question"><b>Question 32:</b> What is a polymer?</div>
-  <div class="question"><b>Question 33:</b> What are amino acids?</div>
-  <div class="question"><b>Question 34:</b> What is DNA?</div>
+  <div class="container">
 
-  <h2>Biology</h2>
-  <div class="question"><b>Question 35:</b> What is asexual reproduction?</div>
-  <div class="question"><b>Question 36:</b> What is sexual reproduction?</div>
-  <div class="question"><b>Question 37:</b> What is fertilisation?</div>
-  <div class="question"><b>Question 38:</b> What is the function of DNA?</div>
-  <div class="question"><b>Question 39:</b> State Mendel's law of segregation.</div>
-  <div class="question"><b>Question 40:</b> What is a dominant trait?</div>
-  <div class="question"><b>Question 41:</b> What is a recessive trait?</div>
-  <div class="question"><b>Question 42:</b> Define mutation.</div>
-  <div class="question"><b>Question 43:</b> What is natural selection?</div>
-  <div class="question"><b>Question 44:</b> What is biotechnology?</div>
-  <div class="question"><b>Question 45:</b> What is genetic engineering?</div>
-  <div class="question"><b>Question 46:</b> What is PCR?</div>
-  <div class="question"><b>Question 47:</b> What are genetically modified organisms?</div>
-  <div class="question"><b>Question 48:</b> What is an ecosystem?</div>
-  <div class="question"><b>Question 49:</b> Define food chain.</div>
-  <div class="question"><b>Question 50:</b> What is biodiversity?</div>
+    <div class="controls">
 
-  <br>
-  <a href="index.html">← Back to Home</a>
+      <input
+        type="text"
+        id="search"
+        placeholder="🔍 Search questions..."
+        onkeyup="displayQuestions()"
+      >
+
+      <div class="buttons">
+
+        <button onclick="setSubject('All')">
+          📚 All Subjects
+        </button>
+
+        <button class="subject" onclick="setSubject('Physics')">
+          ⚡ Physics
+        </button>
+
+        <button class="subject" onclick="setSubject('Chemistry')">
+          🧪 Chemistry
+        </button>
+
+        <button class="subject" onclick="setSubject('Biology')">
+          🧬 Biology
+        </button>
+
+      </div>
+
+      <div class="buttons">
+
+        <button class="difficulty" onclick="setDifficulty('All')">
+          All Levels
+        </button>
+
+        <button class="difficulty" onclick="setDifficulty('Easy')">
+          🟢 Easy
+        </button>
+
+        <button class="difficulty" onclick="setDifficulty('Medium')">
+          🟡 Medium
+        </button>
+
+        <button class="difficulty" onclick="setDifficulty('Hard')">
+          🔴 Hard
+        </button>
+
+      </div>
+
+      <div id="count"></div>
+
+    </div>
+
+    <div id="questions"></div>
+
+    <div id="noResult">
+      ❌ No question found.
+    </div>
+
+    <div class="navigation">
+
+      <a class="nav-button" href="index.html">
+        🏠 Back to Home
+      </a>
+
+      <a class="nav-button" href="#top">
+        ⬆️ Back to Top
+      </a>
+
+    </div>
+
+  </div>
+
+  <footer>
+    © 2026 Study Question Hub | Class 12 Science
+  </footer>
+
+
+  <script>
+
+    const questions = [
+
+      /* ================= PHYSICS ================= */
+
+      {
+        subject: "Physics",
+        text: "State Coulomb's law and write its mathematical expression.",
+        level: "Easy"
+      },
+
+      {
+        subject: "Physics",
+        text: "Define electric field and write its SI unit.",
+        level: "Easy"
+      },
+
+      {
+        subject: "Physics",
+        text: "What is electric potential? Write its SI unit.",
+        level: "Easy"
+      },
+
+      {
+        subject: "Physics",
+        text: "Define capacitance and write its SI unit.",
+        level: "Easy"
+      },
+
+      {
+        subject: "Physics",
+        text: "Derive the expression for the capacitance of a parallel plate capacitor.",
+        level: "Hard"
+      },
+
+      {
+        subject: "Physics",
+        text: "State Ohm's law and explain the V-I characteristic of an ohmic conductor.",
+        level: "Medium"
+      },
+
+      {
+        subject: "Physics",
+        text: "Calculate the current through a 10 Ω resistor connected to a 20 V battery.",
+        level: "Easy"
+      },
+
+      {
+        subject: "Physics",
+        text: "State Kirchhoff's laws of electrical circuits.",
+        level: "Medium"
+      },
+
+      {
+        subject: "Physics",
+        text: "Define magnetic field and write its SI unit.",
+        level: "Easy"
+      },
+
+      {
+        subject: "Physics",
+        text: "State Biot-Savart law.",
+        level: "Medium"
+      },
+
+      {
+        subject: "Physics",
+        text: "State Faraday's laws of electromagnetic induction.",
+        level: "Medium"
+      },
+
+      {
+        subject: "Physics",
+        text: "Explain Lenz's law with an example.",
+        level: "Medium"
+      },
+
+      {
+        subject: "Physics",
+        text: "What is electromagnetic radiation? Give examples.",
+        level: "Easy"
+      },
+
+      {
+        subject: "Physics",
+        text: "Explain the working principle of an AC generator.",
+        level: "Hard"
+      },
+
+      {
+        subject: "Physics",
+        text: "State the laws of reflection of light.",
+        level: "Easy"
+      },
+
+      {
+        subject: "Physics",
+        text: "Derive the lens formula for a thin lens.",
+        level: "Hard"
+      },
+
+      {
+        subject: "Physics",
+        text: "Explain total internal reflection and give two applications.",
+        level: "Medium"
+      },
+
+      {
+        subject: "Physics",
+        text: "What is photoelectric effect? State Einstein's photoelectric equation.",
+        level: "Hard"
+      },
+
+      {
+        subject: "Physics",
+        text: "Define de Broglie wavelength and write its formula.",
+        level: "Medium"
+      },
+
+      {
+        subject: "Physics",
+        text: "Explain the working of a semiconductor diode.",
+        level: "Medium"
+      },
+
+
+      /* ================= CHEMISTRY ================= */
+
+      {
+        subject: "Chemistry",
+        text: "Define molarity and write its formula.",
+        level: "Easy"
+      },
+
+      {
+        subject: "Chemistry",
+        text: "Define molality and write its formula.",
+        level: "Easy"
+      },
+
+      {
+        subject: "Chemistry",
+        text: "Explain Raoult's law.",
+        level: "Medium"
+      },
+
+      {
+        subject: "Chemistry",
+        text: "What are colligative properties?",
+        level: "Easy"
+      },
+
+      {
+        subject: "Chemistry",
+        text: "Explain the elevation of boiling point.",
+        level: "Medium"
+      },
+
+      {
+        subject: "Chemistry",
+        text: "State Henry's law and give one application.",
+        level: "Medium"
+      },
+
+      {
+        subject: "Chemistry",
+        text: "Define electrochemical cell.",
+        level: "Easy"
+      },
+
+      {
+        subject: "Chemistry",
+        text: "State Faraday's laws of electrolysis.",
+        level: "Medium"
+      },
+
+      {
+        subject: "Chemistry",
+        text: "What is standard electrode potential?",
+        level: "Easy"
+      },
+
+      {
+        subject: "Chemistry",
+        text: "State Kohlrausch's law.",
+        level: "Hard"
+      },
+
+      {
+        subject: "Chemistry",
+        text: "Define rate of reaction.",
+        level: "Easy"
+      },
+
+      {
+        subject: "Chemistry",
+        text: "Explain the factors affecting the rate of a chemical reaction.",
+        level: "Medium"
+      },
+
+      {
+        subject: "Chemistry",
+        text: "What is activation energy?",
+        level: "Medium"
+      },
+
+      {
+        subject: "Chemistry",
+        text: "Define chemical equilibrium.",
+        level: "Easy"
+      },
+
+      {
+        subject: "Chemistry",
+        text: "State Le Chatelier's principle.",
+        level: "Medium"
+      },
+
+      {
+        subject: "Chemistry",
+        text: "Explain the common ion effect.",
+        level: "Hard"
+      },
+
+      {
+        subject: "Chemistry",
+        text: "What are coordination compounds?",
+        level: "Easy"
+      },
+
+      {
+        subject: "Chemistry",
+        text: "Explain the nomenclature of coordination compounds with an example.",
+        level: "Medium"
+      },
+
+      {
+        subject: "Chemistry",
+        text: "What are aldehydes and ketones? Give examples.",
+        level: "Easy"
+      },
+
+      {
+        subject: "Chemistry",
+        text: "Explain important chemical reactions of alcohols.",
+        level: "Hard"
+      },
+
+
+      /* ================= BIOLOGY ================= */
+
+      {
+        subject: "Biology",
+        text: "Define reproduction and explain its importance.",
+        level: "Easy"
+      },
+
+      {
+        subject: "Biology",
+        text: "Differentiate between asexual and sexual reproduction.",
+        level: "Medium"
+      },
+
+      {
+        subject: "Biology",
+        text: "Explain the structure of a typical flower.",
+        level: "Medium"
+      },
+
+      {
+        subject: "Biology",
+        text: "What is double fertilisation in flowering plants?",
+        level: "Hard"
+      },
+
+      {
+        subject: "Biology",
+        text: "Explain the menstrual cycle in human females.",
+        level: "Medium"
+      },
+
+      {
+        subject: "Biology",
+        text: "What is fertilisation?",
+        level: "Easy"
+      },
+
+      {
+        subject: "Biology",
+        text: "Define contraception and describe different contraceptive methods.",
+        level: "Medium"
+      },
+
+      {
+        subject: "Biology",
+        text: "What are sexually transmitted infections?",
+        level: "Easy"
+      },
+
+      {
+        subject: "Biology",
+        text: "Explain Mendel's laws of inheritance.",
+        level: "Hard"
+      },
+
+      {
+        subject: "Biology",
+        text: "Differentiate between genotype and phenotype.",
+        level: "Easy"
+      },
+
+      {
+        subject: "Biology",
+        text: "What is DNA? Explain its basic structure.",
+        level: "Medium"
+      },
+
+      {
+        subject: "Biology",
+        text: "Explain the process of DNA replication.",
+        level: "Hard"
+      },
+
+      {
+        subject: "Biology",
+        text: "What is transcription?",
+        level: "Medium"
+      },
+
+      {
+        subject: "Biology",
+        text: "What is translation in protein synthesis?",
+        level: "Medium"
+      },
+
+      {
+        subject: "Biology",
+        text: "Explain the theory of evolution by natural selection.",
+        level: "Hard"
+      },
+
+      {
+        subject: "Biology",
+        text: "What is biotechnology?",
+        level: "Easy"
+      },
+
+      {
+        subject: "Biology",
+        text: "Explain the principle of PCR.",
+        level: "Hard"
+      },
+
+      {
+        subject: "Biology",
+        text: "What are antibodies and how do they protect the body?",
+        level: "Medium"
+      },
+
+      {
+        subject: "Biology",
+        text: "Explain the role of vaccines in disease prevention.",
+        level: "Medium"
+      },
+
+      {
+        subject: "Biology",
+        text: "Explain the importance of biodiversity and its conservation.",
+        level: "Hard"
+      }
+
+    ];
+
+
+    let currentSubject = "All";
+    let currentDifficulty = "All";
+
+
+    function displayQuestions() {
+
+      const container = document.getElementById("questions");
+
+      const searchText =
+        document.getElementById("search").value.toLowerCase();
+
+      container.innerHTML = "";
+
+      let visibleQuestions = questions.filter(function(q) {
+
+        const searchMatch =
+          q.text.toLowerCase().includes(searchText);
+
+        const subjectMatch =
+          currentSubject === "All" ||
+          q.subject === currentSubject;
+
+        const difficultyMatch =
+          currentDifficulty === "All" ||
+          q.level === currentDifficulty;
+
+        return searchMatch &&
+               subjectMatch &&
+               difficultyMatch;
+
+      });
+
+
+      let html = "";
+      let lastSubject = "";
+
+
+      visibleQuestions.forEach(function(q, index) {
+
+        if (q.subject !== lastSubject) {
+
+          html += `
+            <div class="chapter">
+              <div class="chapter-title">
+                ${q.subject}
+              </div>
+            </div>
+          `;
+
+          lastSubject = q.subject;
+        }
+
+
+        html += `
+          <div class="question">
+
+            <div class="question-number">
+              Question ${index + 1}
+            </div>
+
+            <div>
+              ${q.text}
+            </div>
+
+            <span class="level ${q.level}">
+              ${q.level}
+            </span>
+
+          </div>
+        `;
+
+      });
+
+
+      container.innerHTML = html;
+
+
+      document.getElementById("count").innerText =
+        "Showing " + visibleQuestions.length +
+        " of " + questions.length + " questions";
+
+
+      document.getElementById("noResult").style.display =
+        visibleQuestions.length === 0
+          ? "block"
+          : "none";
+
+    }
+
+
+    function setSubject(subject) {
+      currentSubject = subject;
+      displayQuestions();
+    }
+
+
+    function setDifficulty(level) {
+      currentDifficulty = level;
+      displayQuestions();
+    }
+
+
+    displayQuestions();
+
+  </script>
+
 </body>
+
 </html>
