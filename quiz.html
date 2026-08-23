@@ -179,6 +179,42 @@
       font-weight: bold;
     }
 
+    /* RESULT PROGRESS BAR */
+
+    .progress-container {
+      width: 100%;
+      height: 25px;
+      background: #e2e8f0;
+      border-radius: 20px;
+      overflow: hidden;
+      margin: 20px 0;
+    }
+
+    #progressBar {
+      height: 100%;
+      width: 0%;
+      background: #123c88;
+      border-radius: 20px;
+      transition: width 1s ease;
+    }
+
+    #percentageText {
+      font-size: 22px;
+      font-weight: bold;
+      color: #123c88;
+    }
+
+    #grade {
+      font-size: 26px;
+      font-weight: bold;
+      margin: 15px 0;
+    }
+
+    #message {
+      font-size: 18px;
+      color: #475569;
+    }
+
     .back {
       display: inline-block;
       margin-top: 20px;
@@ -226,14 +262,11 @@
   <div class="container">
 
 
-    <!-- =========================
-         QUIZ SETUP
-         ========================= -->
+    <!-- QUIZ SETUP -->
 
     <div class="box" id="setup">
 
       <h2>📚 Choose Your Quiz</h2>
-
 
       <label class="select-label">
         Select Class
@@ -316,9 +349,7 @@
     </div>
 
 
-    <!-- =========================
-         QUIZ BOX
-         ========================= -->
+    <!-- QUIZ -->
 
     <div class="box" id="quizBox">
 
@@ -353,15 +384,27 @@
     </div>
 
 
-    <!-- =========================
-         RESULT
-         ========================= -->
+    <!-- RESULT -->
 
     <div class="box" id="result">
 
       <h2>🎉 Quiz Completed!</h2>
 
       <p id="score"></p>
+
+      <div id="percentageText"></div>
+
+      <div class="progress-container">
+
+        <div id="progressBar"></div>
+
+      </div>
+
+      <div id="grade"></div>
+
+      <div id="message"></div>
+
+      <br>
 
       <button id="restartBtn"
         onclick="newQuiz()">
@@ -386,448 +429,326 @@
   <script>
 
 
-    /* =========================================
-       QUESTION BANK
-       ========================================= */
+    /* QUESTION BANK */
 
     const questionBank = [
 
-
-      /* =========================
-         CLASS 9 SCIENCE
-         ========================= */
-
+      /* CLASS 9 SCIENCE */
 
       {
         className: "9",
         subject: "Science",
         difficulty: "Easy",
-
-        question:
-          "What is the SI unit of force?",
-
+        question: "What is the SI unit of force?",
         options: [
           "Joule",
           "Newton",
           "Watt",
           "Pascal"
         ],
-
         answer: "Newton"
       },
-
 
       {
         className: "9",
         subject: "Science",
         difficulty: "Easy",
-
-        question:
-          "What is the chemical formula of water?",
-
+        question: "What is the chemical formula of water?",
         options: [
           "CO₂",
           "H₂O",
           "O₂",
           "H₂"
         ],
-
         answer: "H₂O"
       },
-
 
       {
         className: "9",
         subject: "Science",
         difficulty: "Easy",
-
-        question:
-          "Which organelle is called the powerhouse of the cell?",
-
+        question: "Which organelle is called the powerhouse of the cell?",
         options: [
           "Nucleus",
           "Ribosome",
           "Mitochondria",
           "Vacuole"
         ],
-
         answer: "Mitochondria"
       },
-
 
       {
         className: "9",
         subject: "Science",
         difficulty: "Medium",
-
-        question:
-          "What is the SI unit of momentum?",
-
+        question: "What is the SI unit of momentum?",
         options: [
           "kg m/s",
           "Newton",
           "Joule",
           "Watt"
         ],
-
         answer: "kg m/s"
       },
-
 
       {
         className: "9",
         subject: "Science",
         difficulty: "Medium",
-
-        question:
-          "Which gas is required for photosynthesis?",
-
+        question: "Which gas is required for photosynthesis?",
         options: [
           "Oxygen",
           "Nitrogen",
           "Carbon dioxide",
           "Hydrogen"
         ],
-
         answer: "Carbon dioxide"
       },
-
 
       {
         className: "9",
         subject: "Science",
         difficulty: "Medium",
-
-        question:
-          "What is the acceleration due to gravity on Earth approximately?",
-
+        question: "What is acceleration due to gravity on Earth approximately?",
         options: [
           "5.8 m/s²",
           "9.8 m/s²",
           "15 m/s²",
           "20 m/s²"
         ],
-
         answer: "9.8 m/s²"
       },
-
 
       {
         className: "9",
         subject: "Science",
         difficulty: "Hard",
-
-        question:
-          "A body of mass 5 kg is moving with an acceleration of 2 m/s². What force acts on it?",
-
+        question: "A body of mass 5 kg is moving with an acceleration of 2 m/s². What force acts on it?",
         options: [
           "2 N",
           "5 N",
           "10 N",
           "20 N"
         ],
-
         answer: "10 N"
       },
-
 
       {
         className: "9",
         subject: "Science",
         difficulty: "Hard",
-
-        question:
-          "Why does a passenger fall forward when a moving bus suddenly stops?",
-
+        question: "Why does a passenger fall forward when a moving bus suddenly stops?",
         options: [
           "Due to gravity",
           "Due to inertia of motion",
           "Due to friction",
           "Due to pressure"
-
         ],
-
         answer: "Due to inertia of motion"
       },
 
 
-      /* =========================
-         CLASS 9 MATHEMATICS
-         ========================= */
-
+      /* CLASS 9 MATHEMATICS */
 
       {
         className: "9",
         subject: "Mathematics",
         difficulty: "Easy",
-
-        question:
-          "What is √81?",
-
+        question: "What is √81?",
         options: [
           "7",
           "8",
           "9",
           "10"
         ],
-
         answer: "9"
       },
-
 
       {
         className: "9",
         subject: "Mathematics",
         difficulty: "Easy",
-
-        question:
-          "What is the value of 5²?",
-
+        question: "What is the value of 5²?",
         options: [
           "10",
           "15",
           "20",
           "25"
         ],
-
         answer: "25"
       },
-
 
       {
         className: "9",
         subject: "Mathematics",
         difficulty: "Medium",
-
-        question:
-          "What is 15% of 200?",
-
+        question: "What is 15% of 200?",
         options: [
           "20",
           "25",
           "30",
           "35"
         ],
-
         answer: "30"
       },
-
 
       {
         className: "9",
         subject: "Mathematics",
         difficulty: "Medium",
-
-        question:
-          "What is the HCF of 12 and 18?",
-
+        question: "What is the HCF of 12 and 18?",
         options: [
           "2",
           "3",
           "6",
           "9"
         ],
-
         answer: "6"
       },
-
 
       {
         className: "9",
         subject: "Mathematics",
         difficulty: "Hard",
-
-        question:
-          "If x + 7 = 15, what is the value of x?",
-
+        question: "If x + 7 = 15, what is the value of x?",
         options: [
           "6",
           "7",
           "8",
           "9"
         ],
-
         answer: "8"
       },
-
 
       {
         className: "9",
         subject: "Mathematics",
         difficulty: "Hard",
-
-        question:
-          "What is the area of a square whose side is 12 cm?",
-
+        question: "What is the area of a square whose side is 12 cm?",
         options: [
           "24 cm²",
           "48 cm²",
           "144 cm²",
           "120 cm²"
         ],
-
         answer: "144 cm²"
       },
 
 
-      /* =========================
-         CLASS 10 SCIENCE
-         ========================= */
-
+      /* CLASS 10 SCIENCE */
 
       {
         className: "10",
         subject: "Science",
         difficulty: "Easy",
-
-        question:
-          "What is the chemical formula of carbon dioxide?",
-
+        question: "What is the chemical formula of carbon dioxide?",
         options: [
           "CO",
           "CO₂",
           "C₂O",
           "C₂O₂"
         ],
-
         answer: "CO₂"
       },
-
 
       {
         className: "10",
         subject: "Science",
         difficulty: "Medium",
-
-        question:
-          "Which gas is most abundant in Earth's atmosphere?",
-
+        question: "Which gas is most abundant in Earth's atmosphere?",
         options: [
           "Oxygen",
           "Nitrogen",
           "Carbon dioxide",
           "Hydrogen"
         ],
-
         answer: "Nitrogen"
       },
-
 
       {
         className: "10",
         subject: "Science",
         difficulty: "Hard",
-
-        question:
-          "Which law explains the conservation of mass during a chemical reaction?",
-
+        question: "Which law explains conservation of mass during a chemical reaction?",
         options: [
           "Law of constant proportions",
           "Law of conservation of mass",
           "Newton's law",
           "Ohm's law"
         ],
-
         answer: "Law of conservation of mass"
       },
 
 
-      /* =========================
-         CLASS 11 SCIENCE
-         ========================= */
-
+      /* CLASS 11 SCIENCE */
 
       {
         className: "11",
         subject: "Science",
         difficulty: "Easy",
-
-        question:
-          "What is Newton's second law of motion?",
-
+        question: "What is Newton's second law of motion?",
         options: [
           "F = ma",
           "F = m/a",
           "F = a/m",
           "F = mv"
         ],
-
         answer: "F = ma"
       },
-
 
       {
         className: "11",
         subject: "Science",
         difficulty: "Medium",
-
-        question:
-          "What is the SI unit of energy?",
-
+        question: "What is the SI unit of energy?",
         options: [
           "Watt",
           "Newton",
           "Joule",
           "Pascal"
         ],
-
         answer: "Joule"
       },
 
 
-      /* =========================
-         CLASS 12 SCIENCE
-         ========================= */
-
+      /* CLASS 12 SCIENCE */
 
       {
         className: "12",
         subject: "Science",
         difficulty: "Easy",
-
-        question:
-          "What is the SI unit of electric charge?",
-
+        question: "What is the SI unit of electric charge?",
         options: [
           "Ampere",
           "Volt",
           "Coulomb",
           "Ohm"
         ],
-
         answer: "Coulomb"
       },
-
 
       {
         className: "12",
         subject: "Science",
         difficulty: "Medium",
-
-        question:
-          "What is the SI unit of electric current?",
-
+        question: "What is the SI unit of electric current?",
         options: [
           "Volt",
           "Ampere",
           "Ohm",
           "Coulomb"
         ],
-
         answer: "Ampere"
       }
 
     ];
 
 
-    /* =========================================
-       SETTINGS
-       ========================================= */
+    /* SETTINGS */
 
     const QUESTIONS_PER_QUIZ = 10;
 
     const QUIZ_TIME = 60;
-
 
     let quizQuestions = [];
 
@@ -842,42 +763,30 @@
     let timerInterval;
 
 
-    /* =========================================
-       START QUIZ
-       ========================================= */
+    /* START QUIZ */
 
     function startQuiz() {
 
       const selectedClass =
-        document.getElementById(
-          "classSelect"
-        ).value;
-
+        document.getElementById("classSelect").value;
 
       const selectedSubject =
-        document.getElementById(
-          "subjectSelect"
-        ).value;
-
+        document.getElementById("subjectSelect").value;
 
       const selectedDifficulty =
-        document.getElementById(
-          "difficultySelect"
-        ).value;
+        document.getElementById("difficultySelect").value;
 
 
       let filteredQuestions =
-        questionBank.filter(
-          function(q) {
+        questionBank.filter(function(q) {
 
-            return (
-              q.className === selectedClass &&
-              q.subject === selectedSubject &&
-              q.difficulty === selectedDifficulty
-            );
+          return (
+            q.className === selectedClass &&
+            q.subject === selectedSubject &&
+            q.difficulty === selectedDifficulty
+          );
 
-          }
-        );
+        });
 
 
       if (filteredQuestions.length === 0) {
@@ -915,25 +824,14 @@
       timeLeft = QUIZ_TIME;
 
 
-      document.getElementById(
-        "setup"
-      ).style.display = "none";
+      document.getElementById("setup").style.display = "none";
+
+      document.getElementById("quizBox").style.display = "block";
+
+      document.getElementById("result").style.display = "none";
 
 
-      document.getElementById(
-        "quizBox"
-      ).style.display = "block";
-
-
-      document.getElementById(
-        "result"
-      ).style.display = "none";
-
-
-      document.getElementById(
-        "quizInfo"
-      ).innerText =
-
+      document.getElementById("quizInfo").innerText =
         "Class " +
         selectedClass +
         " • " +
@@ -942,9 +840,8 @@
         selectedDifficulty;
 
 
-      document.getElementById(
-        "time"
-      ).innerText = timeLeft;
+      document.getElementById("time").innerText =
+        timeLeft;
 
 
       loadQuestion();
@@ -954,9 +851,7 @@
     }
 
 
-    /* =========================================
-       TIMER
-       ========================================= */
+    /* TIMER */
 
     function startTimer() {
 
@@ -968,18 +863,13 @@
 
           timeLeft--;
 
-
-          document.getElementById(
-            "time"
-          ).innerText =
+          document.getElementById("time").innerText =
             timeLeft;
 
 
           if (timeLeft <= 0) {
 
-            clearInterval(
-              timerInterval
-            );
+            clearInterval(timerInterval);
 
             showResult();
 
@@ -990,9 +880,7 @@
     }
 
 
-    /* =========================================
-       LOAD QUESTION
-       ========================================= */
+    /* LOAD QUESTION */
 
     function loadQuestion() {
 
@@ -1000,93 +888,65 @@
 
 
       const q =
-        quizQuestions[
-          currentQuestion
-        ];
+        quizQuestions[currentQuestion];
 
 
-      document.getElementById(
-        "progress"
-      ).innerText =
-
+      document.getElementById("progress").innerText =
         "Question " +
         (currentQuestion + 1) +
         " of " +
         quizQuestions.length;
 
 
-      document.getElementById(
-        "liveScore"
-      ).innerText =
-
+      document.getElementById("liveScore").innerText =
         "Score: " +
         scoreValue +
         " / " +
         currentQuestion;
 
 
-      document.getElementById(
-        "question"
-      ).innerText =
+      document.getElementById("question").innerText =
         q.question;
 
 
       const optionsDiv =
-        document.getElementById(
-          "options"
-        );
+        document.getElementById("options");
 
 
       optionsDiv.innerHTML = "";
 
 
-      document.getElementById(
-        "nextBtn"
-      ).disabled = true;
+      document.getElementById("nextBtn").disabled = true;
 
 
-      q.options.forEach(
-        function(option) {
+      q.options.forEach(function(option) {
 
-          const button =
-            document.createElement(
-              "button"
-            );
+        const button =
+          document.createElement("button");
 
 
-          button.type = "button";
+        button.type = "button";
 
-          button.innerText =
-            option;
+        button.innerText = option;
 
-          button.className =
-            "option";
+        button.className = "option";
 
 
-          button.onclick =
-            function() {
+        button.onclick = function() {
 
-              checkAnswer(
-                button,
-                option
-              );
+          checkAnswer(button, option);
 
-            };
+        };
 
 
-          optionsDiv.appendChild(
-            button
-          );
+        optionsDiv.appendChild(button);
 
-        }
-      );
+      });
 
     }
 
 
-    /* =========================================
-       CHECK ANSWER
-       ========================================= */
+    /* CHECK ANSWER */
 
     function checkAnswer(
       button,
@@ -1108,27 +968,21 @@
 
 
       const allOptions =
-        document.querySelectorAll(
-          ".option"
-        );
+        document.querySelectorAll(".option");
 
 
-      allOptions.forEach(
-        function(optionButton) {
+      allOptions.forEach(function(optionButton) {
 
-          if (
-            optionButton.innerText ===
-            correctAnswer
-          ) {
+        if (
+          optionButton.innerText ===
+          correctAnswer
+        ) {
 
-            optionButton.classList.add(
-              "correct"
-            );
-
-          }
+          optionButton.classList.add("correct");
 
         }
-      );
+
+      });
 
 
       if (
@@ -1136,41 +990,31 @@
         correctAnswer
       ) {
 
-        button.classList.add(
-          "correct"
-        );
+        button.classList.add("correct");
 
         scoreValue++;
 
       } else {
 
-        button.classList.add(
-          "wrong"
-        );
+        button.classList.add("wrong");
 
       }
 
 
-      document.getElementById(
-        "liveScore"
-      ).innerText =
-
+      document.getElementById("liveScore").innerText =
         "Score: " +
         scoreValue +
         " / " +
         (currentQuestion + 1);
 
 
-      document.getElementById(
-        "nextBtn"
-      ).disabled = false;
+      document.getElementById("nextBtn").disabled =
+        false;
 
     }
 
 
-    /* =========================================
-       NEXT QUESTION
-       ========================================= */
+    /* NEXT */
 
     function nextQuestion() {
 
@@ -1198,23 +1042,19 @@
     }
 
 
-    /* =========================================
-       RESULT
-       ========================================= */
+    /* RESULT */
 
     function showResult() {
 
       clearInterval(timerInterval);
 
 
-      document.getElementById(
-        "quizBox"
-      ).style.display = "none";
+      document.getElementById("quizBox").style.display =
+        "none";
 
 
-      document.getElementById(
-        "result"
-      ).style.display = "block";
+      document.getElementById("result").style.display =
+        "block";
 
 
       const percentage =
@@ -1226,23 +1066,62 @@
         );
 
 
-      let message;
+      let grade = "";
+
+      let message = "";
 
 
-      if (percentage >= 80) {
+      if (percentage >= 90) {
 
-        message =
-          "🏆 Excellent! Keep it up!";
-
-      } else if (percentage >= 50) {
-
-        message =
-          "👏 Good Job! Practice more.";
-
-      } else {
+        grade = "🏆 A+ — Excellent!";
 
         message =
-          "📚 Keep Learning and Try Again.";
+          "Outstanding performance! Keep it up.";
+
+      }
+
+      else if (percentage >= 80) {
+
+        grade = "🥇 A — Very Good!";
+
+        message =
+          "Very good performance. Keep improving.";
+
+      }
+
+      else if (percentage >= 70) {
+
+        grade = "🟢 B — Good!";
+
+        message =
+          "Good work. A little more practice can make you better.";
+
+      }
+
+      else if (percentage >= 60) {
+
+        grade = "🟡 C — Average";
+
+        message =
+          "Keep practising and strengthen your concepts.";
+
+      }
+
+      else if (percentage >= 50) {
+
+        grade = "🟠 D — Needs Practice";
+
+        message =
+          "Practice more questions and revise your concepts.";
+
+      }
+
+      else {
+
+        grade = "🔴 E — Keep Practising";
+
+        message =
+          "Don't give up. Learn the concepts and try again.";
 
       }
 
@@ -1257,9 +1136,7 @@
 
       if (scoreValue > highScore) {
 
-        highScore =
-          scoreValue;
-
+        highScore = scoreValue;
 
         localStorage.setItem(
           "studyHubHighScore",
@@ -1269,57 +1146,57 @@
       }
 
 
-      document.getElementById(
-        "score"
-      ).innerHTML =
-
+      document.getElementById("score").innerHTML =
         "Your Score: " +
         scoreValue +
         " / " +
         quizQuestions.length +
 
-        "<br>" +
-
-        "Percentage: " +
-        percentage +
-        "%" +
-
-        "<br><br>" +
-
-        message +
-
         "<br><br>" +
 
         "⭐ High Score: " +
-        highScore +
-        " / " +
-        QUESTIONS_PER_QUIZ;
+        highScore;
+
+
+      document.getElementById("percentageText").innerText =
+        percentage + "%";
+
+
+      document.getElementById("grade").innerText =
+        grade;
+
+
+      document.getElementById("message").innerText =
+        message;
+
+
+      const progressBar =
+        document.getElementById("progressBar");
+
+
+      progressBar.style.width =
+        percentage + "%";
 
     }
 
 
-    /* =========================================
-       NEW QUIZ
-       ========================================= */
+    /* NEW QUIZ */
 
     function newQuiz() {
 
       clearInterval(timerInterval);
 
 
-      document.getElementById(
-        "result"
-      ).style.display = "none";
+      document.getElementById("result").style.display =
+        "none";
 
 
-      document.getElementById(
-        "quizBox"
-      ).style.display = "none";
+      document.getElementById("quizBox").style.display =
+        "none";
 
 
-      document.getElementById(
-        "setup"
-      ).style.display = "block";
+      document.getElementById("setup").style.display =
+        "block";
 
     }
 
